@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  background: #fff;
+  font: 14px/1.5 "PingFang SC","微软雅黑","Microsoft YaHei",Helvetica,"Helvetica Neue",Tahoma,Arial,sans-serif;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+li,ul {
+  list-style: none;
+}
+img {
+  border: none;
+}
