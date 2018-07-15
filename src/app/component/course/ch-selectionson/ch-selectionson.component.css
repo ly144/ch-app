@@ -1,0 +1,40 @@
+#selectson{
+  border: 1px solid #999999;
+  border-radius: 10px;
+  margin-top: 32px;
+}
+
+.course-nav-item{
+  font-size: 12px;
+  margin-right: 10px;
+  padding-right: 2px;
+}
+
+.on{
+  border: 1px solid white;
+  border-radius: 12px;
+  color: #FFFFFF;
+  background: #9199a1;
+  cursor: default;
+}
+
+.item{
+  float: left;
+  margin: auto 0;
+  padding-left: 0px;
+}
+
+.item li{
+  display: inline-block;
+  padding: 18px;
+  height: 30px;
+  text-align: center;
+  line-height: 5px;
+}
+
+.hover1{
+  background-color: #dfe3e6;
+  /*background-color: red;*/
+  border: 1px solid white;
+  border-radius: 12px;
+}

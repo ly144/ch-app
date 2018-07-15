@@ -1,0 +1,52 @@
+<div class="container" id="select">
+
+  <div class="row">
+    <div class="col-1" id="s1">
+      <p class="p1">方向:</p>
+    </div>
+
+    <div class="col-11">
+      <ul class="item">
+        <li *ngFor="let dir of direction let i=index" class="course-nav-item {{ dir.isOn }}">
+          <a (click)="select0(dir.name, i)">{{ dir.name }}</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <hr class="hr1">
+
+  <div class="row">
+    <div class="col-1" id="s2">
+      <p class="p1">分类:</p>
+    </div>
+
+    <div class="col-11">
+      <ul class="item">
+        <li *ngFor="let dir of classify let i=index" class="course-nav-item {{ dir.isOn }}">
+          <a (click)="select1(dir.name, i)">{{ dir.name }}</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <hr class="hr1">
+
+  <div class="row">
+    <div class="col-1" id="s3">
+      <p class="p1">难度:</p>
+    </div>
+
+    <div class="col-11">
+      <ul class="item">
+        <li *ngFor="let dir of difficult let i=index" class="course-nav-item {{ dir.isOn }}">
+          <a (click)="select2(dir.name, i)">{{ dir.name }}</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
