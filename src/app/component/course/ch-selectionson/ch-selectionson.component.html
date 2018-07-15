@@ -1,0 +1,14 @@
+<div class="container" id="selectson">
+
+<div class="row">
+
+  <div class="col-11">
+    <ul class="item">
+      <li *ngFor="let dir of butt let i=index" class="course-nav-item {{ dir.isOn }} {{dir.isHover}}" >
+        <a (click)="select(dir.name, i)" (mouseenter)="select1(dir.name,i)" (mouseleave)="select2(dir.name,i)">{{ dir.name }}</a>
+    </ul>
+  </div>
+
+</div>
+
+</div>
