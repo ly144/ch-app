@@ -1,14 +1,33 @@
 <div class="container" id="selectson">
 
-<div class="row">
+  <div class="row">
 
-  <div class="col-11">
-    <ul class="item">
-      <li *ngFor="let dir of butt let i=index" class="course-nav-item {{ dir.isOn }} {{dir.isHover}}" >
-        <a (click)="select(dir.name, i)" (mouseenter)="select1(dir.name,i)" (mouseleave)="select2(dir.name,i)">{{ dir.name }}</a>
-    </ul>
+    <div class="col-11">
+      <ul class="item">
+        <li *ngFor="let dir of butt let i=index" class="course-nav-item {{ dir.isOn }} {{dir.isHover}}">
+          <a (click)="select(dir.name, i)" (mouseenter)="select1(dir.name,i)" (mouseleave)="select2(dir.name,i)">{{ dir.name }}</a>
+        </li>
+      </ul>
+    </div>
+
   </div>
 
-</div>
+  <div class="row">
+    <div id="course" class="card" *ngFor="let cou of course">
+      <a>
+        <img id="course-img" class="card-img" src="{{ cou.img }}" alt="Card image">
+        <div id="course-body" class="card-body">
+          <h3 id="course-title" class="card-title">{{ cou.title }}</h3>
+          <div>
+            <div id="course-info">
+              <span>{{ cou.difficulty }}</span>
+              <span><i class="icon-set_sns"></i>{{ cou.people }}</span>
+            </div>
+            <p id="course-desc">{{ cou.info }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
 
 </div>

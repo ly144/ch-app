@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-export class Course {
-  img: string;
-  title: string;
-  difficulty: string;
-  people: number;
-  info: string;
-}
+import { Course } from '../../../models/Course';
 
 @Component({
   selector: 'app-ch-home-recommend',

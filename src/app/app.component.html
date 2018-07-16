@@ -1,8 +1,8 @@
 <div class="container-fluid">
   <div id="header" class="row">
-    <div id="logo" class="col-2"><a>logo</a></div>
+    <div id="logo" class="col-2"><a routerLink="/home" routerLinkActive="active">logo</a></div>
     <ul id="item" class="col-4">
-        <li><a>课程</a></li>
+        <li><a routerLink="/selection" routerLinkActive="active">课程</a></li>
         <li><a>猿问</a></li>
     </ul>
     <div id="search" class="input-group col-4">
@@ -13,9 +13,9 @@
     </div>
     <div id="login" class="col-2">
       <a>登录</a>
-       /
+      &nbsp;/&nbsp;
       <a>注册</a>
     </div>
   </div>
 </div>
-<app-ch-home></app-ch-home>
+<router-outlet></router-outlet>
