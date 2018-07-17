@@ -1,0 +1,76 @@
+<div class="container-fluid" id="detail">
+
+  <div class="detail1">
+
+    <div class="row">
+      <div class="col-8">
+        <ul class="item">
+          <li>
+            课程 &nbsp;\
+          </li>
+          <li>
+            {{detailed.direct}} &nbsp;\
+          </li>
+          <li>
+            {{detailed.classify}} &nbsp;\
+          </li>
+          <li>
+            {{detailed.course}} &nbsp;
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <p class="p1">
+          {{detailed.course}}
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-12" id="s2">
+        <ul class="item1">
+          <li>
+            <img src="{{detailed.author.img}}">
+          </li>
+          <li>
+            {{detailed.author.name}}
+          </li>
+          <li>
+            {{detailed.author.job}}
+          </li>
+          <li>
+            难度 &nbsp;&nbsp;{{detailed.difficulty}}
+          </li>
+          <li>
+            时长 &nbsp;&nbsp;{{detailed.length}}
+          </li>
+          <li>
+            学习人数 &nbsp;&nbsp;{{detailed.number}}
+          </li>
+          <li>
+            评分 &nbsp;&nbsp;{{detailed.score}}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="detail2">
+    <div class="row">
+      <div class="col-12">
+        <ul class="item2">
+          <li *ngFor="let dir of detailed2 let i=index" class="{{ dir.isOn }}">
+            <a  (click)="select(dir.name, i)">{{dir.name}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>

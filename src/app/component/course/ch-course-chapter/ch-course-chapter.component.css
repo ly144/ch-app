@@ -1,0 +1,43 @@
+#chapter {
+  background-color: #f3f5f7;
+  margin: 5px auto auto auto;
+  padding: auto;
+}
+
+.chapter-1 {
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+.chapter-2 {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);
+  padding: 24px 32px 18px;
+  line-height: 28px;
+  font-size: 14px;
+  font-family: "微软雅黑";
+  margin-bottom: 20px;
+}
+
+.chapter-3{
+  color: #1c1f21;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.chapter-4{
+  margin-top: 2px;
+  font-size: 12px;
+  color: #545C63;
+  line-height: 18px;
+}
+
+.chapter-5{
+  color: #1c1f21;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+
