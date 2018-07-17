@@ -11,6 +11,7 @@ import { ChLearningComponent } from './component/course/ch-learning/ch-learning.
 import { ChCommentComponent } from './component/course/ch-comment/ch-comment.component';
 import { ChNotesComponent } from './component/course/ch-notes/ch-notes.component';
 import { ChQuestionComponent } from './component/course/ch-question/ch-question.component';
+import { ChApeComponent } from './component/community/ch-ape/ch-ape.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ChQuestionComponent } from './component/course/ch-question/ch-question.
     ChLearningComponent,
     ChCommentComponent,
     ChNotesComponent,
-    ChQuestionComponent
+    ChQuestionComponent,
+    ChApeComponent
   ],
   imports: [
     BrowserModule,

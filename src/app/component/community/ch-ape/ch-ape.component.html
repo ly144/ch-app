@@ -1,0 +1,105 @@
+<div id="ape-head" class="container-fluid">
+  <div id="ape-body" class="row">
+    <div class="col-1"></div>
+    <!-- 主体 -->
+    <div id="ape-content" class="col-7">
+      <!-- 简介 -->
+      <div id="ape-intro" class="row">
+        <div class="col-5">
+          <span>实验室自己的问答社区</span>
+        </div>
+        <div class="offset-4 col-3">
+          <a>我要提问</a>
+        </div>
+      </div>
+      <!-- 分类按钮 -->
+      <div id="ape-nav" class="col-12">
+        <a class="ape-nav-btn" (click)="anBtn(0)" id="{{ beforeSelection[0] }}">推荐</a>
+        <a class="ape-nav-btn" (click)="anBtn(1)" id="{{ beforeSelection[1] }}">最新</a>
+        <a class="ape-nav-btn" (click)="anBtn(2)" id="{{ beforeSelection[2] }}">等待回答</a>
+        <a class="ape-nav-btn" (click)="anBtn(3)" id="{{ beforeSelection[3] }}">话题</a>
+      </div>
+
+      <!-- 问答列表 -->
+      <div id="ape-list" class="col-12" *ngFor="let que of question">
+
+        <div class="row">
+          <div id="ape-list-img" class="col-1">
+            <a><img src="{{ que.img }}"></a>
+          </div>
+          <div class="col-11">
+            <div id="from-tag" >来自&nbsp;&nbsp;&nbsp;<a>{{ que.section }}</a></div>
+            <div id="ape-tit"><a>{{ que.title }}</a></div>
+          </div>
+        </div>
+
+        <!-- 回答内容 -->
+        <div id="answer-con" class="row">
+          <div class="offset-1 col-11">
+            <div id="user"><a>{{ que.content.name }}</a><span>&nbsp;&nbsp;回答：</span></div>
+            <div id="answer-content">
+              {{ que.content.content }}
+              <span>[查看全部]</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 点赞按钮等 -->
+        <div id="ctrl-bar" class="row">
+          <div id="agree-with" class="offset-1 col-2"><span>已帮助用户&nbsp;{{ que.agreeNum }}</span></div>
+          <div class="col-2"><span>{{ que.opposeNum }}&nbsp;人反对</span></div>
+          <div class="col-1"><span>分享</span></div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 个人信息栏 -->
+    <div class="col-3">
+      <!-- 用户栏 -->
+      <div class="row">
+        <div id="user-about" class="col-12">
+          <!-- 用户简介 -->
+          <div id="user-info" class="row">
+            <div id="user-img" class="col-2">
+              <a><img src="http://static.runoob.com/images/mix/img_avatar.png"></a>
+            </div>
+            <div class="col-10">
+              <div id="user-name"><a>昵称</a></div>
+            </div>
+          </div>
+          <!-- 相关按钮 -->
+          <div id="user-action" class="row">
+            <div class="col"><span><a>提问</a></span></div>
+            <div class="col"><span><a>回答</a></span></div>
+            <div class="col"><span><a>关注</a></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 关注的分类 -->
+      <div class="row">
+        <div id="my-follow-class" class="col-12">
+          <div id="follow-class" class="row">
+            <div id="follow-class-info" class="col-10">
+              <h3>我关注的分类</h3>
+            </div>
+            <div id="class-add" class="col-2">
+              <span>+</span>
+            </div>
+          </div>
+          <!-- 无分类 -->
+          <div *ngIf="!isTag" id="no-tag">
+            <h4>您还没有关注任何分类</h4>
+            <div id="follow-immediately">马上关注</div>
+          </div>
+          <!-- 有分类 -->
+          <div *ngIf="isTag" id="tag-box">
+            <a *ngFor="let t of tag">{{ t }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
