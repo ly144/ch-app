@@ -1,0 +1,75 @@
+#comment-header {
+  background: #f3f5f7;
+  font-family: "PingFang SC", Helvetica, "Helvetica Neue", 微软雅黑, Tahoma, Arial, sans-serif;
+}
+
+#comment-comment {
+  padding: 0;
+}
+
+/*选择栏*/
+#comment-sidebar {
+  margin: 20px 10px;
+}
+#comment-all {
+  width: 48px;
+  height: 24px;
+  text-align: center;
+  padding: 4px;
+  margin: 5px 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: #FFFFFF;
+  background: #9199a1;
+  cursor: default;
+  border-radius: 15px;
+}
+#comment-issue {
+  width: 90px;
+  height: 36px;
+  margin-left: 625px;
+  text-align: center;
+  color: #545c63;
+  background: rgba(84,92,99,0.1);
+  border-radius: 15px;
+  padding: 7px;
+  font-size: 14px;
+}
+#comment-issue:hover {
+  color: #000000;
+  background: #D7DADE;
+}
+
+/*评论内容*/
+#comment-content {
+  margin: 10px;
+  padding: 32px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(7,17,27,.1);
+}
+
+#user-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+#comment-tit {
+  font-size: 14px;
+  color: #1c1f21;
+  font-weight: 700;
+}
+#comment-tit:hover {
+  color: #F20D0D;
+}
+#comment-cnt {
+  margin-top: 3px;
+  font-size: 14px;
+  line-height: 24px;
+  color: #303538;
+}
+#comment-footer {
+  margin-top: 12px;
+  color: #93999f;
+  font-size: 12px!important;
+}

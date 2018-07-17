@@ -1,0 +1,28 @@
+<div id="comment-header" class="container-fluid">
+  <div class="row">
+    <div class="col-1"></div>
+    <div id="comment-comment" class="col-7">
+      <div id="comment-sidebar" class="row">
+        <a id="comment-all">全部</a>
+        <a id="comment-issue">我要发布</a>
+      </div>
+      <div id="comment-content" *ngFor="let com of comment">
+        <div class="row">
+          <div class="col-1">
+            <a><img src="{{ com.img }}" id="user-img"></a>
+          </div>
+          <div class="col-11">
+            <div id="comment-tit"><a>{{ com.name }}</a></div>
+            <div id="comment-cnt">{{ com.content }}</div>
+            <div id="comment-footer" class="row">
+              <div class="col-2">赞:{{ com.agreeNum }}</div>
+              <div class="offset-8 col-2"><span>{{ com.time }}</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+    </div>
+  </div>
+</div>

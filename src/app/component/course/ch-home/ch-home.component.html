@@ -1,0 +1,53 @@
+<div id="home" class="container">
+  <div id="home-content" class="row">
+    <div id="wrap" class="col-3">
+      <ul>
+        <li *ngFor="let dir of direction let i=index" (mouseenter)="mouseenter(i)" (mouseleave)="mouseleave(i)" id="{{ i }}"><span>{{ dir }}</span></li>
+      </ul>
+    </div>
+    <div id="sub" *ngFor="let cla of classify let i=index" class="{{ cla.isNone }}" (mouseenter)="mouseenter(i)" (mouseleave)="mouseleave(i)">
+      <div class="sub-content">
+        <div id="sub-title">
+          <span>{{ cla.title }}</span>
+        </div>
+        <div id="sub-classify">
+          <a *ngFor="let s of cla.content">{{ s }}</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="demo" class="carousel slide col-9" data-ride="carousel">
+
+      <!-- 指示符 -->
+      <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+      </ul>
+
+      <!-- 轮播图片 -->
+      <div id="imgshow" class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="http://static.runoob.com/images/mix/img_fjords_wide.jpg">
+        </div>
+        <div class="carousel-item">
+          <img src="http://static.runoob.com/images/mix/img_nature_wide.jpg">
+        </div>
+        <div class="carousel-item">
+          <img src="http://static.runoob.com/images/mix/img_mountains_wide.jpg">
+        </div>
+      </div>
+
+      <!-- 左右切换按钮 -->
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<app-ch-home-recommend></app-ch-home-recommend>

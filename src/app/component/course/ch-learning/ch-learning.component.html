@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <!-- 课程头 -->
+  <div id="learning-header" class="row">
+    <div class="col-1">
+      返回
+    </div>
+    <div class="col-3">
+      1-1 SpringBoot介绍
+    </div>
+    <div class="col-6">
+    </div>
+    <div class="col-2">
+      <div class="row">
+        <div class="col">通知</div>
+        <div class="col">个人中心</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 播放 -->
+  <div id="learning-play" class="row">
+    <!-- 工具栏 -->
+    <div class="col-1" id="course-sidebar">
+      <dl>
+        <dd id="openchapter">
+          <i></i>
+          <span>章节</span>
+        </dd>
+        <dd id="openpanel">
+          <i></i>
+          <span>问答</span>
+        </dd>
+        <dd id="openanel">
+          <i></i>
+          <span>笔记</span>
+        </dd>
+        <dd id="opencomment">
+          <i></i>
+          <span>评论</span>
+        </dd>
+      </dl>
+    </div>
+
+    <!-- 播放视频框 -->
+    <div id="course-center" class="col-10">
+      <div id="course-video">
+        <video controls="controls" id="video-play" preload="auto">
+          <object>
+            <embed src="http://player.youku.com/player.php/sid/XMzI2NTc4NTMy/v.swf"
+                  width="480" height="400"
+                  type="application/x-shockwave-flash" />
+          </object>
+        </video>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--<app-ch-comment></app-ch-comment>-->
+<app-ch-notes></app-ch-notes>
+<!--<app-ch-question></app-ch-question>-->

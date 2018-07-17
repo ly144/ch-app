@@ -1,0 +1,102 @@
+#question-header {
+  background: #f3f5f7;
+  font-family: "PingFang SC", Helvetica, "Helvetica Neue", 微软雅黑, Tahoma, Arial, sans-serif;
+}
+
+#question-comment {
+  padding: 0;
+}
+
+#question-sidebar {
+  margin: 20px 10px;
+}
+.question-sel {
+  width: 48px;
+  height: 24px;
+  text-align: center;
+  padding: 4px;
+  margin: 5px 12px 5px 0;
+  font-size: 12px;
+  line-height: 16px;
+  cursor: default;
+  border-radius: 15px;
+}
+#in {
+  color: #FFFFFF;
+  background: #9199a1;
+}
+#out {
+  color: #000000;
+  background: #f3f5f7;
+}
+#ing {
+  color: #545c63;
+  background: rgba(84,92,99,0.1);
+}
+#question-issue {
+  width: 90px;
+  height: 36px;
+  margin-left: 555px;
+  text-align: center;
+  color: #545c63;
+  background: rgba(84,92,99,0.1);
+  border-radius: 15px;
+  padding: 7px;
+  font-size: 14px;
+}
+#question-issue:hover {
+  color: #000000;
+  background: #D7DADE;
+}
+
+/*笔记内容*/
+#question-content {
+  margin: 10px;
+  padding: 32px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(7,17,27,.1);
+}
+
+#user-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+#question-tit {
+  font-size: 16px;
+  color: #1c1f21;
+  font-weight: 700;
+  line-height: 24px;
+}
+#question-tit:hover {
+  color: #F20D0D;
+}
+#question-cnt {
+  padding: 0 0 0 20px;
+  margin-top: 5px;
+  max-height: 156px;
+  color: #545c63;
+  font-size: 14px;
+  line-height: 22px;
+  /*border-left: 2px solid rgba(31,173,78,.2);*/
+  border-left: 2px solid #D9DDE1;
+}
+#nickname {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 700;
+  color: #71777d;
+}
+#nickname:hover {
+  color: #545c63;
+}
+#question-footer {
+  margin-top: 12px;
+  color: #9199a1;
+  font-size: 12px!important;
+  line-height: 18px;
+}
+#question-footer:hover {
+  color: #545c63;
+}
