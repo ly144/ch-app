@@ -1,0 +1,39 @@
+<div class="container-fluid" id="chapter">
+
+  <div class="row chapter-1">
+    <div class="col-1"></div>
+
+    <div class="col-7">
+
+      <div class="row chapter-2">
+        <p>{{courseIntro}}</p>
+      </div>
+
+      <br>
+
+      <div class="row chapter-2" *ngFor="let cha of chapters">
+        <div class="col-12">
+
+          <div class=" row">
+            <div class="col-12">
+              <div class="chapter-3">{{cha.name}}</div>
+              <div class="chapter-4">{{cha.chapterIntro}}</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <img src="">
+              <div class="chapter-5" *ngFor="let sec of cha.sections">{{sec.name}}({{sec.timelen}})({{sec.islearn}})
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>

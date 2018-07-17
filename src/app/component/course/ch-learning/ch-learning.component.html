@@ -47,14 +47,28 @@
         <video controls="controls" id="video-play" preload="auto">
           <object>
             <embed src="http://player.youku.com/player.php/sid/XMzI2NTc4NTMy/v.swf"
-                  width="480" height="400"
-                  type="application/x-shockwave-flash" />
+                   width="480" height="400"
+                   type="application/x-shockwave-flash"/>
           </object>
         </video>
       </div>
     </div>
 
   </div>
+
+  <!--<div class="learn">-->
+    <div class="row learn">
+      <div class="col-12">
+        <ul class="item">
+          <li *ngFor="let dir of learn let i=index" class="{{ dir.isOn }}">
+            <a (click)="select(dir.name, i)">{{dir.name}}</a>
+          </li>
+        </ul>
+      </div>
+    <!--</div>-->
+  </div>
+
+
 </div>
 
 <!--<app-ch-comment></app-ch-comment>-->
