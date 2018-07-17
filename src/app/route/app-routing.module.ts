@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChHomeComponent } from '../component/course/ch-home/ch-home.component';
 import { ChSelectionComponent } from '../component/course/ch-selection/ch-selection.component';
 import { ChLearningComponent } from '../component/course/ch-learning/ch-learning.component';
+import {ChNotesSonComponent} from '../component/course/ch-notes-son/ch-notes-son.component';
 
 const ROUTES: Routes = [
   { path: '', component: ChHomeComponent },
   { path: 'home', component: ChHomeComponent },
   { path: 'selection', component: ChSelectionComponent },
-  { path: 'learning', component: ChLearningComponent}
+  { path: 'learning', component: ChLearningComponent},
+  { path: 'notesSon', component: ChNotesSonComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,87 @@
+<div class="container-fluid" id="notes-son">
+
+  <!--头部内容-->
+  <div class="row notes-son-1">
+    <div class="col-1">
+      <img class="img-1" src="{{notesson[0].img}}">
+    </div>
+    <div class="col-7 notes-son-2">
+      <div class="notes-son-3">{{notesson[0].user}} 的课程笔记</div>
+      <div class="notes-son-4"><a>课程名称：{{notesson[0].course}}</a></div>
+    </div>
+    <div class="col-4 notes-son-5">
+      <div class="notes-son-6"><a>TA的个人中心</a></div>
+    </div>
+  </div>
+
+  <!--中间内容-->
+
+  <div class="notes-son-7">
+
+    <div class="row notes-son-8">
+
+      <div class="col-1"></div>
+
+      <div class="col-7">
+
+        <div class="notes-son-9">
+          <div class="notes-son-10">{{notesson[0].section}}</div>
+          <div class="notes-son-11">
+            笔记内容
+          </div>
+          <div class="row">
+            <div class="col-2">
+              <div class="notes-son-12">赞&nbsp;{{notesson[0].agreeNum}}</div>
+            </div>
+            <div class="col-10">
+              <div class="notes-son-12">采集&nbsp;{{notesson[0].adoptNum}}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-6 ">
+            <div class="notes-son-13">查看TA的更多课程笔记</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!--右边介绍部分-->
+      <div class="col-4 notes-son-14">
+
+        <div class="row">
+          <div class="col-12">
+            <img class="img-2" src="{{detailed.img}}">
+          </div>
+        </div>
+
+        <div class="row notes-son-15">
+          <div class="col-12">
+            <h2>2小时学会Spring Boot</h2>
+            <ul class="notes-son-16">
+              <li><span>难度</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{detailed.difficulty}}</li>
+              <li><span>时长</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{detailed.length}}</li>
+              <li><span>人数</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{detailed.number}}</li>
+              <!--<li><span>评分</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9.6</li>-->
+            </ul>
+            <p class="p1">{{courseIntro}}</p>
+            <div class="notes-son-17">详细了解此课程</div>
+          </div>
+        </div>
+
+        <div class="row notes-son-18">
+          <div class="col-12">
+            <img class="img-3" src="{{detailed.author.img}}">
+            <p class="p2">{{detailed.author.name}}</p>
+            <p class="p3">{{detailed.author.job}}</p>
+            <p class="p4">{{detailed.author.intro}}</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

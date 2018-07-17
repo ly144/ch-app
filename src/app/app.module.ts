@@ -13,7 +13,7 @@ import { ChNotesComponent } from './component/course/ch-notes/ch-notes.component
 import { ChQuestionComponent } from './component/course/ch-question/ch-question.component';
 import {ChDetailsComponent} from './component/course/ch-details/ch-details.component';
 import {ChCourseChapterComponent} from './component/course/ch-course-chapter/ch-course-chapter.component';
-
+import {ChNotesSonComponent} from './component/course/ch-notes-son/ch-notes-son.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import {ChCourseChapterComponent} from './component/course/ch-course-chapter/ch-
     ChLearningComponent,
     ChCommentComponent,
     ChNotesComponent,
-    ChQuestionComponent
+    ChQuestionComponent,
+    ChNotesSonComponent
   ],
   imports: [
     BrowserModule,
