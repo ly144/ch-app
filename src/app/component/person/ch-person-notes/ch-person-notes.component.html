@@ -1,0 +1,41 @@
+<!--上部分选择导航条-->
+<div class="row notes-select-row">
+  <div class="col-10">
+    <ul class="notes-select">
+      <li  class="total" id="{{ selectBtn[0] }}" (click)="select(0)"><a>全部</a></li>
+      <li  class="course"id="{{ selectBtn[1] }}" (click)="select(1)"><a>课程</a></li>
+    </ul>
+  </div>
+  <div class="col-2">
+    <p class="totalnote">共1条笔记</p>
+  </div>
+  <div class="col-12">
+    <hr id="hr1">
+  </div>
+</div>
+
+<!--笔记内容页-->
+<div class="row">
+  <div class="col-12 mainbody">
+    <p class="notes-chapter">2小时学会Spring Boot</p>
+    <p class="notes-section">3-1 项目属性配置</p>
+    <p class="notes-content">笔记内容</p>
+    <div class="row">
+      <div class="col-2 notes-praisecollect-1">
+        <div class="notes-praisecollect">赞 0</div>
+      </div>
+      <div class="col-7">
+        <div class="notes-praisecollect">采集 0</div>
+      </div>
+      <div class="col-3 notes-editdelete">
+        <span class="notes-edit">编辑</span>
+        <span class="notes-delete">删除</span>
+        <span class="time">1小时前</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <hr id="hr2">
+  </div>
+</div>
+

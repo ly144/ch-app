@@ -24,14 +24,20 @@ import { ChLogRegisteredComponent } from './component/person/ch-log-registered/c
 import { ChCommunityComponent } from './component/community/ch-community/ch-community.component';
 import { ChBackstageHomeComponent } from './component/backstage/ch-backstage-home/ch-backstage-home.component';
 import { ChHeaderComponent } from './component/header&footer/ch-header/ch-header.component';
+import { ChPersonComponent } from './component/person/ch-person/ch-person.component';
+import { ChPersonCourseComponent } from './component/person/ch-person-course/ch-person-course.component';
+import { ChPersonNotesComponent } from './component/person/ch-person-notes/ch-person-notes.component';
+import { ChPersonApeComponent } from './component/person/ch-person-ape/ch-person-ape.component';
+import { ChPersonSetComponent } from './component/person/ch-person-set/ch-person-set.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChSelectionComponent,
-    ChSelectionsonComponent,
     ChHomeComponent,
     ChHomeRecommendComponent,
+    ChSelectionComponent,
+    ChSelectionsonComponent,
     ChDetailsComponent,
     ChCourseChapterComponent,
     ChLearningComponent,
@@ -44,6 +50,12 @@ import { ChHeaderComponent } from './component/header&footer/ch-header/ch-header
     ChCommunityComponent,
     ChBackstageHomeComponent,
     ChHeaderComponent,
+    ChBackstageHomeComponent,
+    ChPersonComponent,
+    ChPersonCourseComponent,
+    ChPersonNotesComponent,
+    ChPersonApeComponent,
+    ChPersonSetComponent,
   ],
   imports: [
     BrowserModule,
