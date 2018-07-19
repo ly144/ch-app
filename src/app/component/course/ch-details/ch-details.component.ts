@@ -20,6 +20,7 @@ export class Author {
 export class Detailed2 {
   name: string;
   isOn: string;
+  path: string;
 }
 
 @Component({
@@ -41,10 +42,10 @@ export class ChDetailsComponent implements OnInit {
   };
 
    detailed2: Detailed2[] = [
-     {name: '课程章节', isOn: 'on'},
-     {name: '问答评论', isOn: ''},
-     {name: '同学笔记', isOn: ''},
-     {name: '用户评价', isOn: ''},
+     {name: '课程章节', isOn: 'on', path: './chapter'},
+     {name: '评论', isOn: '', path: './comment'},
+     {name: '同学笔记', isOn: '', path: './notes'},
+     {name: '问答', isOn: '', path: './question'},
    ];
 
    selection = 0;

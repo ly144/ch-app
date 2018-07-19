@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Question} from '../../../models/Question';
+import { Question } from '../../../models/Question';
 
 @Component({
   selector: 'app-ch-ape',
@@ -18,7 +18,7 @@ export class ChApeComponent implements OnInit {
       answerNum: 2, agreeNum: 0, opposeNum: 0, lookNum: 274, section: 'JAVA', time: ''}];
 
   /*是否选择分类*/
-  isTag = false;
+  isTag = true;
   tag: string[] = ['数据结构', 'Photoshop', 'Linux', '机器学习', '深度学习', '云计算', '大数据', 'SQL Server', 'MySQL', 'C++'];
 
   /*推荐、最新、等待回答、话题按钮*/

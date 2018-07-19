@@ -233,3 +233,7 @@
   line-height: 28px;
   cursor: pointer;
 }
+#tag-box a:hover {
+  background: #D9DDE1;
+  color: #07111B;
+}

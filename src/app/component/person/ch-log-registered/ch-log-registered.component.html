@@ -1,0 +1,91 @@
+<!-- 按钮：用于打开模态框 -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  打开模态框
+</button>
+
+<!-- 模态框 -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog" id="myModal-dialog">
+    <div class="modal-content" id="myModal-content">
+      <!-- 模态框头部 -->
+      <div class="modal-header" id="myModal-header">
+        <div class="row" id="myModal-header-content">
+          <div class="col-3 myModal-header-btn" (click)="onBtn(0)" id="{{ btn[0] }}"><span>登录</span></div>
+          <div class="col-3 myModal-header-btn" (click)="onBtn(1)" id="{{ btn[1] }}"><span>注册</span></div>
+          <div class="col-6">
+            <button type="button" class="myModal-close" data-dismiss="modal">X</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 模态框主体 -->
+      <div class="modal-body" id="myModal-body">
+        <div class="row" id="myModal-body-content">
+          <form id="myModal-body-form">
+
+            <div *ngIf="isLogin">
+              <div>
+                <input type="text" class="myModal-body-input" maxlength="37" name="email" placeholder="请输入登录邮箱/手机号">
+                <p class="errorHint" data-error-hint="请输入正确的邮箱或手机号">请输入正确的邮箱或手机号</p>
+              </div>
+
+              <div>
+                <input type="password" class="myModal-body-input" maxlength="16" name="password" autocomplete="off"
+                       placeholder="6-16位密码，区分大小写，不能用空格">
+                <p class="errorHint" data-error-hint="请输入6-16位密码，区分大小写，不能使用空格！">请输入6-16位密码，区分大小写，不能使用空格！</p>
+              </div>
+
+              <div class="form-check myModal-body-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox">7天内自动登录
+                </label>
+                <a>忘记密码</a>
+              </div>
+              <div style="clear:both;"></div>
+
+              <div class="myModal-body-button">
+                <input type="button" value="登录">
+              </div>
+            </div>
+
+            <div *ngIf="!isLogin">
+              <div>
+                <input type="text" class="myModal-body-input" maxlength="37" name="email" placeholder="请输入登录邮箱/手机号">
+                <p class="errorHint" data-error-hint="请输入正确的邮箱或手机号">请输入正确的邮箱或手机号</p>
+              </div>
+
+              <div>
+                <input type="password" class="myModal-body-input" maxlength="16" name="password" autocomplete="off"
+                       placeholder="请输入验证码">
+                <p class="errorHint" data-error-hint="验证码错误">验证码错误</p>
+              </div>
+
+              <div class="form-check myModal-body-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox">同意协议
+                </label>
+              </div>
+              <div style="clear:both;"></div>
+
+              <div class="myModal-body-button">
+                <input type="button" value="注册">
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- 模态框底部 -->
+      <div class="modal-footer" id="myModal-footer">
+        <div class="pop-login">
+          <span>其他方式登录</span>
+          <a>QQ</a>
+          <a>weiChat</a>
+          <a>xinLang</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

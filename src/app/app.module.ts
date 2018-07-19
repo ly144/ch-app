@@ -1,5 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
+/** 配置 angular i18n **/
+import { registerLocaleData } from '@angular/common';
+import zh from '@angular/common/locales/zh';
+registerLocaleData(zh);
 
 import { AppComponent } from './app.component';
 import { ChHomeComponent } from './component/course/ch-home/ch-home.component';
@@ -15,6 +20,9 @@ import { ChApeComponent } from './component/community/ch-ape/ch-ape.component';
 import { ChDetailsComponent } from './component/course/ch-details/ch-details.component';
 import { ChCourseChapterComponent } from './component/course/ch-course-chapter/ch-course-chapter.component';
 import { ChNotesSonComponent } from './component/course/ch-notes-son/ch-notes-son.component';
+import { ChLogRegisteredComponent } from './component/person/ch-log-registered/ch-log-registered.component';
+import { ChCommunityComponent } from './component/community/ch-community/ch-community.component';
+import { ChBackstageHomeComponent } from './component/backstage/ch-backstage-home/ch-backstage-home.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +38,19 @@ import { ChNotesSonComponent } from './component/course/ch-notes-son/ch-notes-so
     ChNotesComponent,
     ChQuestionComponent,
     ChApeComponent,
-    ChNotesSonComponent
+    ChNotesSonComponent,
+    ChLogRegisteredComponent,
+    ChCommunityComponent,
+    ChBackstageHomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    /** 导入 ng-zorro-antd 模块 **/
+    NgZorroAntdModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  /** 配置 ng-zorro-antd 国际化 **/
+  providers: [ { provide: NZ_I18N, useValue: zh_CN } ]
 })
 export class AppModule { }

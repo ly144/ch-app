@@ -56,21 +56,18 @@
 
   </div>
 
-  <!--<div class="learn">-->
-    <div class="row learn">
-      <div class="col-12">
-        <ul class="item">
-          <li *ngFor="let dir of learn let i=index" class="{{ dir.isOn }}">
-            <a (click)="select(dir.name, i)">{{dir.name}}</a>
-          </li>
-        </ul>
-      </div>
-    <!--</div>-->
+  <div class="row learn">
+    <div class="col-12">
+      <ul class="learn-item">
+        <li *ngFor="let dir of learn let i=index">
+          <a (click)="select(dir.name, i)" class="learn-item-a" id="{{ dir.isOn }}" routerLink="{{ dir.path }}"
+             routerLinkActive="active">{{dir.name}}</a>
+        </li>
+      </ul>
+    </div>
   </div>
 
 
 </div>
 
-<!--<app-ch-comment></app-ch-comment>-->
-<app-ch-notes></app-ch-notes>
-<!--<app-ch-question></app-ch-question>-->
+<router-outlet></router-outlet>

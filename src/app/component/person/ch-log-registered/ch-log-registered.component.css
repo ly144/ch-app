@@ -1,0 +1,130 @@
+#myModal {
+  top: 80px;
+  font-family: "PingFang SC", Helvetica, "Helvetica Neue", 微软雅黑, Tahoma, Arial, sans-serif;
+}
+#myModal-dialog {
+  width: 360px;
+  height: 370px;
+  /*background: #FFFFFF;*/
+  /*border: 1px solid #000000;*/
+}
+#myModal-content {
+  height: 100%;
+}
+
+/*模态框头部*/
+#myModal-header {
+  padding: 0 20px;
+  border: 0;
+}
+#myModal-header-content {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 49px;
+  height: 49px;
+  color: #787d82;
+  border-bottom: 1px solid #d0d6d9;
+}
+.myModal-header-btn {
+  width: 80px;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  height: 49px;
+  line-height: 49px;
+  cursor: pointer;
+  color: #787d82;
+}
+.myModal-header-btn:hover {
+  color: #F20D0D;
+  border-bottom: 1px solid #F20D0D;
+}
+#btnAn {
+  color: #F20D0D;
+  border-bottom: 1px solid #F20D0D;
+}
+.myModal-close {
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  margin: 15px 0;
+  padding: 0;
+  float: right;
+}
+
+
+/*模态框主体*/
+#myModal-body {
+  padding: 0 30px;
+  margin-top: 30px;
+}
+#myModal-body-content {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+#myModal-body-form {
+  width: 100%;
+}
+.myModal-body-input {
+  width: 100%;
+  line-height: 20px;
+  padding: 12px 14px;
+  background-color: #fff;
+  box-shadow: 2px 0 5px 0 #fff;
+  border: 1px solid rgba(84,92,99,.6);
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: text;
+  outline: none;
+}
+.errorHint {
+  margin: 0;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+  clear: both;
+  color: #EF1300;
+}
+.myModal-body-check {
+  color: #787d82;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.myModal-body-check a {
+  float: right;
+  clear:both;
+}
+.myModal-body-check a:hover {
+  color: #F20D0D;
+}
+.myModal-body-button input {
+  width: 100%;
+  padding: 11px 32px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 24px;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 1px;
+  color: #fff;
+  background-color: #f20d0d;
+  border-color: #f20d0d;
+}
+
+/*模态框底部*/
+#myModal-footer {
+  border: 0;
+  margin: 20px 0;
+  padding: 0 30px;
+}
+.pop-login {
+  text-align: center;
+  font-size: 14px;
+}
+.pop-login span {
+  color: #666;
+}

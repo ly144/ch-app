@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 export class Learn {
   name: string;
   isOn: string;
+  path: string;
 }
 
 @Component({
@@ -13,9 +14,9 @@ export class Learn {
 export class ChLearningComponent implements OnInit {
 
   learn: Learn[] = [
-    {name: '问答', isOn: 'on'},
-    {name: '评论', isOn: ''},
-    {name: '同学笔记', isOn: ''},
+    {name: '问答', isOn: 'on', path: './question'},
+    {name: '评论', isOn: '', path: './comment'},
+    {name: '同学笔记', isOn: '', path: './notes'},
   ];
 
   selection = 0;

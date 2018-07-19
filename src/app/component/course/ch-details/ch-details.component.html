@@ -65,8 +65,8 @@
     <div class="row">
       <div class="col-12">
         <ul class="item2">
-          <li *ngFor="let dir of detailed2 let i=index" class="{{ dir.isOn }}">
-            <a  (click)="select(dir.name, i)">{{dir.name}}</a>
+          <li *ngFor="let dir of detailed2 let i=index">
+            <a (click)="select(dir.name, i)" class="item2-a" id="{{ dir.isOn }}" routerLink="{{ dir.path }}" routerLinkActive="active">{{dir.name}}</a>
           </li>
         </ul>
       </div>
@@ -74,3 +74,4 @@
   </div>
 
 </div>
+<router-outlet></router-outlet>

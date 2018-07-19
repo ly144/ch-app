@@ -24,7 +24,8 @@
           <div class="row">
             <div class="col-12">
               <img src="">
-              <div class="chapter-5" *ngFor="let sec of cha.sections">{{sec.name}}({{sec.timelen}})({{sec.islearn}})
+              <div class="chapter-5" *ngFor="let sec of cha.sections">
+                <a routerLink="/learning" routerLinkActive="active">{{sec.name}}({{sec.timelen}})({{sec.islearn}})</a>
               </div>
             </div>
           </div>
