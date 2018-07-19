@@ -1,0 +1,239 @@
+#ape-head {
+  font-family: "PingFang SC", Helvetica, "Helvetica Neue", 微软雅黑, Tahoma, Arial, sans-serif;
+}
+#ape-body {
+  margin-top: 40px;
+}
+
+/*简介*/
+#ape-intro {
+  height: 96px;
+  margin: 0;
+  margin-bottom: 4px;
+  padding: 24px;
+  background: #fafaf0;
+}
+#ape-intro span {
+  font-size: 24px;
+  line-height: 48px;
+  color: #07111B;
+}
+#ape-intro a {
+  width: 137px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  background-color: #f01414;
+  color: #fff;
+  float: right;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+/*分类按钮*/
+#ape-nav {
+  margin: 0;
+  padding: 24px;
+  font-size: 16px;
+  color: #93999F;
+  border-bottom: 1px solid #D9DDE1;
+}
+.ape-nav-btn {
+  line-height: 20px;
+  text-align: left;
+  margin-right: 50px;
+}
+#ape-nav a:hover {
+  color: #f01414;
+}
+#an {
+  color: #f01414;
+}
+
+/*问答列表*/
+#ape-list {
+  margin: 0;
+  padding: 0;
+  /*padding-left: 56px;*/
+  padding-top: 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #d0d6d9;
+}
+/*列表上部分*/
+#ape-list-img {
+  width: 50px;
+  height: 50px;
+}
+#ape-list-img img {
+  width: 50px;
+  height: 50px;
+}
+#from-tag {
+  /*height: 20px;*/
+  font-size: 12px;
+  line-height: 20px;
+  color: #787d82;
+}
+#ape-tit {
+  margin-top: 5px;
+  line-height: 28px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #14191e;
+}
+/*列表中间部分*/
+#answer-con {
+  margin-top: 20px;
+}
+#user {
+  line-height: 20px;
+}
+#user a {
+  font-size: 14px;
+  font-weight: 600;
+  color: #14191e;
+}
+#user span {
+  font-size: 12px;
+  color: #b5b9bc;
+}
+#answer-content {
+  color: #14191e;
+  line-height: 28px;
+  font-size: 14px;
+  margin-top: 2px;
+}
+#answer-content span {
+  font-size: 12px;
+  color: #787d82;
+  cursor: pointer;
+}
+
+/*点赞按钮等*/
+#ctrl-bar {
+  line-height: 24px;
+  font-size: 12px;
+  color: #787d82;
+  margin-top: 10px;
+}
+#ctrl-bar span {
+  cursor: pointer;
+}
+#agree-with span {
+  border: 1px solid #d0d6d9;
+  height: 24px;
+  padding: 5px 10px;
+}
+
+/*个人信息栏*/
+#user-about {
+  padding: 20px;
+  background-color: #f3f3f3;
+  margin-bottom: 30px;
+}
+/*用户简介*/
+#user-info {
+  margin: 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #d0d6d9;
+}
+#user-img {
+  margin: 0;
+  padding: 0;
+}
+#user-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+#user-name {
+  margin: 15px 0;
+  font-size: 16px;
+  color: #14191e;
+  line-height: 20px;
+  text-align: left;
+}
+/*相关按钮*/
+#user-action {
+  margin: 20px 0 0 0;
+}
+#user-action span {
+  font-size: 16px;
+  color: #14191e;
+  line-height: 20px;
+  padding: 0 15px;
+}
+
+/*关注的分类*/
+#my-follow-class {
+  margin-bottom: 30px;
+  padding: 0;
+}
+#follow-class {
+  margin: 0 0 10px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d0d6d9;
+}
+#follow-class-info {
+  padding-left: 0;
+}
+#follow-class h3 {
+  margin: 5px 0;
+  font-size: 16px;
+  text-align: left;
+  color: #14191e;
+  line-height: 20px;
+}
+#class-add {
+  padding-right: 0;
+}
+#class-add span {
+  margin-right: 10px;
+  float: right;
+  color: #999da1;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/*没有分类*/
+#no-tag {
+  height: 120px;
+  background-color: #fffbe5;
+  overflow: hidden;
+}
+#no-tag h4 {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #14191e;
+  text-align: center;
+  line-height: 20px;
+}
+#follow-immediately {
+  width: 80px;
+  height: 30px;
+  margin: 15px auto 0;
+  background-color: #ff9902;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+}
+/*分类*/
+#tag-box a {
+  float: left;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid #d0d6d9;
+  font-size: 14px;
+  color: #787d82;
+  text-align: center;
+  line-height: 28px;
+  cursor: pointer;
+}
+#tag-box a:hover {
+  background: #D9DDE1;
+  color: #07111B;
+}

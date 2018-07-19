@@ -1,8 +1,11 @@
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
 #learning-header {
   height: 60px;
   font-family: "PingFang SC", Helvetica, "Helvetica Neue", 微软雅黑, Tahoma, Arial, sans-serif;
 }
-
 
 
 /*播放框*/
@@ -65,13 +68,13 @@
   height: 70px;
 }
 
-.item{
+.learn-item{
   float: left;
   margin: auto  0 auto 20px;
   height: 70px;
 }
 
-.item li{
+.learn-item li{
   display: inline-block;
   padding: 25px 80px 35px 50px;
   height: 36px;
@@ -80,10 +83,14 @@
   font-weight: bold;
 }
 
-.item li:hover{
+.learn-item-a {
+  color: #5e5e5e;
+}
+
+.learn-item li a:hover{
   color: red;
 }
 
-.on{
+#on{
   color: red;
 }
