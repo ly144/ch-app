@@ -1,0 +1,44 @@
+#header {
+  height: 72px;
+  box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
+}
+a {
+  color: #666;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*目录*/
+#item {
+  float: left;
+  margin: auto 0;
+}
+#item li {
+  display: inline-block;
+}
+#item li a {
+  color: #666;
+  padding: 0 20px;
+}
+#item li a:hover {
+  color: #333;
+}
+
+/*搜索框*/
+#search {
+  margin: auto 0;
+  text-align: center;
+}
+
+/*登录注册*/
+#login {
+  margin: auto 0;
+  text-align: center;
+}
+#login a {
+  color: #666666;
+  padding: 0 12px;
+}
+#login a:hover {
+  color: #333333;
+}

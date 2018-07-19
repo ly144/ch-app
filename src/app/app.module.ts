@@ -23,6 +23,7 @@ import { ChNotesSonComponent } from './component/course/ch-notes-son/ch-notes-so
 import { ChLogRegisteredComponent } from './component/person/ch-log-registered/ch-log-registered.component';
 import { ChCommunityComponent } from './component/community/ch-community/ch-community.component';
 import { ChBackstageHomeComponent } from './component/backstage/ch-backstage-home/ch-backstage-home.component';
+import { ChHeaderComponent } from './component/header&footer/ch-header/ch-header.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ChBackstageHomeComponent } from './component/backstage/ch-backstage-hom
     ChNotesSonComponent,
     ChLogRegisteredComponent,
     ChCommunityComponent,
-    ChBackstageHomeComponent
+    ChBackstageHomeComponent,
+    ChHeaderComponent,
   ],
   imports: [
     BrowserModule,
