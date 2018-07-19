@@ -1,0 +1,39 @@
+<div class="container-fluid">
+
+  <!--头部内容-->
+  <div class="row person">
+    <div class="col-1"></div>
+    <div class="col-1 person-1">
+      <img class="img-1" src="https://img.mukewang.com/5aeb0df10001155a10670800-140-140.jpg">
+    </div>
+    <div class="col-5 person-2">
+      <div class="person-3">leeych</div>
+      <div class="person-4"><span>女</span>| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生如夏花，哈哈哈哈</div>
+    </div>
+    <div class="col-3 person-5">
+      <div class="row person-6">
+        <div class="col-4">14h</div>
+        <div class="col-6 person-8">1</div>
+      </div>
+      <div class="row person-7">
+        <div class="col-4">学习时长</div>
+        <div class="col-6 person-8">关注</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="person-10">
+    <div class="row person-10">
+      <div class="col-3">
+        <ul class="person-9">
+          <li *ngFor="let per of person let i = index" class="person-9-a {{per.isOn}} {{per.isHover}}"  (click)="select(per.name, i)" (mouseenter)="select1(per.name,i)" (mouseleave)="select2(per.name,i)" routerLink="{{ per.route }}" routerLinkActive="active"><a>{{per.name}}</a></li>
+        </ul>
+      </div>
+
+      <div class="col-9 person-col-9">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+</div>

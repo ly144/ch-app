@@ -1,0 +1,42 @@
+<div class="row course-1">
+  <div class="col-2">
+    <div class="course-2" id="{{ selectBtn[0] }}" (click)="select(0)"><a>最近学习</a></div>
+  </div>
+  <div class="col-10">
+    <div class="course-2" id="{{ selectBtn[1] }}" (click)="select(1)"><a>我的收藏</a></div>
+  </div>
+</div>
+
+<div class="row content">
+
+  <div class="col-1 time">
+    <p class="year">2018</p>
+    <p class="month">07月18日</p>
+  </div>
+
+  <div class="col-11 video">
+    <div class="row">
+      <div class="col-3">
+        <img class="img-1" src="https://img.mukewang.com/5847d579000178ac06000338-240-135.jpg">
+      </div>
+      <div class="col-7">
+        <p><span class="chapter">2小时学会Spring Boot</span><span class="span1">更新完毕</span></p>
+        <ul class="state">
+          <li id="havelearn">已学100%</li>
+          <li>用时 7小时12分</li>
+          <li>学习至3-1 项目属性配置</li>
+        </ul>
+        <ul class="state-2">
+          <li>笔记 0</li>
+          <!--<li>代码 0</li>-->
+          <li>问答 0</li>
+        </ul>
+      </div>
+      <div class="col-2">
+        <a id="continuelearn">继续学习</a>
+      </div>
+    </div>
+    <hr>
+  </div>
+
+</div>

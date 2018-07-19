@@ -1,0 +1,32 @@
+<div class="row ape-head">
+  <div class="col-2">
+    <div class="ape-select" id="{{ selectBtn[0] }}" (click)="select(0)"><a>我的提问</a></div>
+  </div>
+  <div class="col-2 ape-ask">
+    <div class="ape-select" id="{{ selectBtn[1] }}" (click)="select(1)"><a>我的回答</a></div>
+  </div>
+  <div class="col-8 ape-focus">
+    <div class="ape-select" id="{{ selectBtn[2] }}" (click)="select(2)"><a>我的关注</a></div>
+  </div>
+</div>
+
+<div class="row ape-content">
+  <div class="col-1">
+    <img class="img-1" src="https://img3.mukewang.com/59e96f340001faac02400240.jpg">
+  </div>
+  <div class="col-11 ape-content-1">
+    <p class="from">来自<a class="classification">JavaScript</a></p>
+    <p class="question">问题：女生学UI还是学前端好</p>
+
+    <div class="answer" *ngIf="isAnswer">
+      <p class="answer-my">我的回答</p>
+      <div class="answer-content"><a id="answer-content-a">好的，谢谢</a></div>
+      <p class="time-answer"><span class="time">13小时前</span><a id="replyNum">2个回复</a></p>
+    </div>
+
+    <p class="time-answer" *ngIf="!isAnswer"><span class="time">13小时前</span><a id="answerNum">2个回答</a></p>
+  </div>
+    <div class="col-12">
+      <hr>
+    </div>
+</div>

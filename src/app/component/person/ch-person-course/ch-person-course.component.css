@@ -1,0 +1,133 @@
+/*头部css*/
+.course-1{
+  color: #787d82;
+  font-size: 14px;
+  line-height: 58px;
+  border-bottom: 1px solid #d0d6d9;
+}
+
+.course-2 {
+  height: 58px;
+  width: 60px;
+  cursor: pointer;
+  display: block;
+}
+.course-2:hover {
+  color: red;
+  border-bottom: 2px solid red;
+}
+
+#on{
+  color: red;
+  border-bottom: 2px solid red;
+}
+
+/*下面学习和收藏页面css*/
+.content{
+  margin-top: 12px;
+  margin-left: 10px;
+}
+
+.year{
+  font-size: 18px;
+  font-weight: 400;
+  color: #8a8c8f;
+  padding-left: 5px;
+}
+
+.month{
+  font-size: 12px;
+  color: #8a8c8f;
+  line-height: 16px;
+  margin-top: -19px;
+}
+
+.img-1{
+  width: 200px;
+  height: 113px;
+}
+
+.video{
+  padding-top: 20px;
+  /*border-bottom: 1px solid #d3d7da;*/
+}
+
+.chapter{
+  font-size: 18px;
+  color: #12171b;
+  height: 29px;
+  line-height: 29px;
+  font-weight: 700;
+}
+
+.chapter:hover{
+  color: red;
+}
+
+.span1{
+  font-size: 14px;
+  color: #787d82;
+  padding-left: 10px;
+}
+
+.state{
+  padding: 0;
+  margin-top: -8px;
+}
+
+.state li{
+  text-decoration: none;
+  display: inline-block;
+  padding: 0 20px 0 0;
+  font-size: 14px;
+  color: #787d82;
+}
+
+#havelearn{
+  color: #f01400;
+}
+
+.state-2{
+  padding: 0;
+  margin-top: 20px;
+}
+
+.state-2 li{
+  text-decoration: none;
+  display: inline-block;
+  padding: 0 100px 0 0;
+  font-size: 14px;
+  color: #787d82;
+  cursor: pointer;
+}
+
+.state-2 li:hover{
+  color: #14191e;
+}
+
+#continuelearn{
+  margin-top: 69px;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+  border: 1px solid #f01400;
+  color: #f01400;
+  width: 90px;
+  height: 38px;
+  line-height: 38px;
+  background-color: #fff;
+  padding: 0;
+}
+
+#continuelearn:hover{
+  background-color: #ec1500;
+  color: #FFF;
+}
+
+.time{
+  border-right: 1px solid #d3d7da;
+}
+
+hr{
+  margin-top: 24px;
+}

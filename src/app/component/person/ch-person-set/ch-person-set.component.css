@@ -1,0 +1,66 @@
+.person-set {
+  margin-top: 20px;
+}
+
+.person-set-1 {
+  line-height: 40px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.hr1 {
+  margin-top: 10px;
+}
+
+.info-wapper {
+  margin: 5px auto 24px 40px;
+}
+
+.info-box {
+  margin-bottom: 5px;
+}
+
+.info-box div {
+  width: 708px;
+  margin-left: 8px;
+  line-height: 20px;
+  padding: 20px 0 20px 22px;
+  border-bottom: 1px solid #d9dde1;
+}
+
+.info-box-label {
+  width: 120px;
+  line-height: 20px;
+  padding: 20px 0;
+  text-align: center;
+  background-color: #f3f5f7;
+  color: #07111b;
+  font-weight: 700;
+}
+
+.pull-left {
+  float: left;
+}
+
+input{
+  border: white;
+  height: 30px;
+  margin-bottom: -5px;
+  outline: none;
+}
+
+.sex{
+  color: #60686b;
+  margin-left: 8px;
+  margin-right: 20px;
+  margin-bottom: -9px;
+}
+
+#sex-1{
+  margin-bottom: 5px;
+}
+
+button{
+  margin-top: 20px;
+  margin-right: 20px;
+}
