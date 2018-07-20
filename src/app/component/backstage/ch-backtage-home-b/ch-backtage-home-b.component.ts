@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class Sections {
   name: string;
+  level: number;
 }
 export class Chapters {
   name: string;
@@ -19,11 +20,11 @@ export class Course {
 }
 
 @Component({
-  selector: 'app-ch-backstage-home',
-  templateUrl: './ch-backstage-home.component.html',
-  styleUrls: ['./ch-backstage-home.component.css']
+  selector: 'app-ch-backtage-home-b',
+  templateUrl: './ch-backtage-home-b.component.html',
+  styleUrls: ['./ch-backtage-home-b.component.css']
 })
-export class ChBackstageHomeComponent implements OnInit {
+export class ChBacktageHomeBComponent implements OnInit {
 
   course: Course[] = [
     {
@@ -40,6 +41,7 @@ export class ChBackstageHomeComponent implements OnInit {
           sections: [
             {
               name: '1-1 SpringBoot介绍',
+              level: 2,
             }
           ]
         },
@@ -51,6 +53,7 @@ export class ChBackstageHomeComponent implements OnInit {
           sections: [
             {
               name: '2-1 第一个SpringBoot应用',
+              level: 2,
             }
           ]
         },
@@ -62,6 +65,7 @@ export class ChBackstageHomeComponent implements OnInit {
           sections: [
             {
               name: '3-1 项目属性配置',
+              level: 2,
             }
           ]
         },
@@ -80,7 +84,8 @@ export class ChBackstageHomeComponent implements OnInit {
           expand: false,
           sections: [
             {
-              name: '1-1 课程介绍'
+              name: '1-1 课程介绍',
+              level: 2,
             },
           ]
         },
@@ -91,13 +96,16 @@ export class ChBackstageHomeComponent implements OnInit {
           expand: false,
           sections: [
             {
-              name: '2-0 表单验证'
+              name: '2-0 表单验证',
+              level: 2,
             },
             {
-              name: '2-1 使用AOP处理请求(上）'
+              name: '2-1 使用AOP处理请求(上）',
+              level: 2,
             },
             {
-              name: '2-2 使用AOP处理请求(中）'
+              name: '2-2 使用AOP处理请求(中）',
+              level: 2,
             },
           ]
         },
@@ -107,7 +115,7 @@ export class ChBackstageHomeComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }

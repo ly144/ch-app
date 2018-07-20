@@ -1,0 +1,54 @@
+<div nz-row>
+  <div nz-col [nzSpan]="16" [nzOffset]="4">
+
+    <nz-table #nzTable [nzData]="course" nzBordered>
+      <thead>
+      <tr>
+        <th nzWidth="40%">课程名</th>
+        <th nzWidth="40%">难度</th>
+        <th nzWidth="20%">
+          <button nz-button nzShape="circle"><i class="anticon anticon-plus"></i></button>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-template ngFor let-data [ngForOf]="nzTable.data">
+        <tr>
+          <td [nzIndentSize]="data.level*20" nzShowExpand [(nzExpand)]="data.expand">{{ data.name }}</td>
+          <td>{{ data.difficulty }}</td>
+          <td>
+            <button nz-button nzShape="circle"><i class="anticon anticon-edit"></i></button>
+            <nz-divider nzType="vertical"></nz-divider>
+            <button nz-button nzShape="circle"><i class="anticon anticon-close"></i></button>
+          </td>
+        </tr>
+        <ng-template ngFor let-item [ngForOf]="data.chapters">
+          <tr [(nzExpand)]="data.expand">
+            <td [nzIndentSize]="item.level*20" nzShowExpand [(nzExpand)]="item.expand">
+              {{item.name}}
+            </td>
+            <td>{{item.intro}}</td>
+            <td>
+              <button nz-button nzShape="circle"><i class="anticon anticon-edit"></i></button>
+              <nz-divider nzType="vertical"></nz-divider>
+              <button nz-button nzShape="circle"><i class="anticon anticon-close"></i></button>
+            </td>
+          </tr>
+          <ng-template ngFor let-sec [ngForOf]="item.sections">
+            <tr [(nzExpand)]="item.expand">
+              <td [nzIndentSize]="sec.level*20">{{ sec.name }}</td>
+              <td>wu</td>
+              <td>
+                <button nz-button nzShape="circle"><i class="anticon anticon-edit"></i></button>
+                <nz-divider nzType="vertical"></nz-divider>
+                <button nz-button nzShape="circle"><i class="anticon anticon-close"></i></button>
+              </td>
+            </tr>
+          </ng-template>
+        </ng-template>
+      </ng-template>
+      </tbody>
+    </nz-table>
+
+  </div>
+</div>

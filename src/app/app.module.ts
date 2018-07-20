@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 /** 配置 angular i18n **/
 import { registerLocaleData } from '@angular/common';
@@ -29,7 +32,7 @@ import { ChPersonCourseComponent } from './component/person/ch-person-course/ch-
 import { ChPersonNotesComponent } from './component/person/ch-person-notes/ch-person-notes.component';
 import { ChPersonApeComponent } from './component/person/ch-person-ape/ch-person-ape.component';
 import { ChPersonSetComponent } from './component/person/ch-person-set/ch-person-set.component';
-
+import { ChBacktageHomeBComponent } from './component/backstage/ch-backtage-home-b/ch-backtage-home-b.component';
 
 @NgModule({
   declarations: [
@@ -56,10 +59,15 @@ import { ChPersonSetComponent } from './component/person/ch-person-set/ch-person
     ChPersonNotesComponent,
     ChPersonApeComponent,
     ChPersonSetComponent,
+    ChBacktageHomeBComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     /** 导入 ng-zorro-antd 模块 **/
     NgZorroAntdModule,
   ],
