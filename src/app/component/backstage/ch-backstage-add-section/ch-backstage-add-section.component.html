@@ -1,0 +1,27 @@
+<button nz-button [nzType]="'primary'" (click)="showModal()"><span>Show Modal</span></button>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="添加章节" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+
+  <div nz-row>
+    <div nz-col [nzSpan]="4">
+      <label class="section-name">节名字</label>
+    </div>
+    <div nz-col [nzSpan]="20">
+      <input class="section-newName" nz-input placeholder="请输入新增节名" [(ngModel)]="value">
+    </div>
+  </div>
+
+  <div nz-row class="section">
+    <div nz-col [nzSpan]="4">
+      <label class="section-name">上传视频</label>
+    </div>
+    <div nz-col [nzSpan]="20">
+      <nz-upload
+        nzAction="https://jsonplaceholder.typicode.com/posts/">
+        <button nz-button class="section-newName">
+          <i class="anticon anticon-upload"></i><span>Click to Upload</span>
+        </button>
+      </nz-upload>
+    </div>
+  </div>
+
+</nz-modal>

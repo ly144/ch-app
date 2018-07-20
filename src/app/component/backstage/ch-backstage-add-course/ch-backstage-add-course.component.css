@@ -18,3 +18,13 @@ span{
 .cover{
   margin-left: -6px;
 }
+
+.upload-list-inline{
+  float: left;
+  width: 180px;
+  margin-right: 8px;
+}
+
+.course-upload{
+  margin-left: -6px;
+}

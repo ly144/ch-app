@@ -1,20 +1,36 @@
 <div class="container-fluid">
+
   <div id="header" class="row">
-    <div id="logo" class="col-2"><a routerLink="/home" routerLinkActive="active">logo</a></div>
-    <ul id="item" class="col-4">
-      <li><a routerLink="/selection" routerLinkActive="active">课程</a></li>
+
+    <div id="logo" class="col-2">
+      <a routerLink="/home" routerLinkActive="active">
+        <img class="img-logo" src="../../../../assets/image/CH.png">
+      </a>
+    </div>
+
+    <ul id="item" class="col-2">
+      <li><a routerLink="/selection" routerLinkActive="active">免费课程</a></li>
       <li><a routerLink="/ape" routerLinkActive="active">猿问</a></li>
     </ul>
-    <div id="search" class="input-group col-4">
-      <input type="text" class="form-control" placeholder="Search">
-      <div class="input-group-append">
-        <button class="btn btn-success" type="submit">Go</button>
-      </div>
+
+    <div class="col-2"></div>
+
+    <div id="search" class="input-group col-3">
+      <nz-input-group nzSearch [nzSuffix]="suffixIconButton">
+        <input type="text" nz-input placeholder="input search text">
+      </nz-input-group>
+      <ng-template #suffixIconButton>
+        <button nz-button nzType="primary" nzSearch><i class="anticon anticon-search"></i></button>
+      </ng-template>
     </div>
+
+    <div class="col-1"></div>
+
     <div id="login" class="col-2">
       <a>登录</a>
       &nbsp;/&nbsp;
       <a>注册</a>
     </div>
+
   </div>
 </div>

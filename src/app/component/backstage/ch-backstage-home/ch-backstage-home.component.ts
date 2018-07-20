@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-ch-backstage-home',
@@ -6,19 +6,9 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
   styleUrls: ['./ch-backstage-home.component.css']
 })
 export class ChBackstageHomeComponent implements OnInit {
-
-  isCollapsed = false;
-  triggerTemplate = null;
-  @ViewChild('trigger') customTrigger: TemplateRef<void>;
-
-  /** custom trigger can be TemplateRef **/
-  changeTrigger(): void {
-    this.triggerTemplate = this.customTrigger;
+  constructor() {
   }
-
-  constructor() { }
 
   ngOnInit() {
   }
-
 }

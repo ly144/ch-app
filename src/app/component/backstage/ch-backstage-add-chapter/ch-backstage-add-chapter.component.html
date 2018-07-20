@@ -1,0 +1,22 @@
+<button nz-button [nzType]="'primary'" (click)="showModal()"><span>Show Modal</span></button>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="添加章节" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+
+  <div nz-row>
+    <div nz-col [nzSpan]="4">
+      <label class="chapter-name">章节名字</label>
+    </div>
+    <div nz-col [nzSpan]="20">
+      <input class="chapter-newName" nz-input placeholder="请输入新增章节名" [(ngModel)]="value">
+    </div>
+  </div>
+
+  <div nz-row class="chapter">
+    <div nz-col [nzSpan]="4">
+      <label class="chapter-name">章节简介</label>
+    </div>
+    <div nz-col [nzSpan]="20">
+      <textarea class="chapter-newName" nz-input placeholder="请输入章节简介" nzAutosize></textarea>
+    </div>
+  </div>
+
+</nz-modal>
