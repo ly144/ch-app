@@ -1,0 +1,33 @@
+.footer {
+  padding: 20px 0 5px 0;
+  border-top: 1px solid #dff1ff;
+  background-color: rgba(248,250,252,0.82);
+}
+
+.container {
+  width: 1366px;
+  margin: 0 0 0 209px;
+  padding: 0 0 0 165px;
+}
+
+.footer-copyright {
+  font-size: 12px;
+  padding: 0;
+  text-align: left;
+  margin-top: 8px;
+  color: #93999F;
+  line-height: 24px;
+}
+
+
+.footer-link .footer-a{
+  display: inline-block;
+  font-size: 14px;
+  color: #93999F;
+  line-height: 28px;
+  margin: 0 20px 0 0;
+}
+
+.footer-link .footer-a:hover{
+  color: #4D555D;
+}

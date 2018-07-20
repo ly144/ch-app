@@ -1,0 +1,37 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-ch-backstage-add-section',
+  templateUrl: './ch-backstage-add-section.component.html',
+  styleUrls: ['./ch-backstage-add-section.component.css']
+})
+export class ChBackstageAddSectionComponent implements OnInit {
+
+  value: string;
+
+  // 模态框
+  isVisible = false;
+
+  // 模态框
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
+  }
+
+
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

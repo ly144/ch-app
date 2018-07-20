@@ -1,5 +1,5 @@
 #header {
-  height: 72px;
+  height: 60px;
   box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
 }
 a {
@@ -32,7 +32,7 @@ a {
 
 /*登录注册*/
 #login {
-  margin: auto 0;
+  margin: auto 0 auto -63px;
   text-align: center;
 }
 #login a {
@@ -40,5 +40,12 @@ a {
   padding: 0 12px;
 }
 #login a:hover {
-  color: #333333;
+  color: red;
+}
+
+.img-logo{
+  width: 47px;
+  height: 44px;
+  margin-left: 107px;
+  margin-top: 10px;
 }

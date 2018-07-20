@@ -1,0 +1,30 @@
+span{
+  margin-right: 15px;
+}
+
+.course{
+  margin-top: 15px;
+}
+
+.coursename{
+  margin-top: 6px;
+}
+
+.newCourse{
+  width: 377px;
+  margin-left: -6px;
+}
+
+.cover{
+  margin-left: -6px;
+}
+
+.upload-list-inline{
+  float: left;
+  width: 180px;
+  margin-right: 8px;
+}
+
+.course-upload{
+  margin-left: -6px;
+}
