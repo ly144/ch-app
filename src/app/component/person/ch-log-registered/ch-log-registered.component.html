@@ -55,6 +55,12 @@
               </div>
 
               <div>
+
+                <div class="weui-cell__ft">
+                  <button class="weui-vcode-btn" [disabled]="disabled" (click)="getCode($event)">{{tips}}</button>
+                </div>
+
+
                 <input type="password" class="myModal-body-input" maxlength="16" name="password" autocomplete="off"
                        placeholder="请输入验证码">
                 <p class="errorHint" data-error-hint="验证码错误">验证码错误</p>

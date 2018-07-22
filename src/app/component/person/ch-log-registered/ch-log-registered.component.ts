@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChLogRegisteredComponent implements OnInit {
 
+  public tips = '获取验证码';
+  public disabled = false;
+
   isLogin = true;
   btn = ['btnAn', ''];
 
@@ -21,6 +24,30 @@ export class ChLogRegisteredComponent implements OnInit {
       this.isLogin = false;
     }
   }
+
+
+
+
+
+  getCode(event: any) {
+    let number = 60;
+    this.disabled = true;
+    const that = this;
+    that.tips = number + 's后重新获取';
+
+    const timer = setInterval(function () {
+      number --;
+      if (number === 0) {
+        that.disabled = false;
+        that.tips = '获取验证码';
+        clearInterval(timer);
+      } else {
+        that.tips = number + 's后重新获取';
+      }
+    }, 1000);
+
+  }
+
 
   constructor() { }
 
