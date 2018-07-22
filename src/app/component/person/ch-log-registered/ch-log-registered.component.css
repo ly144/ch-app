@@ -66,7 +66,7 @@
   margin: 0;
   padding: 0;
 }
-#myModal-body-form {
+.myModal-body-form {
   width: 100%;
 }
 .myModal-body-input {
@@ -101,7 +101,7 @@
 .myModal-body-check a:hover {
   color: #F20D0D;
 }
-.myModal-body-button input {
+.myModal-body-button-input {
   width: 100%;
   padding: 11px 32px;
   font-size: 16px;
@@ -113,6 +113,7 @@
   color: #fff;
   background-color: #f20d0d;
   border-color: #f20d0d;
+  outline: none;
 }
 
 /*模态框底部*/

@@ -1,85 +1,82 @@
-<!--<button nz-button [nzType]="'primary'" (click)="showModal()"><span>Show Modal</span></button>-->
-<!--<nz-modal [(nzVisible)]="isVisible" nzTitle="添加课程" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">-->
+<div nz-row>
+  <div nz-col [nzSpan]="16" [nzOffset]="4">
 
-  <!--<div nz-row>-->
-    <!--<div nz-col [nzSpan]="12">-->
-      <!--<span>选择分类</span>-->
-      <!--<nz-tree-select-->
-        <!--style="width: 140px"-->
-        <!--[nzDefaultExpandedKeys]="expandKeys"-->
-        <!--[nzNodes]="nodes"-->
-        <!--nzPlaceHolder="Please select"-->
-        <!--[(ngModel)]="value"-->
-        <!--(ngModelChange)="onChange($event)">-->
-      <!--</nz-tree-select>-->
-    <!--</div>-->
+    <nz-table #nzTable [nzData]="course" [nzPageSize]="10" nzBordered>
+      <thead>
+      <tr>
+        <th nzWidth="30%">课程名</th>
+        <th nzWidth="50%">难度</th>
+        <th nzWidth="20%">
+          <button nz-button nzShape="circle"><i class="anticon anticon-plus"></i></button>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-template ngFor let-cou [ngForOf]="nzTable.data">
+        <tr>
+          <td nzShowExpand [(nzExpand)]="cou.expand">{{ cou.name }}</td>
+          <td>{{ cou.difficulty }}</td>
+          <td>
+            <button nz-button nzShape="circle"><i class="anticon anticon-edit"></i></button>
+            <nz-divider nzType="vertical"></nz-divider>
+            <button nz-button nzShape="circle"><i class="anticon anticon-close"></i></button>
+          </td>
+        </tr>
+        <tr [nzExpand]="cou.expand">
+          <td colspan="3">
+            <nz-table #chapterTable [nzData]="cou.chapters" nzSize="middle" [nzShowPagination]="false">
+              <thead>
+                <tr>
+                  <th nzShowExpand nzWidth="30%">章名</th>
+                  <th nzWidth="50%">简介</th>
+                  <th nzWidth="20%">
+                    <button nz-button nzShape="circle"><i class="anticon anticon-plus"></i></button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+              <ng-template ngFor let-cha [ngForOf]="chapterTable.data">
+                <tr>
+                  <td nzShowExpand [(nzExpand)]="cha.expand">{{ cha.name }}</td>
+                  <td>{{ cha.intro }}</td>
+                  <td>
+                    <button nz-button nzShape="circle"><i class="anticon anticon-edit"></i></button>
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <button nz-button nzShape="circle"><i class="anticon anticon-close"></i></button>
+                  </td>
+                </tr>
+                <tr [nzExpand]="cha.expand">
+                  <td colspan="3">
+                    <nz-table #sctionTable [nzData]="cha.sections" nzSize="middle" [nzShowPagination]="false">
+                      <thead>
+                        <tr>
+                          <th nzWidth="50%">节名</th>
+                          <th nzWidth="50%">
+                            <button nz-button nzShape="circle"><i class="anticon anticon-plus"></i></button>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let sct of sctionTable.data">
+                          <td>{{ sct.name }}</td>
+                          <td>
+                            <button nz-button nzShape="circle"><i class="anticon anticon-edit"></i></button>
+                            <nz-divider nzType="vertical"></nz-divider>
+                            <button nz-button nzShape="circle"><i class="anticon anticon-close"></i></button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </nz-table>
+                  </td>
+                </tr>
+              </ng-template>
+              </tbody>
+            </nz-table>
+          </td>
+        </tr>
+      </ng-template>
+      </tbody>
+    </nz-table>
 
-    <!--<div nz-col [nzSpan]="12">-->
-      <!--<span>选择难度</span>-->
-      <!--<nz-tree-select-->
-        <!--style="width: 140px"-->
-        <!--[nzDefaultExpandedKeys]="expandKeys"-->
-        <!--[nzNodes]="nodesDiffcult"-->
-        <!--nzPlaceHolder="Please select"-->
-        <!--[(ngModel)]="value"-->
-        <!--(ngModelChange)="onChange($event)">-->
-      <!--</nz-tree-select>-->
-    <!--</div>-->
-  <!--</div>-->
-
-  <!--<div nz-row class="course">-->
-    <!--<div nz-col [nzSpan]="4">-->
-      <!--<label class="coursename">课程名字</label>-->
-    <!--</div>-->
-    <!--<div nz-col [nzSpan]="20">-->
-      <!--<input class="newCourse" nz-input placeholder="请输入新增课程名" [(ngModel)]="value">-->
-    <!--</div>-->
-  <!--</div>-->
-
-  <!--<div nz-row class="course">-->
-    <!--<div nz-col [nzSpan]="4">-->
-      <!--<label class="coursename">课程封面</label>-->
-    <!--</div>-->
-    <!--<div nz-col [nzSpan]="20">-->
-      <!--<nz-upload-->
-        <!--nzAction="https://jsonplaceholder.typicode.com/posts/">-->
-        <!--<button nz-button class="cover">-->
-          <!--<i class="anticon anticon-upload"></i><span>Click to Upload</span>-->
-        <!--</button>-->
-      <!--</nz-upload>-->
-    <!--</div>-->
-  <!--</div>-->
-
-  <!--<div nz-row class="course">-->
-  <!--<div nz-col [nzSpan]="4">-->
-    <!--<label class="coursename">课程简介</label>-->
-  <!--</div>-->
-  <!--<div nz-col [nzSpan]="20">-->
-    <!--<textarea class="newCourse" nz-input placeholder="请输入课程简介" nzAutosize></textarea>-->
-  <!--</div>-->
-<!--</div>-->
-
-  <!--<div nz-row class="course">-->
-    <!--<div nz-col [nzSpan]="4">-->
-      <!--<label class="coursename">课程须知</label>-->
-    <!--</div>-->
-    <!--<div nz-col [nzSpan]="20">-->
-      <!--<textarea class="newCourse" nz-input placeholder="请输入课程须知" nzAutosize></textarea>-->
-    <!--</div>-->
-  <!--</div>-->
-
-  <!--<div nz-row class="course">-->
-    <!--<div nz-col [nzSpan]="4">-->
-      <!--<label class="coursename">能学到什么</label>-->
-    <!--</div>-->
-    <!--<div nz-col [nzSpan]="20">-->
-      <!--<textarea class="newCourse" nz-input placeholder="请输入内容" nzAutosize></textarea>-->
-    <!--</div>-->
-  <!--</div>-->
-
-<!--</nz-modal>-->
-
-
-<app-ch-backstage-add-course></app-ch-backstage-add-course>
-<!--<app-ch-backstage-add-chapter></app-ch-backstage-add-chapter>-->
-<!--<app-ch-backstage-add-section></app-ch-backstage-add-section>-->
+  </div>
+</div>

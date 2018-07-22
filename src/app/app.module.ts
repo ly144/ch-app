@@ -32,9 +32,10 @@ import { ChPersonCourseComponent } from './component/person/ch-person-course/ch-
 import { ChPersonNotesComponent } from './component/person/ch-person-notes/ch-person-notes.component';
 import { ChPersonApeComponent } from './component/person/ch-person-ape/ch-person-ape.component';
 import { ChPersonSetComponent } from './component/person/ch-person-set/ch-person-set.component';
+import { ChBacktageHomeBComponent } from './component/backstage/ch-backtage-home-b/ch-backtage-home-b.component';
 import { ChBackstageAddCourseComponent } from './component/backstage/ch-backstage-add-course/ch-backstage-add-course.component';
 import { ChBackstageAddChapterComponent } from './component/backstage/ch-backstage-add-chapter/ch-backstage-add-chapter.component';
-import {ChBackstageAddSectionComponent} from './component/backstage/ch-backstage-add-section/ch-backstage-add-section.component';
+import { ChBackstageAddSectionComponent } from './component/backstage/ch-backstage-add-section/ch-backstage-add-section.component';
 import { ChFooterComponent } from './component/header&footer/ch-footer/ch-footer.component';
 
 
@@ -63,6 +64,7 @@ import { ChFooterComponent } from './component/header&footer/ch-footer/ch-footer
     ChPersonNotesComponent,
     ChPersonApeComponent,
     ChPersonSetComponent,
+    ChBacktageHomeBComponent,
     ChBackstageAddCourseComponent,
     ChBackstageAddChapterComponent,
     ChBackstageAddSectionComponent,
