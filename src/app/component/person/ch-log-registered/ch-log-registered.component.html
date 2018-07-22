@@ -21,58 +21,64 @@
       <!-- 模态框主体 -->
       <div class="modal-body" id="myModal-body">
         <div class="row" id="myModal-body-content">
-          <form id="myModal-body-form">
+          <div style="width: 100%;">
 
             <div *ngIf="isLogin">
-              <div>
-                <input type="text" class="myModal-body-input" maxlength="37" name="email" placeholder="请输入登录邮箱/手机号">
-                <p class="errorHint" data-error-hint="请输入正确的邮箱或手机号">请输入正确的邮箱或手机号</p>
-              </div>
+              <form (ngSubmit)="onSubmitLogin()" #chLogin="ngForm">
+                <div>
+                  <input type="text" class="myModal-body-input" maxlength="37" name="email" placeholder="请输入登录邮箱/手机号" [(ngModel)]="user.username" required>
+                  <p class="errorHint" data-error-hint="请输入正确的邮箱或手机号">请输入正确的邮箱或手机号</p>
+                </div>
 
-              <div>
-                <input type="password" class="myModal-body-input" maxlength="16" name="password" autocomplete="off"
-                       placeholder="6-16位密码，区分大小写，不能用空格">
-                <p class="errorHint" data-error-hint="请输入6-16位密码，区分大小写，不能使用空格！">请输入6-16位密码，区分大小写，不能使用空格！</p>
-              </div>
+                <div>
+                  <input type="password" class="myModal-body-input" maxlength="16" name="password"
+                         placeholder="6-16位密码，区分大小写，不能用空格" [(ngModel)]="user.password" required>
+                  <p class="errorHint" data-error-hint="请输入6-16位密码，区分大小写，不能使用空格！">请输入6-16位密码，区分大小写，不能使用空格！</p>
+                </div>
 
-              <div class="form-check myModal-body-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox">7天内自动登录
-                </label>
-                <a>忘记密码</a>
-              </div>
-              <div style="clear:both;"></div>
+                <div class="form-check myModal-body-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox">7天内自动登录
+                  </label>
+                  <a>忘记密码</a>
+                </div>
+                <div style="clear:both;"></div>
 
-              <div class="myModal-body-button">
-                <input type="button" value="登录">
-              </div>
+                <div class="myModal-body-button">
+                  <!--<input class="myModal-body-button-input" type="button" value="登录">-->
+                  <button type="submit" class="myModal-body-button-input" [disabled]="!chLogin.form.valid">登录</button>
+                </div>
+              </form>
             </div>
 
             <div *ngIf="!isLogin">
-              <div>
-                <input type="text" class="myModal-body-input" maxlength="37" name="email" placeholder="请输入登录邮箱/手机号">
-                <p class="errorHint" data-error-hint="请输入正确的邮箱或手机号">请输入正确的邮箱或手机号</p>
-              </div>
+              <form (ngSubmit)="onSubmitRegister()" #chRegister="ngForm">
+                <div>
+                  <input type="text" class="myModal-body-input" maxlength="37" name="email" placeholder="请输入注册邮箱/手机号" [(ngModel)]="regUser.phone" required>
+                  <p class="errorHint" data-error-hint="请输入正确的邮箱或手机号">请输入正确的邮箱或手机号</p>
+                </div>
 
-              <div>
-                <input type="password" class="myModal-body-input" maxlength="16" name="password" autocomplete="off"
-                       placeholder="请输入验证码">
-                <p class="errorHint" data-error-hint="验证码错误">验证码错误</p>
-              </div>
+                <div>
+                  <input type="password" class="myModal-body-input" maxlength="16" name="password"
+                         placeholder="请输入验证码" [(ngModel)]="regUser.code" required>
+                  <p class="errorHint" data-error-hint="验证码错误">验证码错误</p>
+                </div>
 
-              <div class="form-check myModal-body-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox">同意协议
-                </label>
-              </div>
-              <div style="clear:both;"></div>
+                <div class="form-check myModal-body-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox">同意协议
+                  </label>
+                </div>
+                <div style="clear:both;"></div>
 
-              <div class="myModal-body-button">
-                <input type="button" value="注册">
-              </div>
+                <div class="myModal-body-button">
+                  <!--<input class="myModal-body-button-input" type="button" value="注册">-->
+                  <button type="submit" class="myModal-body-button-input" [disabled]="!chRegister.form.valid">注册</button>
+                </div>
+              </form>
             </div>
 
-          </form>
+          </div>
         </div>
       </div>
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LoginRegisteredService} from '../../../service/login-registered.service';
 
 @Component({
   selector: 'app-ch-log-registered',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChLogRegisteredComponent implements OnInit {
 
-  isLogin = true;
-  btn = ['btnAn', ''];
+  isLogin = true; // 登录页面（ture）或注册页面（false）
+  btn = ['btnAn', '']; // 当前按钮是登录按钮或注册按钮
 
+  user = {'username': '', 'password': ''};
+  regUser = { 'phone': '', 'code': '' };
+
+  /**
+   * 点击登录按钮或注册按钮
+   */
   onBtn(i: number) {
     if (i === 0 && this.btn[i] === '') {
       this.btn[1] = '';
@@ -22,7 +29,19 @@ export class ChLogRegisteredComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  onSubmitLogin() {
+    console.log(this.user);
+    this.loginRegisteredService.loginVerify(this.user)
+      .subscribe( (data) => {
+        console.log(data);
+      });
+  }
+
+  onSubmitRegister() {
+    console.log(this.regUser);
+  }
+
+  constructor(private loginRegisteredService: LoginRegisteredService) { }
 
   ngOnInit() {
   }
