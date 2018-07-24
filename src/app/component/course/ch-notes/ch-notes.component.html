@@ -1,31 +1,24 @@
-<div id="notes-header" class="container-fluid">
+<div id="notes-sidebar" class="row">
+  <a class="notes-sel" (mouseenter)="changeCSSIn(1)" (mouseleave)="changeCSSOut(1)" (click)="clickBtn(1)"
+     id="{{ btnAll }}">全部</a>
+  <a class="notes-sel" (mouseenter)="changeCSSIn(2)" (mouseleave)="changeCSSOut(2)" (click)="clickBtn(2)"
+     id="{{ btnArgee }}">点赞</a>
+</div>
+<div id="notes-content" *ngFor="let note of notes">
   <div class="row">
-    <div class="col-1"></div>
-    <div id="notes-comment" class="col-7">
-      <div id="notes-sidebar" class="row">
-        <a class="notes-sel" (mouseenter)="changeCSSIn(1)" (mouseleave)="changeCSSOut(1)" (click)="clickBtn(1)" id="{{ btnAll }}">全部</a>
-        <a class="notes-sel" (mouseenter)="changeCSSIn(2)" (mouseleave)="changeCSSOut(2)" (click)="clickBtn(2)" id="{{ btnArgee }}">点赞</a>
-      </div>
-      <div id="notes-content" *ngFor="let note of notes">
-        <div class="row">
-          <div class="col-1">
-            <a><img src="{{ note.img }}" id="user-img"></a>
-          </div>
-          <div class="col-11">
-            <div id="notes-tit"><a>{{ note.name }}</a></div>
-            <div id="notes-section" *ngIf="(note.section != '')"><a>源自：{{ note.section }}</a></div>
-            <div id="notes-cnt">{{ note.content }}</div>
-            <div id="notes-footer" class="row">
-              <div class="col-2"><a>赞:{{ note.agreeNum }}</a></div>
-              <div class="col-2"><a>采集 {{ note.adoptNum }}</a></div>
-              <div class="col-2"><a>查看全文</a></div>
-              <div class="offset-4 col-2"><span>{{ note.time }}</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="col-1">
+      <a><img src="{{ note.img }}" id="user-img"></a>
     </div>
-    <div class="col-4">
+    <div class="col-11">
+      <div id="notes-tit"><a>{{ note.name }}</a></div>
+      <div id="notes-section" *ngIf="(note.section != '')"><a>源自：{{ note.section }}</a></div>
+      <div id="notes-cnt">{{ note.content }}</div>
+      <div id="notes-footer" class="row">
+        <div class="col-2"><a>赞:{{ note.agreeNum }}</a></div>
+        <div class="col-2"><a>采集 {{ note.adoptNum }}</a></div>
+        <div class="col-2"><a>查看全文</a></div>
+        <div class="offset-4 col-2"><span>{{ note.time }}</span></div>
+      </div>
     </div>
   </div>
 </div>

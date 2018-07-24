@@ -30,6 +30,8 @@ export class Detailed2 {
 })
 export class ChDetailsComponent implements OnInit {
 
+  isLearn = false;
+
   detailed: Detailed = {
     direct: '后端开发',
     classify: 'java',

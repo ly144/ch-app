@@ -25,37 +25,28 @@
     <div class="row">
       <div class="col-12">
         <p class="p1">
-          {{detailed.course}}
+          {{ detailed.course }}
         </p>
       </div>
     </div>
 
-    <div class="row">
-
-      <div class="col-12" id="s2">
-        <ul class="item1">
-          <li>
-            <img src="{{detailed.author.img}}">
-          </li>
-          <li>
-            {{detailed.author.name}}
-          </li>
-          <li>
-            {{detailed.author.job}}
-          </li>
-          <li>
-            难度 &nbsp;&nbsp;{{detailed.difficulty}}
-          </li>
-          <li>
-            时长 &nbsp;&nbsp;{{detailed.length}}
-          </li>
-          <li>
-            学习人数 &nbsp;&nbsp;{{detailed.number}}
-          </li>
-          <li>
-            评分 &nbsp;&nbsp;{{detailed.score}}
-          </li>
-        </ul>
+    <div class="row item1">
+      <div class="col-1"></div>
+      <div class="col-1 authimg">
+        <img src="{{ detailed.author.img }}">
+      </div>
+      <div class="col-2 authname">
+        <div>{{ detailed.author.name }}</div>
+        <div>{{ detailed.author.job }}</div>
+      </div>
+      <div class="col-1 diff">
+        难度 &nbsp;&nbsp;{{detailed.difficulty}}
+      </div>
+      <div class="col-2 length">
+        时长 &nbsp;&nbsp;{{detailed.length}}
+      </div>
+      <div class="col-2 num">
+        学习人数 &nbsp;&nbsp;{{detailed.number}}
       </div>
     </div>
 
@@ -66,12 +57,41 @@
       <div class="col-12">
         <ul class="item2">
           <li *ngFor="let dir of detailed2 let i=index">
-            <a (click)="select(dir.name, i)" class="item2-a" id="{{ dir.isOn }}" routerLink="{{ dir.path }}" routerLinkActive="active">{{dir.name}}</a>
+            <a (click)="select(dir.name, i)" class="item2-a" id="{{ dir.isOn }}" routerLink="{{ dir.path }}"
+               routerLinkActive="active">{{dir.name}}</a>
           </li>
         </ul>
       </div>
     </div>
   </div>
 
+  <div id="detail3">
+    <div class="row detail4">
+
+      <div class="col-1"></div>
+
+      <div class="col-7" id="detail4-content">
+        <router-outlet></router-outlet>
+      </div>
+
+      <div class="col-4" id="learn">
+        <div class="learn-1">
+          <p class="havelearn">已学100%<span class="timelen">学习耗时7小时18分</span></p>
+          <div class="progress" style="border-radius:10px;">
+            <div class="progress-bar" style="width:20%;" id="progressColor"></div>
+          </div>
+          <p class="learnto">上次学至 1-1 SpringBoot介绍</p>
+          <p class="continuelearn" *ngIf="isLearn">继续学习</p>
+          <p class="continuelearn" *ngIf="!isLearn">开始学习</p>
+          <p class="information">课程须知</p>
+          <p class="infoContent">学习本门课程之前，您需要了解一些前置知识： 1、如何利用maven构建项目 2、Spring注解相关知识 3、MVC的思想的基本概念 4、RestfulApi相关知识</p>
+          <p class="information">老师告诉你能学到什么？</p>
+          <p class="infoContent">1、创建第一个Spring Boot应用 2、Spirng Boot中自定义属性配置 3、Spring Boot中Controller的使用 4、SpirngBoot中使用spirng-data-jpa和事务操作</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
-<router-outlet></router-outlet>
+

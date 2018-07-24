@@ -31,9 +31,6 @@
 #course-info span {
   margin-right: 12px;
 }
-.icon-set_sns:before {
-  content: "\e923";
-}
 #course-desc {
   font-size: 12px;
   font-weight: 300;
