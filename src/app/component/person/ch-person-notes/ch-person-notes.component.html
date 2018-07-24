@@ -7,7 +7,7 @@
     </ul>
   </div>
   <div class="col-2">
-    <p class="totalnote">共1条笔记</p>
+    <p class="totalnote">共{{ notes.length }}条笔记</p>
   </div>
   <div class="col-12">
     <hr id="hr1">
@@ -15,22 +15,22 @@
 </div>
 
 <!--笔记内容页-->
-<div class="row">
+<div class="row" *ngFor="let note of notes">
   <div class="col-12 mainbody">
-    <p class="notes-chapter">2小时学会Spring Boot</p>
-    <p class="notes-section">3-1 项目属性配置</p>
-    <p class="notes-content">笔记内容</p>
+    <p class="notes-chapter">{{ note.courseName }}</p>
+    <p class="notes-section">{{ note.chapter }}-{{ note.section }}&nbsp;{{ note.sectionName }}</p>
+    <p class="notes-content">{{ note.content }}</p>
     <div class="row">
       <div class="col-2 notes-praisecollect-1">
-        <div class="notes-praisecollect">赞 0</div>
+        <div class="notes-praisecollect">赞&nbsp;{{ note.agreeNum }}</div>
       </div>
       <div class="col-7">
-        <div class="notes-praisecollect">采集 0</div>
+        <div class="notes-praisecollect">采集&nbsp;{{ note.gatherNum }}</div>
       </div>
       <div class="col-3 notes-editdelete">
         <span class="notes-edit">编辑</span>
         <span class="notes-delete">删除</span>
-        <span class="time">1小时前</span>
+        <span class="time">{{ note.time }}</span>
       </div>
     </div>
   </div>

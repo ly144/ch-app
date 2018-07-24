@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { URL } from '../models/uploadUrl';
-import {catchError} from 'rxjs/internal/operators';
+import { catchError } from 'rxjs/internal/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({

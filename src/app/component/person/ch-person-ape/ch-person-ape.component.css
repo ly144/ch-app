@@ -113,10 +113,10 @@
   word-break: break-all;
 }
 
-#answer-content-a{
+.answer-content-a{
   color: #14191e;
 }
 
-#answer-content-a:hover{
+.answer-content-a:hover{
   color: #ec1500;
 }

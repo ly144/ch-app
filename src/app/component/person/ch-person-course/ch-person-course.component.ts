@@ -1,16 +1,18 @@
 import {Component, OnInit} from '@angular/core';
+import {PersonService} from '../../../service/person.service';
 
-export class Recentstudy {
+export class PersonCourse {
+  time: string;
   year: string;
   month: string;
+  day: string;
+  img: string;
   name: string;
-  percentage: string;
-  update: string;
-  timeLen: string;
-  learningTo: string;
-  noteNum: string;
-  code: string;
-  question: string;
+  learned: number;
+  learnProgress: string;
+  learnTime: string;
+  notesNum: number;
+  questionNum: number;
 }
 
 @Component({
@@ -19,6 +21,8 @@ export class Recentstudy {
   styleUrls: ['./ch-person-course.component.css']
 })
 export class ChPersonCourseComponent implements OnInit {
+
+  personCourse: PersonCourse[];
 
   selectBtn = ['on', ''];
 
@@ -32,10 +36,26 @@ export class ChPersonCourseComponent implements OnInit {
     }
   }
 
-  constructor() {
+  init() {
+    this.personService.getPersonCourse(3)
+      .subscribe((personCourse: PersonCourse[]) => {
+        console.log(personCourse);
+        this.personCourse = personCourse;
+        for (const pc of this.personCourse) {
+          const time = personCourse[0].time.split('-');
+          pc.year = time[0];
+          pc.month = time[1];
+          pc.day = time[2];
+        }
+        console.log(this.personCourse);
+      });
+  }
+
+  constructor(private personService: PersonService) {
   }
 
   ngOnInit() {
+    this.init();
   }
 
 }

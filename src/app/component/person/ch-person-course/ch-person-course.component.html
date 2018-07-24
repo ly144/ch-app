@@ -7,29 +7,28 @@
   </div>
 </div>
 
-<div class="row content">
+<div class="row content" *ngFor="let pc of personCourse">
 
   <div class="col-1 time">
-    <p class="year">2018</p>
-    <p class="month">07月18日</p>
+    <p class="year">{{ pc.year }}</p>
+    <p class="month">{{ pc.month }}月{{ pc.day }}日</p>
   </div>
 
   <div class="col-11 video">
     <div class="row">
       <div class="col-3">
-        <img class="img-1" src="https://img.mukewang.com/5847d579000178ac06000338-240-135.jpg">
+        <img class="img-1" src="{{ pc.img }}">
       </div>
       <div class="col-7">
-        <p><span class="chapter">2小时学会Spring Boot</span><span class="span1">更新完毕</span></p>
+        <p><span class="chapter">{{ pc.name }}</span><span class="span1">更新完毕</span></p>
         <ul class="state">
-          <li id="havelearn">已学100%</li>
-          <li>用时 7小时12分</li>
-          <li>学习至3-1 项目属性配置</li>
+          <li id="havelearn">已学{{ pc.learned }}%</li>
+          <li>用时&nbsp;{{ pc.learnTime }}</li>
+          <li>学习至{{ pc.learnProgress }}</li>
         </ul>
         <ul class="state-2">
-          <li>笔记 0</li>
-          <!--<li>代码 0</li>-->
-          <li>问答 0</li>
+          <li>笔记&nbsp;{{ pc.notesNum }}</li>
+          <li>问答&nbsp;{{ pc.questionNum }}</li>
         </ul>
       </div>
       <div class="col-2">

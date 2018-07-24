@@ -1,4 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import {PersonService} from '../../../service/person.service';
+
+export class Notes {
+  courseName: string;
+  chapter: number;
+  section: number;
+  sectionName: string;
+  content: string;
+  agreeNum: number;
+  gatherNum: number;
+  time: string;
+}
 
 @Component({
   selector: 'app-ch-person-notes',
@@ -6,6 +18,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ch-person-notes.component.css']
 })
 export class ChPersonNotesComponent implements OnInit {
+
+  notes: Notes[];
 
   selectBtn = ['on', ''];
 
@@ -19,9 +33,18 @@ export class ChPersonNotesComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  init() {
+    this.personSerice.getPersonNotes(3)
+      .subscribe((notes: Notes[]) => {
+        console.log(notes);
+        this.notes = notes;
+      });
+  }
+
+  constructor(private personSerice: PersonService) { }
 
   ngOnInit() {
+    this.init();
   }
 
 }

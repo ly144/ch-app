@@ -38,6 +38,8 @@ import { ChBackstageAddChapterComponent } from './component/backstage/ch-backsta
 import { ChBackstageAddSectionComponent } from './component/backstage/ch-backstage-add-section/ch-backstage-add-section.component';
 import { ChFooterComponent } from './component/header&footer/ch-footer/ch-footer.component';
 
+import { LoginRegisteredService } from './service/login-registered.service';
+import { PersonService } from './service/person.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,6 @@ import { ChFooterComponent } from './component/header&footer/ch-footer/ch-footer
     ChCommunityComponent,
     ChBackstageHomeComponent,
     ChHeaderComponent,
-    ChBackstageHomeComponent,
     ChPersonComponent,
     ChPersonCourseComponent,
     ChPersonNotesComponent,
@@ -82,6 +83,10 @@ import { ChFooterComponent } from './component/header&footer/ch-footer/ch-footer
   ],
   bootstrap: [AppComponent],
   /** 配置 ng-zorro-antd 国际化 **/
-  providers: [ { provide: NZ_I18N, useValue: zh_CN } ]
+  providers: [
+    { provide: NZ_I18N, useValue: zh_CN },
+    LoginRegisteredService,
+    PersonService,
+  ]
 })
 export class AppModule { }
