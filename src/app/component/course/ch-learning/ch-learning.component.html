@@ -23,20 +23,24 @@
     <div class="col-1" id="course-sidebar">
       <dl>
         <dd id="openchapter">
-          <i></i>
-          <span>章节</span>
+          <a><i class="anticon anticon-bars"></i>
+          <br />
+          <span>章节</span></a>
         </dd>
         <dd id="openpanel">
-          <i></i>
-          <span>问答</span>
+          <a><i class="anticon anticon-question-circle-o"></i>
+          <br />
+            <span>问答</span></a>
         </dd>
         <dd id="openanel">
-          <i></i>
-          <span>笔记</span>
+          <a><i class="anticon anticon-form"></i>
+          <br />
+            <span>笔记</span></a>
         </dd>
         <dd id="opencomment">
-          <i></i>
-          <span>评论</span>
+          <a><i class="anticon anticon-message"></i>
+          <br />
+            <span>评论</span></a>
         </dd>
       </dl>
     </div>
@@ -44,13 +48,12 @@
     <!-- 播放视频框 -->
     <div id="course-center" class="col-10">
       <div id="course-video">
-        <video controls="controls" id="video-play" preload="auto">
-          <object>
-            <embed src="http://player.youku.com/player.php/sid/XMzI2NTc4NTMy/v.swf"
-                   width="480" height="400"
-                   type="application/x-shockwave-flash"/>
-          </object>
-        </video>
+        <vg-player style="border-radius: 10px;">
+          <vg-overlay-play vgFor="singleVideo"></vg-overlay-play>
+          <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls class="video-play">
+            <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
+          </video>
+        </vg-player>
       </div>
     </div>
 
@@ -60,8 +63,8 @@
     <div class="col-12">
       <ul class="learn-item">
         <li *ngFor="let dir of learn let i=index">
-          <a (click)="select(dir.name, i)" class="learn-item-a" id="{{ dir.isOn }}" routerLink="{{ dir.path }}"
-             routerLinkActive="active">{{dir.name}}</a>
+          <a (click)="select(dir[0], i)" class="learn-item-a" id="{{ dir[1] }}" routerLink="{{ dir[2] }}"
+             routerLinkActive="active">{{ dir[0] }}</a>
         </li>
       </ul>
     </div>

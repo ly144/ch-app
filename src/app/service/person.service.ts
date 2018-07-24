@@ -59,6 +59,11 @@ export class PersonService {
       );
   }
 
+  /**
+   * 个人中心之笔记
+   * @param {number} id
+   * @returns {Observable<any>}
+   */
   getPersonNotes(id: number) {
     return this.http.post(URL + '/user/getNotes', id, httpOptions)
       .pipe(

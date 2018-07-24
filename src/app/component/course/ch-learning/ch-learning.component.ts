@@ -1,10 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-
-export class Learn {
-  name: string;
-  isOn: string;
-  path: string;
-}
+import {CourseService} from '../../../service/course.service';
 
 @Component({
   selector: 'app-ch-learning',
@@ -13,24 +8,27 @@ export class Learn {
 })
 export class ChLearningComponent implements OnInit {
 
-  learn: Learn[] = [
-    {name: '问答', isOn: 'on', path: './question'},
-    {name: '评论', isOn: '', path: './comment'},
-    {name: '同学笔记', isOn: '', path: './notes'},
+  // 选择按钮
+  learn: string[][] = [
+    ['问答', 'on', './question'],
+    ['评论', '', './comment'],
+    ['同学笔记', '', './notes'],
   ];
-
   selection = 0;
   nowSelect = '问答';
-
   select(s: string, c: number) {
-    this.learn[this.selection].isOn = '';
+    this.learn[this.selection][1] = '';
     this.nowSelect = s;
-    this.learn[c].isOn = 'on';
+    this.learn[c][1] = 'on';
     this.selection = c;
   }
 
+  init() {
+    this.courseService.getCourseLearn(1)
+      .subscribe();
+  }
 
-  constructor() {
+  constructor(private courseService: CourseService) {
   }
 
   ngOnInit() {

@@ -8,6 +8,10 @@ import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 registerLocaleData(zh);
+import { VgCoreModule } from 'videogular2/core';
+import { VgControlsModule } from 'videogular2/controls';
+import { VgOverlayPlayModule } from 'videogular2/overlay-play';
+import { VgBufferingModule } from 'videogular2/buffering';
 
 import { AppComponent } from './app.component';
 import { ChHomeComponent } from './component/course/ch-home/ch-home.component';
@@ -82,6 +86,10 @@ import { PersonService } from './service/person.service';
     BrowserAnimationsModule,
     /** 导入 ng-zorro-antd 模块 **/
     NgZorroAntdModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
   ],
   bootstrap: [AppComponent],
   /** 配置 ng-zorro-antd 国际化 **/
