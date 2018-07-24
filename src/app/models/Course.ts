@@ -1,7 +1,9 @@
 export class Course {
-  img: string;
-  title: string;
+  name: string;
+  shortIntro: string;
+  intro: string;
   difficulty: string;
+  time: string;
   people: number;
-  info: string;
+  img: string;
 }

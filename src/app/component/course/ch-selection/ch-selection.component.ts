@@ -1,13 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-
-export class Direction {
-  name: string;
-  isOn: string;
-}
-
-export class Classify {
-  content: Direction[];
-}
+import { Component, OnInit } from '@angular/core';
+import { HomeService } from '../../../service/home.service';
+import { EmitService } from '../../../service/emit.service';
 
 @Component({
   selector: 'app-ch-selection',
@@ -15,74 +8,48 @@ export class Classify {
   styleUrls: ['./ch-selection.component.css']
 })
 export class ChSelectionComponent implements OnInit {
-
-  direction: Direction[] = [{name: '全部', isOn: 'on'}, {name: '前沿技术', isOn: ''},
-    {name: '前端开发', isOn: ''}, {name: '后端开发', isOn: ''},
-    {name: '移动开发', isOn: ''}, {name: '算法&数学', isOn: ''},
-    {name: '云计算&大数据', isOn: ''}, {name: '运维&测试', isOn: ''},
-    {name: '数据库', isOn: ''}, {name: 'UI设计', isOn: ''},
-    {name: '游戏', isOn: ''}];
+  // 当前选择的三个按钮
+  nowSelect: string[] = ['全部', '全部', '全部'];
+  // 方向
+  direction: string[];
   selection0 = 0;
-
-  nowSelect: any[] = ['全部', '全部', '全部'];
-
-  all: Classify[] = [{content: [{name: '全部', isOn: 'on'}]},
-    {content: [{name: '全部', isOn: 'on'}, {name: '微服务', isOn: ''}, {name: '区块链', isOn: ''}]},
-    {content: [{name: '全部', isOn: 'on'}, {name: 'HTML/CSS', isOn: ''}, {name: 'JavaScript', isOn: ''}]},
-    {content: [{name: '全部', isOn: 'on'}, {name: 'Java', isOn: ''}, {name: 'SpringBoot', isOn: ''}]},
-    {content: [{name: '全部', isOn: 'on'}, {name: 'Android', isOn: ''}, {name: 'iOS', isOn: ''}]},
-    {content: [{name: '全部', isOn: 'on'}, {name: '算法与数据结构', isOn: ''}]},
-    {content: [{name: '全部', isOn: 'on'}, {name: '大数据', isOn: ''}, {name: 'Hadoop', isOn: ''}]},
-    {content: [{name: '全部', isOn: 'on'}, {name: '运维', isOn: ''}, {name: '自动化运维', isOn: ''}]},
-    {content: [{name: '全部', isOn: 'on'}, {name: 'MySQL', isOn: ''}, {name: 'Redis', isOn: ''}]},
-    {content: [{name: '全部', isOn: 'on'}, {name: '模型制作', isOn: ''}, {name: '动效动画', isOn: ''}]},
-    {content: [{name: '全部', isOn: 'on'}, {name: 'Unity 3D', isOn: ''}, {name: 'Cocos2d-x', isOn: ''}]}];
-
+  // 分类
+  all: string[][];
   selection1 = 0;
-  classify: Direction[] = [];
-
-  difficult: Direction[] = [
-    {name: '全部', isOn: 'on'},
-    {name: '入门', isOn: ''},
-    {name: '初级', isOn: ''},
-    {name: '中级', isOn: ''},
-    {name: '高级', isOn: ''},
-  ];
-
+  classify: string[];
+  // 难度
+  difficult: string[] = ['全部', '入门', '初级', '中级', '高级'];
   selection2 = 0;
 
+  // 选择方向
   select0(s: string, c: number) {
-    this.direction[this.selection0].isOn = '';
     this.nowSelect[0] = s;
-    this.direction[c].isOn = 'on';
     this.selection0 = c;
-    this.classify[this.selection1].isOn = '';
-    this.classify = this.all[c].content;
+    this.classify = this.all[c];
     this.selection1 = 0;
-    this.classify[this.selection1].isOn = 'on';
+    this.nowSelect[1] = this.classify[this.selection1];
     console.log(this.nowSelect);
+    this.emitFun();
   }
 
+  // 选择分类
   select1(s: string, c: number) {
-    this.classify[this.selection1].isOn = '';
     this.nowSelect[1] = s;
-    this.classify[c].isOn = 'on';
     this.selection1 = c;
     if (this.selection0 === 0) {
-      this.direction[0].isOn = '';
       this.judge(s);
-      this.direction[this.selection0].isOn = 'on';
-      this.classify = this.all[this.selection0].content;
-      this.classify[0].isOn = '';
-      this.classify[this.selection1].isOn = 'on';
+      this.nowSelect[0] = this.direction[this.selection0];
+      this.classify = this.all[this.selection0];
     }
+    this.emitFun();
   }
 
+  // 判断分类属于哪个方向
   judge(s: string) {
     console.log(s);
     for (let i = 1; i < this.all.length; i++) {
-      for (let j = 1; j < this.all[i].content.length; j++) {
-        if (s === this.all[i].content[j].name) {
+      for (let j = 1; j < this.all[i].length; j++) {
+        if (s === this.all[i][j]) {
           console.log(i, j);
           this.selection0 = i;
           this.selection1 = j;
@@ -92,29 +59,56 @@ export class ChSelectionComponent implements OnInit {
     }
   }
 
+  // 选择难度
   select2(s: string, c: number) {
-    this.difficult[this.selection2].isOn = '';
     this.nowSelect[2] = s;
-    this.difficult[c].isOn = 'on';
     this.selection2 = c;
+    this.emitFun();
   }
 
-
+// 初始化全部all里面第一行
   init() {
+    console.log('init');
     let top = 1;
     for (let i = 1; i < this.all.length; i++) {
-      for (let j = 1; j < this.all[i].content.length; j++) {
-        this.all[0].content[top++] = this.all[i].content[j];
+      for (let j = 1; j < this.all[i].length; j++) {
+        this.all[0][top++] = this.all[i][j];
       }
     }
-    this.classify = this.all[0].content;
+    this.classify = this.all[0];
+    console.log(this.classify);
   }
 
-  constructor() {
+  // 请求后台数据
+  initSelection() {
+    this.homeService.getDirection()
+      .subscribe((direction: string[]) => {
+        console.log(direction);
+        this.direction = direction;
+      });
+    this.homeService.getClassifyAll()
+      .subscribe((all: string[][]) => {
+        console.log(all);
+        this.all = all;
+        console.log(this.all);
+        console.log('initEND');
+        this.init();
+        this.emitFun();
+      });
+  }
+
+  // 发射消息
+  emitFun() {
+    // 如果组件中，修改了某些数据，需要刷新用用户列表，用户列表在其他组件中，那么就可以发射一个字符串过去，那边接收到这个字符串比对一下，刷新列表。
+    this.emitService.eventEmit.emit(this.nowSelect);
+  }
+
+  constructor(private homeService: HomeService,
+              public emitService: EmitService) {
   }
 
   ngOnInit() {
-    this.init();
+    this.initSelection();
   }
 
 }

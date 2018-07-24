@@ -39,6 +39,8 @@ import { ChBackstageAddSectionComponent } from './component/backstage/ch-backsta
 import { ChFooterComponent } from './component/header&footer/ch-footer/ch-footer.component';
 
 import { LoginRegisteredService } from './service/login-registered.service';
+import { HomeService} from './service/home.service';
+import { EmitService } from './service/emit.service';
 import { PersonService } from './service/person.service';
 
 @NgModule({
@@ -86,6 +88,8 @@ import { PersonService } from './service/person.service';
   providers: [
     { provide: NZ_I18N, useValue: zh_CN },
     LoginRegisteredService,
+    HomeService,
+    EmitService,
     PersonService,
   ]
 })
