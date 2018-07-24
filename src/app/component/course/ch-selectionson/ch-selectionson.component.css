@@ -4,8 +4,6 @@ a {
 }
 #selectson{
   font-family: "PingFang SC", Helvetica, "Helvetica Neue", 微软雅黑, Tahoma, Arial, sans-serif;
-  /*border: 1px solid #999999;*/
-  /*border-radius: 10px;*/
   margin-top: 32px;
 }
 
@@ -14,14 +12,14 @@ a {
 }
 
 .course-nav-item{
-  font-size: 12px;
+  font-size: 10px;
   margin-right: 10px;
   padding-right: 2px;
 }
 
 .on{
   border: 1px solid white;
-  border-radius: 12px;
+  border-radius: 18px;
   color: #FFFFFF;
   background: #9199a1;
   cursor: default;
@@ -35,17 +33,16 @@ a {
 
 .item li{
   display: inline-block;
-  padding: 18px;
+  padding: 12px;
   height: 30px;
   text-align: center;
   line-height: 5px;
+  margin-right: 5px;
 }
 
 .hover1{
   background-color: #dfe3e6;
-  /*background-color: red;*/
-  border: 1px solid white;
-  border-radius: 12px;
+  border-radius: 18px;
 }
 
 

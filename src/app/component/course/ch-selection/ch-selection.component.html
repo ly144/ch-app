@@ -7,8 +7,8 @@
 
     <div class="col-11">
       <ul class="item">
-        <li *ngFor="let dir of direction let i=index" class="course-nav-item {{ dir.isOn }}">
-          <a (click)="select0(dir.name, i)">{{ dir.name }}</a>
+        <li *ngFor="let dir of direction let i=index" [class]="selection0 === i ? 'course-nav-item on' : 'course-nav-item'">
+          <a (click)="select0(dir, i)">{{ dir }}</a>
         </li>
       </ul>
     </div>
@@ -24,8 +24,8 @@
 
     <div class="col-11">
       <ul class="item">
-        <li *ngFor="let dir of classify let i=index" class="course-nav-item {{ dir.isOn }}">
-          <a (click)="select1(dir.name, i)">{{ dir.name }}</a>
+        <li *ngFor="let dir of classify let i=index" [class]="selection1 === i ? 'course-nav-item on' : 'course-nav-item'">
+          <a (click)="select1(dir, i)">{{ dir }}</a>
         </li>
       </ul>
     </div>
@@ -41,8 +41,8 @@
 
     <div class="col-11">
       <ul class="item">
-        <li *ngFor="let dir of difficult let i=index" class="course-nav-item {{ dir.isOn }}">
-          <a (click)="select2(dir.name, i)">{{ dir.name }}</a>
+        <li *ngFor="let dir of difficult let i=index" [class]="selection2 === i ? 'course-nav-item on' : 'course-nav-item'">
+          <a (click)="select2(dir, i)">{{ dir }}</a>
         </li>
       </ul>
     </div>

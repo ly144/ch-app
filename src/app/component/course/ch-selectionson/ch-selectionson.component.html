@@ -17,13 +17,13 @@
       <a routerLink="/details" routerLinkActive="active">
         <img id="course-img" class="card-img" src="{{ cou.img }}" alt="Card image">
         <div id="course-body" class="card-body">
-          <h3 id="course-title" class="card-title">{{ cou.title }}</h3>
+          <h3 id="course-title" class="card-title">{{ cou.name }}</h3>
           <div>
             <div id="course-info">
               <span>{{ cou.difficulty }}</span>
               <span><i class="icon-set_sns"></i>{{ cou.people }}</span>
             </div>
-            <p id="course-desc">{{ cou.info }}</p>
+            <p id="course-desc">{{ cou.shortIntro }}</p>
           </div>
         </div>
       </a>

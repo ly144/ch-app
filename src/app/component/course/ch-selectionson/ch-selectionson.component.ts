@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Course } from '../../../models/Course';
+import {Component, OnInit} from '@angular/core';
+import {Course} from '../../../models/Course';
+import {HomeService} from '../../../service/home.service';
+import {EmitService} from '../../../service/emit.service';
 
 export class Butt {
   name: string;
@@ -14,28 +16,17 @@ export class Butt {
 })
 export class ChSelectionsonComponent implements OnInit {
 
-  course: Course[] = [{img: 'https://img3.sycdn.imooc.com/5aeecb1d0001e5ea06000338-240-135.jpg', title: 'HTML+CSS基础课程', difficulty: '入门', people: 899615,
-    info: 'HTML+CSS基础教程8小时带领大家步步深入学习标签用法和意义'},
-    {img: 'https://img3.sycdn.imooc.com/5aeecb1d0001e5ea06000338-240-135.jpg', title: 'HTML+CSS基础课程', difficulty: '入门', people: 899615,
-      info: 'HTML+CSS基础教程8小时带领大家步步深入学习标签用法和意义'},
-    {img: 'https://img3.sycdn.imooc.com/5aeecb1d0001e5ea06000338-240-135.jpg', title: 'HTML+CSS基础课程', difficulty: '入门', people: 899615,
-      info: 'HTML+CSS基础教程8小时带领大家步步深入学习标签用法和意义'},
-    {img: 'https://img3.sycdn.imooc.com/5aeecb1d0001e5ea06000338-240-135.jpg', title: 'HTML+CSS基础课程', difficulty: '入门', people: 899615,
-      info: 'HTML+CSS基础教程8小时带领大家步步深入学习标签用法和意义'},
-    {img: 'https://img3.sycdn.imooc.com/5aeecb1d0001e5ea06000338-240-135.jpg', title: 'HTML+CSS基础课程', difficulty: '入门', people: 899615,
-      info: 'HTML+CSS基础教程8小时带领大家步步深入学习标签用法和意义'},
-    {img: 'https://img3.sycdn.imooc.com/5aeecb1d0001e5ea06000338-240-135.jpg', title: 'HTML+CSS基础课程', difficulty: '入门', people: 899615,
-      info: 'HTML+CSS基础教程8小时带领大家步步深入学习标签用法和意义'}];
+  course: Course[];
 
+  // 均为关于按钮的样式切换
   butt: Butt[] = [
     {name: '最新', isOn: 'on', isHover: ''},
     {name: '最热', isOn: '', isHover: ''},
-  ]
-
+  ];
   selection = 0;
   nowSelect: any[] = ['最新'];
 
-  select(s: string , c: number){
+  select(s: string, c: number) {
     this.butt[this.selection].isOn = '';
     this.nowSelect[0] = s;
     this.butt[c].isOn = 'on';
@@ -43,7 +34,7 @@ export class ChSelectionsonComponent implements OnInit {
     this.selection = c;
   }
 
-  select1(s: string , c: number) {
+  select1(s: string, c: number) {
     if (this.butt[c].isOn === 'on') {
       this.butt[c].isHover = '';
     } else {
@@ -51,13 +42,24 @@ export class ChSelectionsonComponent implements OnInit {
     }
   }
 
-  select2(s: string , c: number) {
-      this.butt[c].isHover = '';
+  select2(s: string, c: number) {
+    this.butt[c].isHover = '';
   }
 
-  constructor() { }
+  constructor(private homeService: HomeService,
+              public emitService: EmitService) {
+  }
 
   ngOnInit() {
+    // 接收发射过来的数据
+    this.emitService.eventEmit.subscribe((value: string[]) => {
+      // 这里就可以调取接口，刷新userList列表数据
+      this.homeService.getSelectionSon(value)
+        .subscribe((cou: Course[]) => {
+          console.log(cou);
+          this.course = cou;
+        });
+    });
   }
 
 }
