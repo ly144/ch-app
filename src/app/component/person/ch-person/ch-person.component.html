@@ -4,16 +4,16 @@
   <div class="row person">
     <div class="col-1"></div>
     <div class="col-1 person-1">
-      <img class="img-1" src="https://img.mukewang.com/5aeb0df10001155a10670800-140-140.jpg">
+      <img class="img-1" src="{{ person.picture }}">
     </div>
     <div class="col-5 person-2">
-      <div class="person-3">leeych</div>
-      <div class="person-4"><span>女</span>| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生如夏花，哈哈哈哈</div>
+      <div class="person-3">{{ person.name }}</div>
+      <div class="person-4"><span>{{ person.sex }}</span>| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ person.signature }}</div>
     </div>
     <div class="col-3 person-5">
       <div class="row person-6">
-        <div class="col-4">14h</div>
-        <div class="col-6 person-8">1</div>
+        <div class="col-4">{{ person.learnTime }}h</div>
+        <div class="col-6 person-8">{{ person.attentionNum }}</div>
       </div>
       <div class="row person-7">
         <div class="col-4">学习时长</div>
@@ -26,7 +26,9 @@
     <div class="row person-10">
       <div class="col-3">
         <ul class="person-9">
-          <li *ngFor="let per of person let i = index" class="person-9-a {{per.isOn}} {{per.isHover}}"  (click)="select(per.name, i)" (mouseenter)="select1(per.name,i)" (mouseleave)="select2(per.name,i)" routerLink="{{ per.route }}" routerLinkActive="active"><a>{{per.name}}</a></li>
+          <li *ngFor="let btn of personBtn let i = index" class="person-9-a {{btn.isOn}} {{btn.isHover}}"
+              (click)="select(btn.name, i)" (mouseenter)="select1(btn.name,i)" (mouseleave)="select2(btn.name,i)"
+              routerLink="{{ btn.route }}" routerLinkActive="active"><a>{{btn.name}}</a></li>
         </ul>
       </div>
 

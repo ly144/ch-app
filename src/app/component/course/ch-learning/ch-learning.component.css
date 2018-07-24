@@ -10,7 +10,7 @@ a {
 
 /*播放框*/
 #learning-play {
-  height: 300px;
+  height: 510px;
   background: #1C1F21;
 }
 /*工具栏*/
@@ -19,6 +19,7 @@ a {
   width: 60px;
   align-items: center;
   z-index: 10000;
+  padding-top: 105px;
 }
 #course-sidebar dl {
   flex: 1;
@@ -31,7 +32,7 @@ a {
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  cursor: pointer;
+  /*cursor: pointer;*/
 }
 #course-sidebar i {
   font-size: 24px;
@@ -52,15 +53,14 @@ a {
   padding: 0;
 }
 #course-video {
-  height: 90%;
+  height: 94%;
   width: 100%;
   margin: 16px 0;
 }
-#video-play {
+.video-play {
   height: 100%;
   width: 100%;
   background: #000000;
-  border-radius: 10px;
 }
 
 .learn{

@@ -8,6 +8,10 @@ import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 registerLocaleData(zh);
+import { VgCoreModule } from 'videogular2/core';
+import { VgControlsModule } from 'videogular2/controls';
+import { VgOverlayPlayModule } from 'videogular2/overlay-play';
+import { VgBufferingModule } from 'videogular2/buffering';
 
 import { AppComponent } from './app.component';
 import { ChHomeComponent } from './component/course/ch-home/ch-home.component';
@@ -41,6 +45,7 @@ import { ChFooterComponent } from './component/header&footer/ch-footer/ch-footer
 import { LoginRegisteredService } from './service/login-registered.service';
 import { HomeService} from './service/home.service';
 import { EmitService } from './service/emit.service';
+import { PersonService } from './service/person.service';
 
 @NgModule({
   declarations: [
@@ -61,7 +66,6 @@ import { EmitService } from './service/emit.service';
     ChCommunityComponent,
     ChBackstageHomeComponent,
     ChHeaderComponent,
-    ChBackstageHomeComponent,
     ChPersonComponent,
     ChPersonCourseComponent,
     ChPersonNotesComponent,
@@ -82,6 +86,10 @@ import { EmitService } from './service/emit.service';
     BrowserAnimationsModule,
     /** 导入 ng-zorro-antd 模块 **/
     NgZorroAntdModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
   ],
   bootstrap: [AppComponent],
   /** 配置 ng-zorro-antd 国际化 **/
@@ -90,6 +98,7 @@ import { EmitService } from './service/emit.service';
     LoginRegisteredService,
     HomeService,
     EmitService,
+    PersonService,
   ]
 })
 export class AppModule { }

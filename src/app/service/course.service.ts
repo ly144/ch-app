@@ -13,7 +13,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class LoginRegisteredService {
+export class CourseService {
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -22,11 +22,12 @@ export class LoginRegisteredService {
     };
   }
 
-
-  loginVerify(user) {
-    return this.http.post(URL + '/user/login', JSON.stringify(user), httpOptions)
+  // 获得课程学习视频
+  getCourseLearn(id: number) {
+    console.log(id);
+    return this.http.post(URL + '/user/getPerson', id, httpOptions)
       .pipe(
-        catchError(this.handleError('loginVerify'))
+        catchError(this.handleError('getCourseLearn'))
       );
   }
 
