@@ -18,7 +18,7 @@ export class ChSelectionsonComponent implements OnInit {
 
   course: Course[];
 
-  // 均为关于按钮的样式切换
+  // 均为关于最新最热按钮的样式切换
   butt: Butt[] = [
     {name: '最新', isOn: 'on', isHover: ''},
     {name: '最热', isOn: '', isHover: ''},
@@ -32,6 +32,7 @@ export class ChSelectionsonComponent implements OnInit {
     this.butt[c].isOn = 'on';
     this.butt[c].isHover = '';
     this.selection = c;
+    this.sort(c);
   }
 
   select1(s: string, c: number) {
@@ -46,6 +47,31 @@ export class ChSelectionsonComponent implements OnInit {
     this.butt[c].isHover = '';
   }
 
+  // 冒泡排序
+  sort(top: number) {
+    if (top === 1) {
+      for (let i = 0; i < this.course.length - 1; i++) {
+        for (let j = i + 1; j < this.course.length; j++) {
+          if (this.course[i].people < this.course[j].people) {
+            const temp = this.course[i];
+            this.course[i] = this.course[j];
+            this.course[j] = temp;
+          }
+        }
+      }
+    } else if (top === 0) {
+      for (let i = 0; i < this.course.length - 1; i++) {
+        for (let j = i + 1; j < this.course.length; j++) {
+          if (this.course[i].uploadTime < this.course[j].uploadTime) {
+            const temp = this.course[i];
+            this.course[i] = this.course[j];
+            this.course[j] = temp;
+          }
+        }
+      }
+    }
+  }
+
   constructor(private homeService: HomeService,
               public emitService: EmitService) {
   }
@@ -58,6 +84,7 @@ export class ChSelectionsonComponent implements OnInit {
         .subscribe((cou: Course[]) => {
           console.log(cou);
           this.course = cou;
+          this.sort(this.selection);
         });
     });
   }

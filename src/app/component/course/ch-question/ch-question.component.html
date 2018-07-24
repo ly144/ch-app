@@ -1,34 +1,27 @@
-<div id="question-header" class="container-fluid">
+<div id="question-sidebar" class="row">
+  <a class="question-sel" (mouseenter)="changeCSSIn(1)" (mouseleave)="changeCSSOut(1)" (click)="clickBtn(1)"
+     id="{{ btnAll }}">全部</a>
+  <a class="question-sel" (mouseenter)="changeCSSIn(2)" (mouseleave)="changeCSSOut(2)" (click)="clickBtn(2)"
+     id="{{ btnArgee }}">精华</a>
+  <a id="question-issue">我要发布</a>
+</div>
+<div id="question-content" *ngFor="let que of question">
   <div class="row">
-    <div class="col-1"></div>
-    <div id="question-comment" class="col-7">
-      <div id="question-sidebar" class="row">
-        <a class="question-sel" (mouseenter)="changeCSSIn(1)" (mouseleave)="changeCSSOut(1)" (click)="clickBtn(1)" id="{{ btnAll }}">全部</a>
-        <a class="question-sel" (mouseenter)="changeCSSIn(2)" (mouseleave)="changeCSSOut(2)" (click)="clickBtn(2)" id="{{ btnArgee }}">精华</a>
-        <a id="question-issue">我要发布</a>
-      </div>
-      <div id="question-content" *ngFor="let que of question">
-        <div class="row">
-          <div class="col-1">
-            <a><img src="{{ que.img }}" id="user-img"></a>
-          </div>
-          <div class="col-11">
-            <div id="question-tit"><a>{{ que.title }}</a></div>
-            <div id="question-cnt">
-              <span>最新回答 / <a id="nickname">{{ que.content.name }}</a></span>
-              <div>{{ que.content.content }}</div>
-            </div>
-            <div id="question-footer" class="row">
-              <div class="col-2"><a>{{ que.answerNum }} 回答</a></div>
-              <div class="col-2"><a>{{ que.lookNum }} 浏览</a></div>
-              <div class="col-6"><a>{{ que.section }}</a></div>
-              <div class="col-2"><span>{{ que.time }}</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="col-1">
+      <a><img src="{{ que.img }}" id="user-img"></a>
     </div>
-    <div class="col-4">
+    <div class="col-11">
+      <div id="question-tit"><a>{{ que.title }}</a></div>
+      <div id="question-cnt">
+        <span>最新回答 / <a id="nickname">{{ que.content.name }}</a></span>
+        <div>{{ que.content.content }}</div>
+      </div>
+      <div id="question-footer" class="row">
+        <div class="col-2"><a>{{ que.answerNum }} 回答</a></div>
+        <div class="col-2"><a>{{ que.lookNum }} 浏览</a></div>
+        <div class="col-6"><a>{{ que.section }}</a></div>
+        <div class="col-2"><span>{{ que.time }}</span></div>
+      </div>
     </div>
   </div>
 </div>

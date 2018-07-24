@@ -2,16 +2,7 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
-#chapter {
-  background-color: #f3f5f7;
-  margin: 5px auto auto auto;
-  padding: auto;
-}
 
-.chapter-1 {
-  padding-top: 30px;
-  padding-bottom: 10px;
-}
 
 .chapter-2 {
   background-color: white;
@@ -20,8 +11,7 @@ a {
   padding: 24px 32px 18px;
   line-height: 28px;
   font-size: 14px;
-  font-family: "微软雅黑";
-  margin-bottom: 20px;
+  margin: 10px;
 }
 
 .chapter-3{
