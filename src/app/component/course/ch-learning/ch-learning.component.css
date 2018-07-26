@@ -2,6 +2,9 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+#learn-header {
+  font-family: "PingFang SC", Helvetica, "Helvetica Neue", 微软雅黑, Tahoma, Arial, sans-serif;
+}
 #learning-header {
   height: 60px;
   font-family: "PingFang SC", Helvetica, "Helvetica Neue", 微软雅黑, Tahoma, Arial, sans-serif;
@@ -63,17 +66,16 @@ a {
   background: #000000;
 }
 
+/*评论问答笔记按钮*/
 .learn{
   box-shadow: 0 3px 3px 0 rgba(0,0,0,.2);
   height: 70px;
 }
-
 .learn-item{
   float: left;
   margin: auto  0 auto 20px;
   height: 70px;
 }
-
 .learn-item li{
   display: inline-block;
   padding: 25px 80px 35px 50px;
@@ -82,15 +84,17 @@ a {
   font-size: 16px;
   font-weight: bold;
 }
-
 .learn-item-a {
   color: #5e5e5e;
 }
-
 .learn-item li a:hover{
   color: red;
 }
-
 #on{
   color: red;
+}
+
+/*评论问答笔记*/
+#cqn {
+  padding: 0;
 }
