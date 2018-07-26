@@ -25,12 +25,12 @@ a {
 
 .item{
   float: left;
-  margin: auto  0 auto 20px;
+  margin: auto  0 auto 50px;
 }
 
 .item li{
   display: inline-block;
-  padding: 30px 5px 18px 40px;
+  padding: 30px 5px 18px 10px;
   height: 36px;
   text-align: center;
   line-height: 5px;

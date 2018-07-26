@@ -1,17 +1,25 @@
-a {
-  text-decoration: none;
-  cursor: pointer;
-}
-
-
-.chapter-2 {
+.chapter-1 {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);
   padding: 24px 32px 18px;
   line-height: 28px;
   font-size: 14px;
-  margin: 10px;
+  margin: 10px 10px 0 10px;
+}
+
+.chapter-2 {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);
+  padding: 24px 32px 40px;
+  line-height: 28px;
+  font-size: 14px;
+  margin: 10px 10px 0 10px;
+}
+
+.chapterIn{
+  margin-bottom: 15px;
 }
 
 .chapter-3{
@@ -28,11 +36,52 @@ a {
   line-height: 18px;
 }
 
-.chapter-5{
+.chapterLearn{
+  margin-top: 0;
+}
+
+#chapter-5{
   color: #1c1f21;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 48px;
+  padding: 0 15px;
 }
-.chapter-5 a {
-  color: #1c1f21;
+
+#chapter-5:hover{
+  background-color: #fef1f1;
+  color: red;
+  cursor: pointer;
 }
+
+.recentLearn{
+  float: right;
+  color: #93999f;
+  font-size: 12px;
+  margin-right: 15px;
+}
+
+.recentLearn:hover{
+  color: red;
+}
+
+/*没学*/
+#notLearn {
+  float: right;
+  padding-top: 15px;
+  /*padding-right: 10px;*/
+}
+
+/*学一半*/
+#LearnHalf{
+  float: right;
+  padding-top: 15px;
+  /*padding-right: 10px;*/
+}
+
+/*已学完*/
+#haveLearned{
+  float: right;
+  padding-top: 15px;
+  /*padding-right: 10px;*/
+}
+
