@@ -5,7 +5,7 @@
       返回
     </div>
     <div class="col-3">
-      1-1 SpringBoot介绍
+      {{ course.chapter }}-{{ course.section }}&nbsp;{{ course.name }}
     </div>
     <div class="col-6">
     </div>
@@ -48,10 +48,40 @@
     <!-- 播放视频框 -->
     <div id="course-center" class="col-10">
       <div id="course-video">
+        <!--<vg-player>-->
+          <!--<vg-overlay-play></vg-overlay-play>-->
+          <!--<vg-buffering></vg-buffering>-->
+
+          <!--<vg-scrub-bar>-->
+            <!--<vg-scrub-bar-current-time></vg-scrub-bar-current-time>-->
+            <!--<vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>-->
+          <!--</vg-scrub-bar>-->
+
+          <!--<vg-controls>-->
+            <!--<vg-play-pause></vg-play-pause>-->
+            <!--<vg-playback-button></vg-playback-button>-->
+
+            <!--<vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>-->
+
+            <!--<vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>-->
+
+            <!--<vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>-->
+            <!--<vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>-->
+
+            <!--<vg-track-selector></vg-track-selector>-->
+            <!--<vg-mute></vg-mute>-->
+            <!--<vg-volume></vg-volume>-->
+            <!--<vg-fullscreen></vg-fullscreen>-->
+          <!--</vg-controls>-->
+
+          <!--<video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>-->
+            <!--<source [src]="transform(course.video)" type="video/mp4">-->
+          <!--</video>-->
+        <!--</vg-player>-->
         <vg-player style="border-radius: 10px;">
           <vg-overlay-play vgFor="singleVideo"></vg-overlay-play>
           <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls class="video-play">
-            <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
+            <source src="{{ transform(course.video) }}" type="video/mp4">
           </video>
         </vg-player>
       </div>
@@ -70,12 +100,11 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row cqn-row">
     <div class="col-1"></div>
     <div id="cqn" class="col-7">
+      <router-outlet></router-outlet>
     </div>
   </div>
 
 </div>
-
-<router-outlet></router-outlet>

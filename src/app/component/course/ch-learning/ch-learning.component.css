@@ -95,6 +95,10 @@ a {
 }
 
 /*评论问答笔记*/
+.cqn-row {
+  margin-top: 2px;
+  background: #f3f5f7;
+}
 #cqn {
   padding: 0;
 }

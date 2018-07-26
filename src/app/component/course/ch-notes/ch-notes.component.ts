@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import {CourseService} from '../../../service/course.service';
 
-export class Note {
+export class Notes {
   img: string;
   name: string;
-  section: string;
+  chapter: number;
+  section: number;
+  sectionName: string;
   content: string;
   agreeNum: number;
-  adoptNum: number;
+  gatherNum: number;
   time: string;
 }
 
@@ -18,7 +21,8 @@ export class Note {
 export class ChNotesComponent implements OnInit {
 
   // 笔记数组
-  notes: Note[] = [{img: 'http://static.runoob.com/images/mix/img_avatar.png', name: 'Mach4296504', section: '3-1项目属性配置',
+  notes: Notes[];
+  /*= [{img: 'http://static.runoob.com/images/mix/img_avatar.png', name: 'Mach4296504', section: '3-1项目属性配置',
     content: '实体类注解@Component@ConfigurationProperties(prefix="girl")', agreeNum: 0, adoptNum: 0, time: '2018-07-09'},
     {img: 'http://static.runoob.com/images/mix/img_avatar.png', name: 'Mach4296504', section: '3-1项目属性配置',
       content: '实体类注解@Component@ConfigurationProperties(prefix="girl")', agreeNum: 0, adoptNum: 0, time: '2018-07-09'},
@@ -26,6 +30,7 @@ export class ChNotesComponent implements OnInit {
       content: '实体类注解@Component@ConfigurationProperties(prefix="girl")', agreeNum: 0, adoptNum: 0, time: '2018-07-09'},
     {img: 'http://static.runoob.com/images/mix/img_avatar.png', name: 'Mach4296504', section: '3-1项目属性配置',
       content: '实体类注解@Component@ConfigurationProperties(prefix="girl")', agreeNum: 0, adoptNum: 0, time: '2018-07-09'}];
+*/
 
   btnAll = 'in'; // 全部按钮
   btnArgee = 'out'; // 点赞按钮
@@ -57,9 +62,18 @@ export class ChNotesComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  init() {
+    this.courseService.getSectionNotes(1)
+      .subscribe((notes: Notes[]) => {
+        this.notes = notes;
+        console.log(this.notes);
+      });
+  }
+
+  constructor(private courseService: CourseService) { }
 
   ngOnInit() {
+    this.init();
   }
 
 }

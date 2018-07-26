@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from '../../../models/Question';
+import {CourseService} from '../../../service/course.service';
 
 @Component({
   selector: 'app-ch-question',
@@ -8,19 +9,10 @@ import { Question } from '../../../models/Question';
 })
 export class ChQuestionComponent implements OnInit {
 
-  question: Question[] = [
-    {img: 'http://static.runoob.com/images/mix/img_avatar.png', title: 'springboot 和Springmvc什么区别',
-      content: {name: '_Gin_', content: '用Spring MVC做项目要写很多配置文件（即XML文件），SpringBoot的目的就是让开发人员从配置文件中解脱出来（即减少配置文件xml的编写），' +
-        '但是SpringBoot还是会有一个叫application.properties的配置文件用来配置项目用到的配置信息。'},
-      answerNum: 2, agreeNum: 0, opposeNum: 0, lookNum: 274, section: '1-1 SpringBoot介绍', time: '2018-06-26'},
-    {img: 'http://static.runoob.com/images/mix/img_avatar.png', title: 'springboot 和Springmvc什么区别',
-      content: {name: '_Gin_', content: '用Spring MVC做项目要写很多配置文件（即XML文件），SpringBoot的目的就是让开发人员从配置文件中解脱出来（即减少配置文件xml的编写），' +
-      '但是SpringBoot还是会有一个叫application.properties的配置文件用来配置项目用到的配置信息。'},
-      answerNum: 2, agreeNum: 0, opposeNum: 0, lookNum: 274, section: '1-1 SpringBoot介绍', time: '2018-06-26'}];
+  question: Question[];
 
   btnAll = 'in'; // 全部按钮
   btnArgee = 'out'; // 点赞按钮
-
   // 移入按钮变化CSS
   changeCSSIn(i: number) {
     if (i === 1 && this.btnAll === 'out') {
@@ -48,9 +40,18 @@ export class ChQuestionComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  init() {
+    this.courseService.getSectionQuestion(1)
+      .subscribe((question: Question[]) => {
+        this.question = question;
+        console.log(this.question);
+      });
+  }
+
+  constructor(private courseService: CourseService) { }
 
   ngOnInit() {
+    this.init();
   }
 
 }

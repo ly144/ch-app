@@ -11,8 +11,10 @@
       <div id="comment-tit"><a>{{ com.name }}</a></div>
       <div id="comment-cnt">{{ com.content }}</div>
       <div id="comment-footer" class="row">
-        <div class="col-2">赞:{{ com.agreeNum }}</div>
-        <div class="offset-8 col-2"><span>{{ com.time }}</span></div>
+        <div class="col-2"><a><i class="anticon anticon-like-o"></i>&nbsp;{{ com.agreeNum }}</a></div>
+        <div class="col-6" *ngIf="com.sectionName !== null"><a>{{ com.chapter }}-{{ com.section }}&nbsp;{{ com.sectionName }}</a></div>
+        <div class="col-6" *ngIf="com.sectionName === null"></div>
+        <div class="offset-2 col-2"><span>{{ com.time }}</span></div>
       </div>
     </div>
   </div>

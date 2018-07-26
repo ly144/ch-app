@@ -36,9 +36,9 @@
         <!-- 回答内容 -->
         <div id="answer-con" class="row">
           <div class="offset-1 col-11">
-            <div id="user"><a>{{ que.content.name }}</a><span>&nbsp;&nbsp;回答：</span></div>
+            <div id="user"><a>{{ que.answer[0].name }}</a><span>&nbsp;&nbsp;回答：</span></div>
             <div id="answer-content">
-              {{ que.content.content }}
+              {{ que.answer[0].content }}
               <span>[查看全部]</span>
             </div>
           </div>

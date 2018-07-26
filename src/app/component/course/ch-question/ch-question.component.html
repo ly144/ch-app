@@ -13,13 +13,14 @@
     <div class="col-11">
       <div id="question-tit"><a>{{ que.title }}</a></div>
       <div id="question-cnt">
-        <span>最新回答 / <a id="nickname">{{ que.content.name }}</a></span>
-        <div>{{ que.content.content }}</div>
+        <span>最新回答 / <a id="nickname">{{ que.answer[0].name }}</a></span>
+        <div>{{ que.answer[0].content }}</div>
       </div>
       <div id="question-footer" class="row">
         <div class="col-2"><a>{{ que.answerNum }} 回答</a></div>
         <div class="col-2"><a>{{ que.lookNum }} 浏览</a></div>
-        <div class="col-6"><a>{{ que.section }}</a></div>
+        <div class="col-6" *ngIf="que.sectionName !== null"><a>{{ que.chapter }}-{{ que.section }}&nbsp;{{ que.sectionName }}</a></div>
+        <div class="col-6" *ngIf="que.sectionName === null"></div>
         <div class="col-2"><span>{{ que.time }}</span></div>
       </div>
     </div>

@@ -1,13 +1,24 @@
-import {Answer} from './Answer';
-
 export class Question {
   img: string;
   title: string;
-  content: Answer;
+  answer: Answer[];
   answerNum: number;
   agreeNum: number;
   opposeNum: number;
   lookNum: number;
-  section: string;
+  chapter: number;
+  section: number;
+  sectionName: string;
   time: string;
 }
+
+ export class Answer {
+  img: string;
+  name: string;
+  content: string;
+  time: string;
+  agreeNum: number;
+  opposeNum: number;
+  storey: number;
+  answerNum: number;
+ }

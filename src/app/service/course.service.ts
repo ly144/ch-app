@@ -25,9 +25,45 @@ export class CourseService {
   // 获得课程学习视频
   getCourseLearn(id: number) {
     console.log(id);
-    return this.http.post(URL + '/user/getPerson', id, httpOptions)
+    return this.http.post(URL + '/course/getCourseLearn', id, httpOptions)
       .pipe(
         catchError(this.handleError('getCourseLearn'))
+      );
+  }
+
+  /**
+   * 获取课程节的问答
+   * @param {number} id
+   * @returns {Observable<any>}
+   */
+  getSectionQuestion(id: number) {
+    return this.http.post(URL + '/course/getSectionQuestion', id, httpOptions)
+      .pipe(
+        catchError(this.handleError('getSectionQuestion'))
+      );
+  }
+
+  /**
+   * 获取课程节的评论
+   * @param {number} id
+   * @returns {Observable<any>}
+   */
+  getSectionComment(id: number) {
+    return this.http.post(URL + '/course/getSectionComment', id, httpOptions)
+      .pipe(
+        catchError(this.handleError('getSectionComment'))
+      );
+  }
+
+  /**
+   * 获取课程节的笔记
+   * @param {number} id
+   * @returns {Observable<any>}
+   */
+  getSectionNotes(id: number) {
+    return this.http.post(URL + '/course/getSectionNotes', id, httpOptions)
+      .pipe(
+        catchError(this.handleError('getSectionNotes'))
       );
   }
 

@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {CourseService} from '../../../service/course.service';
+import { Component, OnInit } from '@angular/core';
+import { CourseService } from '../../../service/course.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 export class CourseLearn {
   chapter: number;
@@ -15,7 +16,8 @@ export class CourseLearn {
 })
 export class ChLearningComponent implements OnInit {
 
-  courseLearn: CourseLearn;
+  course: CourseLearn;
+  url = 'http://static.videogular.com/assets/videos/videogular.mp4';
 
   // 选择按钮
   learn: string[][] = [
@@ -35,15 +37,23 @@ export class ChLearningComponent implements OnInit {
   init() {
     this.courseService.getCourseLearn(1)
       .subscribe((cl: CourseLearn) => {
-        this.courseLearn = cl;
-        console.log(this.courseLearn);
+        this.course = cl;
+        console.log(this.course);
       });
   }
 
-  constructor(private courseService: CourseService) {
+  transform(url: string) {
+    const sanitizedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    console.log(sanitizedUrl);
+    return sanitizedUrl;
+  }
+
+  constructor(private courseService: CourseService,
+              private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
+    this.init();
   }
 
 }
