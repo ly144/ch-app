@@ -23,11 +23,6 @@ export class ChLearningComponent implements OnInit {
     this.selection = c;
   }
 
-  init() {
-    this.courseService.getCourseLearn(1)
-      .subscribe();
-  }
-
   constructor(private courseService: CourseService) {
   }
 
