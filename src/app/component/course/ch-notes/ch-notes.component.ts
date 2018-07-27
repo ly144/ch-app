@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CourseService} from '../../../service/course.service';
+import { EmitService, Info } from '../../../service/emit.service';
 
 export class Notes {
   img: string;
@@ -22,19 +23,9 @@ export class ChNotesComponent implements OnInit {
 
   // 笔记数组
   notes: Notes[];
-  /*= [{img: 'http://static.runoob.com/images/mix/img_avatar.png', name: 'Mach4296504', section: '3-1项目属性配置',
-    content: '实体类注解@Component@ConfigurationProperties(prefix="girl")', agreeNum: 0, adoptNum: 0, time: '2018-07-09'},
-    {img: 'http://static.runoob.com/images/mix/img_avatar.png', name: 'Mach4296504', section: '3-1项目属性配置',
-      content: '实体类注解@Component@ConfigurationProperties(prefix="girl")', agreeNum: 0, adoptNum: 0, time: '2018-07-09'},
-    {img: 'http://static.runoob.com/images/mix/img_avatar.png', name: 'Mach4296504', section: '',
-      content: '实体类注解@Component@ConfigurationProperties(prefix="girl")', agreeNum: 0, adoptNum: 0, time: '2018-07-09'},
-    {img: 'http://static.runoob.com/images/mix/img_avatar.png', name: 'Mach4296504', section: '3-1项目属性配置',
-      content: '实体类注解@Component@ConfigurationProperties(prefix="girl")', agreeNum: 0, adoptNum: 0, time: '2018-07-09'}];
-*/
 
   btnAll = 'in'; // 全部按钮
   btnArgee = 'out'; // 点赞按钮
-
   // 移入按钮变化CSS
   changeCSSIn(i: number) {
     if (i === 1 && this.btnAll === 'out') {
@@ -62,15 +53,37 @@ export class ChNotesComponent implements OnInit {
     }
   }
 
-  init() {
-    this.courseService.getSectionNotes(1)
+
+
+  initCourse(courseId: number) {
+    this.courseService.getCourseNotes(courseId)
       .subscribe((notes: Notes[]) => {
         this.notes = notes;
         console.log(this.notes);
       });
   }
 
-  constructor(private courseService: CourseService) { }
+  initSection(sectionId: number) {
+    this.courseService.getSectionNotes(sectionId)
+      .subscribe((notes: Notes[]) => {
+        this.notes = notes;
+        console.log(this.notes);
+      });
+  }
+
+  init() {
+    const info: Info = this.emitService.info;
+    if (info.name === 'details') {
+      console.log('笔记接收details');
+      this.initCourse(info.id);
+    } else if (info.name === 'learning') {
+      console.log('笔记接收learning');
+      this.initSection(info.id);
+    }
+  }
+
+  constructor(private courseService: CourseService,
+              private emitService: EmitService) { }
 
   ngOnInit() {
     this.init();

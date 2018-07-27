@@ -73,7 +73,7 @@ export class ChSelectionsonComponent implements OnInit {
   }
 
   constructor(private homeService: HomeService,
-              public emitService: EmitService) {
+              private emitService: EmitService) {
   }
 
   ngOnInit() {

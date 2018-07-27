@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../../../service/course.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { EmitService } from '../../../service/emit.service';
 
 export class CourseLearn {
   chapter: number;
@@ -34,7 +36,17 @@ export class ChLearningComponent implements OnInit {
     this.selection = c;
   }
 
+  // 安全地址转换
+  transform(url: string) {
+    const sanitizedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    console.log(sanitizedUrl);
+    return sanitizedUrl;
+  }
+
   init() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    console.log('route:' + id);
+    this.emitFun(1);
     this.courseService.getCourseLearn(1)
       .subscribe((cl: CourseLearn) => {
         this.course = cl;
@@ -42,14 +54,15 @@ export class ChLearningComponent implements OnInit {
       });
   }
 
-  transform(url: string) {
-    const sanitizedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    console.log(sanitizedUrl);
-    return sanitizedUrl;
+  // 修改消息
+  emitFun(id: number) {
+    this.emitService.info = {name: 'learning', id: id};
   }
 
   constructor(private courseService: CourseService,
-              private sanitizer: DomSanitizer) {
+              private sanitizer: DomSanitizer,
+              private route: ActivatedRoute,
+              private emitService: EmitService) {
   }
 
   ngOnInit() {

@@ -47,8 +47,8 @@ export class ChLogRegisteredComponent implements OnInit {
 
   ngOnInit() {
     // 接收发射过来的数据
-    this.emitService.eventEmit.subscribe((value: any) => {
-      console.log('LogRegister');
+    this.emitService.eventEmit.subscribe((value: string) => {
+      console.log(value);
       if (value === 'login') {
         // 这里就可以调取接口，刷新userList列表数据
         this.btn[1] = '';

@@ -9,11 +9,9 @@ import {EmitService} from '../../../service/emit.service';
 export class ChHeaderComponent implements OnInit {
 
   onLogin() {
-    console.log('login');
     this.emitFun('login');
   }
   onRegister() {
-    console.log('register');
     this.emitFun('register');
   }
   emitFun(value: string) {

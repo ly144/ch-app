@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from '../../../models/Question';
-import {CourseService} from '../../../service/course.service';
+import { CourseService } from '../../../service/course.service';
+import { EmitService, Info } from '../../../service/emit.service';
 
 @Component({
   selector: 'app-ch-question',
@@ -40,15 +41,36 @@ export class ChQuestionComponent implements OnInit {
     }
   }
 
-  init() {
-    this.courseService.getSectionQuestion(1)
+
+  initCourse(courseId: number) {
+    this.courseService.getCourseQuestion(courseId)
       .subscribe((question: Question[]) => {
         this.question = question;
         console.log(this.question);
       });
   }
 
-  constructor(private courseService: CourseService) { }
+  initSection(sectionId: number) {
+    this.courseService.getSectionQuestion(sectionId)
+      .subscribe((question: Question[]) => {
+        this.question = question;
+        console.log(this.question);
+      });
+  }
+
+  init() {
+    const info: Info = this.emitService.info;
+    if (info.name === 'details') {
+      console.log('问答接收details');
+      this.initCourse(info.id);
+    } else if (info.name === 'learning') {
+      console.log('问答接收learning');
+      this.initSection(info.id);
+    }
+  }
+
+  constructor(private courseService: CourseService,
+              private emitService: EmitService) { }
 
   ngOnInit() {
     this.init();

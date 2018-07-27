@@ -63,7 +63,7 @@ a {
   margin-top: 45px;
 }
 
-.person-9.person-9 li{
+.person-9 li{
   height: 48px;
   width: 160px;
   margin: 0 auto 10px;
@@ -93,7 +93,6 @@ a {
 .person-10{
   /*background-color: rgba(248,250,252,0.82);*/
   background-color: white;
-  height: 320px;
 }
 
 span{

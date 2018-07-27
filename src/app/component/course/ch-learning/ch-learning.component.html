@@ -1,6 +1,6 @@
 <div id="learn-header" class="container-fluid">
   <!-- 课程头 -->
-  <div id="learning-header" class="row">
+  <div id="learning-header" class="row" *ngIf="course">
     <div class="col-1">
       返回
     </div>
@@ -78,7 +78,7 @@
             <!--<source [src]="transform(course.video)" type="video/mp4">-->
           <!--</video>-->
         <!--</vg-player>-->
-        <vg-player style="border-radius: 10px;">
+        <vg-player style="border-radius: 10px;" *ngIf="course">
           <vg-overlay-play vgFor="singleVideo"></vg-overlay-play>
           <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls class="video-play">
             <source src="{{ transform(course.video) }}" type="video/mp4">

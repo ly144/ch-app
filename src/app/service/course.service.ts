@@ -40,6 +40,47 @@ export class CourseService {
       );
   }
 
+  /**
+   * 获取课程的问答
+   * @param {number} courseId
+   * @returns {Observable<any>}
+   */
+  getCourseQuestion(courseId: number) {
+    return this.http.post(URL + '/detail/getCourseQuestion', courseId, httpOptions)
+      .pipe(
+        catchError(this.handleError('getCourseQuestion'))
+      );
+  }
+
+  /**
+   * 获取课程的评论
+   * @param {number} courseId
+   * @returns {Observable<any>}
+   */
+  getCourseComment(courseId: number) {
+    return this.http.post(URL + '/detail/getCourseComment', courseId, httpOptions)
+      .pipe(
+        catchError(this.handleError('getCourseComment'))
+      );
+  }
+
+  /**
+   * 获取课程的笔记
+   * @param {number} courseId
+   * @returns {Observable<any>}
+   */
+  getCourseNotes(courseId: number) {
+    return this.http.post(URL + '/detail/getCourseNotes', courseId, httpOptions)
+      .pipe(
+        catchError(this.handleError('getCourseNotes'))
+      );
+  }
+
+
+
+
+
+
   // 获得课程学习视频
   getCourseLearn(id: number) {
     console.log(id);
