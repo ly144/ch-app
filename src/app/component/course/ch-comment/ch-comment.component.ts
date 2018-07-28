@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {CourseService} from '../../../service/course.service';
+import { CourseService } from '../../../service/course.service';
+import { EmitService, Info } from '../../../service/emit.service';
 
 export class Comment {
   img: string;
@@ -20,27 +21,36 @@ export class Comment {
 export class ChCommentComponent implements OnInit {
 
   comment: Comment[];
-  /*= [{img: 'http://static.runoob.com/images/mix/img_avatar.png', name: '大叔好可爱',
-    content: '1.SpringBoot和SpringMVC的关系SpringBoot是SpringMVC的升级版，两者没有必然的联系，可以直接学SpringBoot', agreeNum: 1, time: '2018-05-21'},
-    {img: 'http://static.runoob.com/images/mix/img_avatar.png', name: '大叔好可爱',
-      content: '1.SpringBoot和SpringMVC的关系SpringBoot是SpringMVC的升级版，两者没有必然的联系，可以直接学SpringBoot', agreeNum: 1, time: '2018-05-21'},
-    {img: 'http://static.runoob.com/images/mix/img_avatar.png', name: '大叔好可爱',
-      content: '1.SpringBoot和SpringMVC的关系SpringBoot是SpringMVC的升级版，两者没有必然的联系，可以直接学SpringBoot', agreeNum: 1, time: '2018-05-21'},
-    {img: 'http://static.runoob.com/images/mix/img_avatar.png', name: '大叔好可爱',
-      content: '1.SpringBoot和SpringMVC的关系SpringBoot是SpringMVC的升级版，两者没有必然的联系，可以直接学SpringBoot', agreeNum: 1, time: '2018-05-21'},
-    {img: 'http://static.runoob.com/images/mix/img_avatar.png', name: '大叔好可爱',
-      content: '1.SpringBoot和SpringMVC的关系SpringBoot是SpringMVC的升级版，两者没有必然的联系，可以直接学SpringBoot', agreeNum: 1, time: '2018-05-21'}];
-*/
 
-  init() {
-    this.courseService.getSectionComment(1)
+  initCourse(courseId: number) {
+    this.courseService.getCourseComment(courseId)
       .subscribe((comment: Comment[]) => {
         this.comment = comment;
         console.log(this.comment);
       });
   }
 
-  constructor(private courseService: CourseService) { }
+  initSection(sectionId: number) {
+    this.courseService.getSectionComment(sectionId)
+      .subscribe((comment: Comment[]) => {
+        this.comment = comment;
+        console.log(this.comment);
+      });
+  }
+
+  init() {
+    const info: Info = this.emitService.info;
+    if (info.name === 'details') {
+      console.log('评论接收details');
+      this.initCourse(info.id);
+    } else if (info.name === 'learning') {
+      console.log('评论接收learning');
+      this.initSection(info.id);
+    }
+  }
+
+  constructor(private courseService: CourseService,
+              private emitService: EmitService) { }
 
   ngOnInit() {
     this.init();

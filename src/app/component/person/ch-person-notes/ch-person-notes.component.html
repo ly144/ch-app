@@ -6,7 +6,7 @@
       <li  class="course"id="{{ selectBtn[1] }}" (click)="select(1)"><a>课程</a></li>
     </ul>
   </div>
-  <div class="col-2">
+  <div class="col-2" *ngIf="notes">
     <p class="totalnote">共{{ notes.length }}条笔记</p>
   </div>
   <div class="col-12">

@@ -24,14 +24,14 @@ const ROUTES: Routes = [
   { path: 'home', component: ChHomeComponent },
   { path: 'selection', component: ChSelectionComponent },
   { path: 'ape', component: ChApeComponent },
-  { path: 'details', component: ChDetailsComponent, children: [
+  { path: 'details/:id', component: ChDetailsComponent, children: [
       { path: '', component: ChCourseChapterComponent },
       { path: 'chapter', component: ChCourseChapterComponent },
       { path: 'comment', component: ChCommentComponent },
       { path: 'notes', component: ChNotesComponent },
       { path: 'question', component: ChQuestionComponent }
     ]},
-  { path: 'learning', component: ChLearningComponent, children: [
+  { path: 'learning/:id', component: ChLearningComponent, children: [
       { path: '', component: ChQuestionComponent },
       { path: 'comment', component: ChCommentComponent },
       { path: 'notes', component: ChNotesComponent },

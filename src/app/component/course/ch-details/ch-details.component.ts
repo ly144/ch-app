@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../../../service/course.service';
 import { Detailed } from '../../../models/Detailed';
+import { ActivatedRoute } from '@angular/router';
+import { EmitService } from '../../../service/emit.service';
 
 @Component({
   selector: 'app-ch-details',
@@ -29,14 +31,23 @@ export class ChDetailsComponent implements OnInit {
     this.selection = c;
   }
 
-  constructor(private courseService: CourseService) {
+  constructor(private courseService: CourseService,
+              private route: ActivatedRoute,
+              private emitService: EmitService) {
   }
 
-  ngOnInit() {
+  // 修改消息
+  emitFun(id: number) {
+    this.emitService.info = {name: 'details', id: id};
+  }
+
+  init() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    console.log('route:' + id);
+    this.emitFun(1);
     // 请求后台数据
     this.courseService.getCourseDetail([1, 3])
       .subscribe((detailed: Detailed) => {
-        console.log(detailed);
         this.detailed = detailed;
         console.log(this.detailed);
         if (this.detailed.learned === 0) {
@@ -45,6 +56,10 @@ export class ChDetailsComponent implements OnInit {
           this.isLearn = true;
         }
       });
+  }
+
+  ngOnInit() {
+    this.init();
   }
 
 }

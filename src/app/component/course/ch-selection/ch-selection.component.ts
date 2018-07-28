@@ -20,7 +20,6 @@ export class ChSelectionComponent implements OnInit {
   // 难度
   difficult: string[] = ['全部', '入门', '初级', '中级', '高级'];
   selection2 = 0;
-
   // 选择方向
   select0(s: string, c: number) {
     this.nowSelect[0] = s;
@@ -31,7 +30,6 @@ export class ChSelectionComponent implements OnInit {
     console.log(this.nowSelect);
     this.emitFun();
   }
-
   // 选择分类
   select1(s: string, c: number) {
     this.nowSelect[1] = s;
@@ -43,7 +41,6 @@ export class ChSelectionComponent implements OnInit {
     }
     this.emitFun();
   }
-
   // 判断分类属于哪个方向
   judge(s: string) {
     console.log(s);
@@ -58,15 +55,13 @@ export class ChSelectionComponent implements OnInit {
       }
     }
   }
-
   // 选择难度
   select2(s: string, c: number) {
     this.nowSelect[2] = s;
     this.selection2 = c;
     this.emitFun();
   }
-
-// 初始化全部all里面第一行
+  // 初始化全部all里面第一行
   init() {
     console.log('init');
     let top = 1;
@@ -104,7 +99,7 @@ export class ChSelectionComponent implements OnInit {
   }
 
   constructor(private homeService: HomeService,
-              public emitService: EmitService) {
+              private emitService: EmitService) {
   }
 
   ngOnInit() {

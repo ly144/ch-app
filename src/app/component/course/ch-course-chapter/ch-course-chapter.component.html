@@ -1,35 +1,39 @@
-<div class="row chapter-1">
+<div class="row chapter-1" *ngIf="courseChapters">
   <p>简介：&nbsp;&nbsp;{{courseChapters.intro}}</p>
 </div>
 
 <br>
 
-<div class="row chapter-2" *ngFor="let cha of courseChapters.chapters">
-  <div class="col-12">
+<div *ngIf="courseChapters">
+  <div class="row chapter-2" *ngFor="let cha of courseChapters.chapters">
+    <div class="col-12">
 
-    <div class=" row chapterIn">
-      <div class="col-12">
-        <div class="chapter-3"> 第{{ cha.chapter }}章 &nbsp; {{ cha.name }}</div>
-        <div class="chapter-4">{{cha.summary}}</div>
+      <div class=" row chapterIn">
+        <div class="col-12">
+          <div class="chapter-3"> 第{{ cha.chapter }}章 &nbsp; {{ cha.name }}</div>
+          <div class="chapter-4">{{cha.summary}}</div>
+        </div>
       </div>
-    </div>
 
 
-    <div class="row chapterLearn">
-      <div class="col-12">
-        <div class="chapter-5" routerLink="/learning" routerLinkActive="active" *ngFor="let sec of cha.sections">
-          <!--<a class="chapter-5-a">-->
+      <div class="row chapterLearn">
+        <div class="col-12">
+          <div id="chapter-5" *ngFor="let sec of cha.sections" routerLink="/learning/{{ sec.id }}"
+               routerLinkActive="active">
+            <!--<a class="chapter-5-a">-->
             <i class="anticon anticon-play-circle-o" style="font-size: 18px;"></i>
             &nbsp;&nbsp;{{cha.chapter}}-{{sec.section}} &nbsp;&nbsp;{{sec.name}}({{sec.time}})
             <!-- 没学，学一半，学完 -->
-            <i class="anticon anticon-close-circle-o" id="notLearn" *ngIf="sec.learnedSections !== 1 && sec.learningHalfs !== 1"></i>
-            <i class="anticon anticon-clock-circle-o" id="LearnHalf" *ngIf="sec.learningHalfs === 1"></i>
+            <i class="anticon anticon-close-circle-o" id="notLearn"
+               *ngIf="sec.learnedSections !== 1 && sec.learningHalfs !== 1"></i>
+            <i class="anticon anticon-exclamation-circle-o" id="LearnHalf" *ngIf="sec.learningHalfs === 1"></i>
             <i class="anticon anticon-check-circle-o" id="haveLearned" *ngIf="sec.learnedSections === 1"></i>
             <span class="recentLearn" *ngIf="sec.newLearn === sec.id">最近学习</span>
-          <!--</a>-->
+            <!--</a>-->
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </div>
