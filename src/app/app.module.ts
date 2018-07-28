@@ -49,6 +49,7 @@ import { PersonService } from './service/person.service';
 import { CourseService } from './service/course.service';
 import { ApeService } from './service/ape.service';
 import { ChApeQuizComponent } from './component/community/ch-ape-quiz/ch-ape-quiz.component';
+import {QuillModule} from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { ChApeQuizComponent } from './component/community/ch-ape-quiz/ch-ape-qui
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
-    VgBufferingModule
+    VgBufferingModule,
+    QuillModule,
   ],
   bootstrap: [AppComponent],
   /** 配置 ng-zorro-antd 国际化 **/

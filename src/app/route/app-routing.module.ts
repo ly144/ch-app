@@ -18,6 +18,7 @@ import { ChDetailsComponent } from '../component/course/ch-details/ch-details.co
 import { ChCourseChapterComponent } from '../component/course/ch-course-chapter/ch-course-chapter.component';
 import { ChLogRegisteredComponent } from '../component/person/ch-log-registered/ch-log-registered.component';
 import { ChCommunityComponent } from '../component/community/ch-community/ch-community.component';
+import {ChApeQuizComponent} from '../component/community/ch-ape-quiz/ch-ape-quiz.component';
 
 const ROUTES: Routes = [
   { path: '', component: ChHomeComponent },
@@ -47,6 +48,7 @@ const ROUTES: Routes = [
       { path: 'person-ape', component: ChPersonApeComponent},
       { path: 'person-set', component: ChPersonSetComponent},
     ]},
+  { path: 'quiz', component: ChApeQuizComponent },
 ];
 
 @NgModule({

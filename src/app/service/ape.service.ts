@@ -3,6 +3,7 @@ import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHandler, HttpHeaders} from '@angular/common/http';
 import {URL} from '../models/uploadUrl';
 import {catchError} from 'rxjs/internal/operators';
+import {Community} from '../models/Community';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -38,11 +39,27 @@ export class ApeService {
       );
   }
 
-  // 获取猿问问题详细页面提问者信息，以及回答内容,传过去问题id
+  // 获取猿问问题详细页面提问者信息，以及回答内容,传过去问题id,ch-community
   getApeCommunity(id: number) {
     return this.http.post(URL + '/ape/getApeCommunity', id, httpOptions)
       .pipe(
         catchError(this.handleError('getApeCommunity'))
+      );
+  }
+
+  // 猿问提问页面获取所有分类，ch-ape-quiz
+  getClassify() {
+    return this.http.get(URL + '/ape/getClassify', httpOptions)
+      .pipe(
+        catchError(this.handleError('getClassify'))
+      );
+  }
+
+  // 猿问提问页面传数据，ch-ape-quiz
+  setCommunity(community: Community) {
+    return this.http.post(URL + '/ape/setCommunity', JSON.stringify(community), httpOptions)
+      .pipe(
+        catchError(this.handleError('setCommunity'))
       );
   }
 
