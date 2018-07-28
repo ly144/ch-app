@@ -11,7 +11,7 @@
 #qa-content-intro {
   margin-top: 16px;
   line-height: 20px;
-  font-size: 12px;
+  font-size: 14px;
   color: #93999f;
 }
 .qa-content-intro-a {
@@ -254,4 +254,18 @@
 #ques-class-focus a:hover {
   background: #D9DDE1;
   color: #07111B;
+}
+
+
+/*后面加上的样式*/
+.quesName{
+  padding-left: 10px;
+}
+
+.lookNum{
+  margin-left: 20px;
+}
+
+#attention{
+  margin-right: 10px;
 }

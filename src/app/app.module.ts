@@ -47,6 +47,8 @@ import { HomeService} from './service/home.service';
 import { EmitService } from './service/emit.service';
 import { PersonService } from './service/person.service';
 import { CourseService } from './service/course.service';
+import { ApeService } from './service/ape.service';
+import { ChApeQuizComponent } from './component/community/ch-ape-quiz/ch-ape-quiz.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,7 @@ import { CourseService } from './service/course.service';
     ChBackstageAddChapterComponent,
     ChBackstageAddSectionComponent,
     ChFooterComponent,
+    ChApeQuizComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,6 +104,7 @@ import { CourseService } from './service/course.service';
     EmitService,
     PersonService,
     CourseService,
+    ApeService,
   ]
 })
 export class AppModule { }

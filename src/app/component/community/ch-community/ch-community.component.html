@@ -2,25 +2,25 @@
   <div class="row" id="community-row">
     <div class="col-1"></div>
     <!-- 问答页面主体 -->
-    <div class="col-7" id="community-content">
+    <div class="col-7" id="community-content" *ngIf="community">
 
       <!-- 问题内容 -->
       <div class="row" id="qa-content">
         <!-- 题目 -->
         <div class="col-12" id="qa-content-title">
-          <h1>求奇数偶数问题</h1>
+          <h1>{{ community.title }}</h1>
         </div>
         <!-- 头像与昵称 -->
         <div class="col-3" id="qa-content-intro">
-          <a class="qa-content-intro-a"><img src="http://static.runoob.com/images/mix/img_avatar.png" class="qa-user-img"></a>
-          <span>乐享天机</span>
+          <a class="qa-content-intro-a"><img src="{{ community.quesImg }}" class="qa-user-img"></a>
+          <span class="quesName">{{ community.quesName }}</span>
         </div>
         <div class="offset-6 col-3" id="qa-content-edit">
-          <span>浏览&nbsp;248</span>
-          <span>回答&nbsp;6</span>
+          <span class="lookNum">浏览&nbsp;{{ community.lookNum }}</span>
+          <span>回答&nbsp;{{ community.answerNum }}</span>
         </div>
         <div class="col-12" id="qa-content-answer">
-          编写一个应用程序，读取用户输入的一个整数，判断该整数的奇偶性并将结果显示在控制台上。提示：使用求模运算符,并且可以循环输入判断，当输入0时退出程序
+         {{ community.content }}
         </div>
       </div>
 
@@ -28,11 +28,11 @@
       <div class="row" id="qa-tips">
         <!-- 分类 -->
         <div class="col-10" id="qa-tips-class">
-          <div id="qa-tips-class-a"><a>JAVA</a></div>
+          <div id="qa-tips-class-a"><a>{{ community.classify }}</a></div>
         </div>
         <!-- 关注数 -->
         <div class="col-2" id="qa-tips-attention">
-          <a>关注&nbsp;1</a>
+          <a><i class="anticon anticon-heart-o" id="attention"></i>&nbsp;{{ community.attentionNum }}</a>
         </div>
       </div>
 
@@ -48,21 +48,21 @@
 
       <!-- 回答 -->
       <div class="row">
-        <div class="col-12 qa-answer-num">6回答</div>
+        <div class="col-12 qa-answer-num">{{ community.answerNum }}回答</div>
         <!-- 回答内容 -->
         <div class="col-12"  id="ques-answer">
-          <div class="row" id="ques-answer-con">
+          <div class="row" id="ques-answer-con" *ngFor="let ans of community.answer">
             <div class="col-1">
-              <a><img src="http://static.runoob.com/images/mix/img_avatar.png" class="user-img"></a>
+              <a><img src="{{ ans.img }}" class="user-img"></a>
             </div>
             <div class="col-11">
-              <div id="ques-answer-username"><a>冰封神帝</a></div>
-              <div id="ques-answer-content">public static void main</div>
+              <div id="ques-answer-username"><a>{{ ans.name }}</a></div>
+              <div id="ques-answer-content">{{ ans.content }}</div>
               <div class="row" id="ques-answer-footer">
-                <div class="col-2 ques-answer-footer-btn"><a>赞&nbsp;3</a></div>
-                <div class="col-2 ques-answer-footer-btn"><a>反对&nbsp;0</a></div>
-                <div class="col-2" id="ques-answer-footer-num"><a>0个回复</a></div>
-                <div class="offset-4 col-2" id="ques-answer-footer-time">2018-07-18</div>
+                <div class="col-2 ques-answer-footer-btn"><a>赞&nbsp;{{ ans.agreeNum }}</a></div>
+                <div class="col-2 ques-answer-footer-btn"><a>反对&nbsp;{{ ans.opposeNum }}</a></div>
+                <div class="col-2" id="ques-answer-footer-num"><a>{{ ans.answerNum }}个回复</a></div>
+                <div class="offset-4 col-2" id="ques-answer-footer-time">{{ ans.time}}</div>
               </div>
             </div>
           </div>

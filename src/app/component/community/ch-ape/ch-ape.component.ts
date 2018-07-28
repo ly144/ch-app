@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Question } from '../../../models/Question';
+import {ApeService} from '../../../service/ape.service';
+import {Community} from '../../../models/Community';
+import {Person} from '../../../models/Person';
 
 @Component({
   selector: 'app-ch-ape',
@@ -9,15 +11,8 @@ import { Question } from '../../../models/Question';
 export class ChApeComponent implements OnInit {
 
   /*问答数组*/
-  question: Question[];
-  /*= [
-    {img: 'http://static.runoob.com/images/mix/img_avatar.png', title: '请详细解释一下吧,我怎么感觉二个和第三个都一样呢',
-      answer: [{name: 'qq_Ismile_2', content: 'System.out.println(a++); => '}],
-      answerNum: 2, agreeNum: 0, opposeNum: 0, lookNum: 274, chapter: 1, section: 1, sectionName: 'JAVA', time: ''},
-    {img: 'http://static.runoob.com/images/mix/img_avatar.png', title: '请详细解释一下吧,我怎么感觉二个和第三个都一样呢',
-      answer: [{name: 'qq_Ismile_2', content: 'System.out.println(a++); => '}],
-      answerNum: 2, agreeNum: 0, opposeNum: 0, lookNum: 274, chapter: 1, section: 1, sectionName: 'JAVA', time: ''}];
-      */
+  apes: Community;
+  person: Person;
 
   /*是否选择分类*/
   isTag = true;
@@ -33,9 +28,21 @@ export class ChApeComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  init() {
+    this.apeService.getApe().subscribe((ape: Community) => {
+      console.log(ape);
+      this.apes = ape;
+    });
+    this.apeService.getApeLogin(3).subscribe((person: Person) => {
+      console.log(person);
+      this.person = person;
+    });
+  }
+
+  constructor(private apeService:  ApeService) { }
 
   ngOnInit() {
+    this.init();
   }
 
 }
