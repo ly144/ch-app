@@ -48,6 +48,9 @@ import { EmitService } from './service/emit.service';
 import { PersonService } from './service/person.service';
 import { CourseService } from './service/course.service';
 import { BackstageService } from './service/backstage.service';
+import { ApeService } from './service/ape.service';
+import { ChApeQuizComponent } from './component/community/ch-ape-quiz/ch-ape-quiz.component';
+import {QuillModule} from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -78,6 +81,7 @@ import { BackstageService } from './service/backstage.service';
     ChBackstageAddChapterComponent,
     ChBackstageAddSectionComponent,
     ChFooterComponent,
+    ChApeQuizComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,7 +95,8 @@ import { BackstageService } from './service/backstage.service';
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
-    VgBufferingModule
+    VgBufferingModule,
+    QuillModule,
   ],
   bootstrap: [AppComponent],
   /** 配置 ng-zorro-antd 国际化 **/
@@ -102,6 +107,7 @@ import { BackstageService } from './service/backstage.service';
     EmitService,
     PersonService,
     CourseService,
+    ApeService,
     BackstageService,
   ]
 })

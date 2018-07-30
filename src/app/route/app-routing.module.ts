@@ -20,6 +20,7 @@ import { ChLogRegisteredComponent } from '../component/person/ch-log-registered/
 import { ChCommunityComponent } from '../component/community/ch-community/ch-community.component';
 import { ChBackstageHomeComponent } from '../component/backstage/ch-backstage-home/ch-backstage-home.component';
 import { ChBacktageHomeBComponent } from '../component/backstage/ch-backtage-home-b/ch-backtage-home-b.component';
+import {ChApeQuizComponent} from '../component/community/ch-ape-quiz/ch-ape-quiz.component';
 
 const ROUTES: Routes = [
   { path: '', component: ChHomeComponent },
@@ -51,6 +52,7 @@ const ROUTES: Routes = [
     ]},
   { path: 'backstageA', component: ChBackstageHomeComponent },
   { path: 'backstageB', component: ChBacktageHomeBComponent },
+  { path: 'quiz', component: ChApeQuizComponent },
 ];
 
 @NgModule({

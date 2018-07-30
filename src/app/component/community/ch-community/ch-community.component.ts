@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Community} from '../../../models/Community';
+import {ApeService} from '../../../service/ape.service';
 
 @Component({
   selector: 'app-ch-community',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ch-community.component.css']
 })
 export class ChCommunityComponent implements OnInit {
+
+  community: Community;
 
   isONFocusClass = false;
 
@@ -17,9 +21,18 @@ export class ChCommunityComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  init() {
+    this.apeService.getApeCommunity(1).subscribe((community: Community) => {
+      console.log(community);
+      this.community = community;
+    });
+  }
+
+  constructor(private apeService: ApeService) {
+  }
 
   ngOnInit() {
+    this.init();
   }
 
 }

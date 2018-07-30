@@ -21,24 +21,24 @@
       </div>
 
       <!-- 问答列表 -->
-      <div id="ape-list" class="col-12" *ngFor="let que of question">
+      <div id="ape-list" class="col-12" *ngFor="let ape of apes">
 
         <div class="row">
           <div id="ape-list-img" class="col-1">
-            <a><img src="{{ que.img }}"></a>
+            <a><img src="{{ ape.img }}"></a>
           </div>
           <div class="col-11">
-            <div id="from-tag" >来自&nbsp;&nbsp;&nbsp;<a>{{ que.section }}</a></div>
-            <div id="ape-tit"><a>{{ que.title }}</a></div>
+            <div id="from-tag" >来自&nbsp;&nbsp;&nbsp;<a>{{ ape.classify }}</a></div>
+            <div id="ape-tit"><a>{{ ape.title }}</a></div>
           </div>
         </div>
 
         <!-- 回答内容 -->
         <div id="answer-con" class="row">
           <div class="offset-1 col-11">
-            <div id="user"><a>{{ que.answer[0].name }}</a><span>&nbsp;&nbsp;回答：</span></div>
+            <div id="user"><a>{{ ape.answer[0].name }}</a><span>&nbsp;&nbsp;回答：</span></div>
             <div id="answer-content">
-              {{ que.answer[0].content }}
+              {{ ape.answer[0].content }}
               <span>[查看全部]</span>
             </div>
           </div>
@@ -46,8 +46,8 @@
 
         <!-- 点赞按钮等 -->
         <div id="ctrl-bar" class="row">
-          <div id="agree-with" class="offset-1 col-2"><span>已帮助用户&nbsp;{{ que.agreeNum }}</span></div>
-          <div class="col-2"><span>{{ que.opposeNum }}&nbsp;人反对</span></div>
+          <div id="agree-with" class="offset-1 col-2"><span>已帮助用户&nbsp;{{ ape.answer[0].agreeNum }}</span></div>
+          <div class="col-2"><span>{{ ape.answer[0].opposeNum }}&nbsp;人反对</span></div>
           <div class="col-1"><span>分享</span></div>
         </div>
 
@@ -63,10 +63,10 @@
           <!-- 用户简介 -->
           <div id="user-info" class="row">
             <div id="user-img" class="col-2">
-              <a><img src="http://static.runoob.com/images/mix/img_avatar.png"></a>
+              <a><img src="{{ person.picture }}"></a>
             </div>
             <div class="col-10">
-              <div id="user-name"><a>昵称</a></div>
+              <div id="user-name"><a>{{ person.name }}</a></div>
             </div>
           </div>
           <!-- 相关按钮 -->
