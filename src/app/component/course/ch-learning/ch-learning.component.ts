@@ -3,6 +3,7 @@ import { CourseService } from '../../../service/course.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { EmitService } from '../../../service/emit.service';
+import {CourseChapter} from '../../../models/CourseChapter';
 
 export class CourseLearn {
   chapter: number;
@@ -17,6 +18,17 @@ export class CourseLearn {
   styleUrls: ['./ch-learning.component.css']
 })
 export class ChLearningComponent implements OnInit {
+
+  // 获取章节展开的章节信息
+  courseChapters: CourseChapter;
+  showChapter = false;
+  showNum = 1;
+  // 提问题，做笔记
+  showQues = false;
+  showColNum = 10;
+  showNotes = false;
+  // 评论
+  isVisible = false;
 
   course: CourseLearn;
   url = 'http://static.videogular.com/assets/videos/videogular.mp4';
@@ -52,6 +64,49 @@ export class ChLearningComponent implements OnInit {
         this.course = cl;
         console.log(this.course);
       });
+    // 获取章节展开的章节信息
+    this.courseService.getChapterSection(1)
+      .subscribe((courseChapters: CourseChapter) => {
+        this.courseChapters = courseChapters;
+        console.log(this.courseChapters);
+      });
+  }
+
+  // 展开章节方法
+  showOne() {
+    if (this.showNum === 1) {
+      this.showChapter = true;
+      this.showNum = 0 ;
+    } else if (this.showNum !== 1) {
+      this.showChapter = false;
+      this.showNum = 1;
+    }
+  }
+  // 展开问答方法
+  showTwo() {
+    if (this.showColNum === 10) {
+      this.showQues = true;
+      this.showColNum = 7 ;
+    } else if (this.showColNum === 7 && this.showNotes === true) {
+      this.showNotes = false;
+      this.showQues = true;
+    } else if (this.showColNum === 7 && this.showNotes === false) {
+      this.showQues = false;
+      this.showColNum = 10;
+    }
+  }
+  // 展开笔记方法
+  showThree() {
+    if (this.showColNum === 10) {
+      this.showNotes = true;
+      this.showColNum = 7 ;
+    } else if (this.showColNum === 7 && this.showQues === true) {
+      this.showQues = false;
+      this.showNotes = true;
+    } else if (this.showColNum === 7 && this.showQues === false) {
+      this.showNotes = false;
+      this.showColNum = 10;
+    }
   }
 
   // 修改消息

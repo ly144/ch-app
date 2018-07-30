@@ -2,17 +2,57 @@
   <!-- 课程头 -->
   <div id="learning-header" class="row" *ngIf="course">
     <div class="col-1">
-      返回
+      <i class="anticon anticon-arrow-left return"></i>
     </div>
-    <div class="col-3">
+    <div class="col-3 section">
       {{ course.chapter }}-{{ course.section }}&nbsp;{{ course.name }}
     </div>
     <div class="col-6">
     </div>
     <div class="col-2">
       <div class="row">
-        <div class="col">通知</div>
-        <div class="col">个人中心</div>
+        <div class="col section">通知</div>
+        <div class="col section">个人中心</div>
+      </div>
+    </div>
+  </div>
+
+  <!--文章展开-->
+  <div class="section-list" *ngIf="showChapter">
+    <div class="section-list-son"*ngFor="let cha of courseChapters.chapters">
+      <div class="which-chapter" >
+        第{{ cha.chapter }}章 &nbsp; {{ cha.name }}
+      </div>
+      <div class="tool-section" *ngFor="let sec of cha.sections">
+        <i class="anticon anticon-play-circle-o"></i>
+        &nbsp;{{cha.chapter}}-{{sec.section}} &nbsp;&nbsp;{{sec.name}}({{sec.time}})
+        <!-- 没学，学一半，学完 -->
+        <i class="anticon anticon-close-circle-o" id="notLearn"
+           *ngIf="sec.learnedSections !== 1 && sec.learningHalfs !== 1"></i>
+        <i class="anticon anticon-clock-circle-o" id="LearnHalf" *ngIf="sec.learningHalfs === 1"></i>
+        <i class="anticon anticon-check-circle-o" id="haveLearned" *ngIf="sec.learnedSections === 1"></i>
+        <span class="recentLearn" *ngIf="1 === sec.id">正在学</span>
+      </div>
+    </div>
+  </div>
+
+  <!--评论-->
+  <div class="modal fade" id="commentModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content content">
+
+        <!-- 模态框主体 -->
+        <div class="modal-body">
+          <div class="form-group comment">
+            <label for="comment" >我要评论</label>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <textarea class="form-control area" rows="4" id="comment" placeholder="扯淡、吐槽、表扬、鼓励……想说啥就说啥！"></textarea>
+            <p class="publish">发表评论</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -23,67 +63,88 @@
     <div class="col-1" id="course-sidebar">
       <dl>
         <dd id="openchapter">
-          <a><i class="anticon anticon-bars"></i>
-          <br />
-          <span>章节</span></a>
+          <a (click)="showOne()"><i class="anticon anticon-bars"></i>
+            <br/>
+            <span>章节</span></a>
         </dd>
         <dd id="openpanel">
-          <a><i class="anticon anticon-question-circle-o"></i>
-          <br />
+          <a (click)="showTwo()"><i class="anticon anticon-question-circle-o"></i>
+            <br/>
             <span>问答</span></a>
         </dd>
         <dd id="openanel">
-          <a><i class="anticon anticon-form"></i>
-          <br />
+          <a (click)="showThree()"><i class="anticon anticon-form"></i>
+            <br/>
             <span>笔记</span></a>
         </dd>
         <dd id="opencomment">
-          <a><i class="anticon anticon-message"></i>
-          <br />
+          <a id="showCommentModal" data-toggle="modal" data-target="#commentModal"><i class="anticon anticon-message"></i>
+            <br/>
             <span>评论</span></a>
         </dd>
       </dl>
     </div>
 
     <!-- 播放视频框 -->
-    <div id="course-center" class="col-10">
+    <div class="col-{{ showColNum }}" id="course-center">
       <div id="course-video">
         <!--<vg-player>-->
-          <!--<vg-overlay-play></vg-overlay-play>-->
-          <!--<vg-buffering></vg-buffering>-->
+        <!--<vg-overlay-play></vg-overlay-play>-->
+        <!--<vg-buffering></vg-buffering>-->
 
-          <!--<vg-scrub-bar>-->
-            <!--<vg-scrub-bar-current-time></vg-scrub-bar-current-time>-->
-            <!--<vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>-->
-          <!--</vg-scrub-bar>-->
+        <!--<vg-scrub-bar>-->
+        <!--<vg-scrub-bar-current-time></vg-scrub-bar-current-time>-->
+        <!--<vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>-->
+        <!--</vg-scrub-bar>-->
 
-          <!--<vg-controls>-->
-            <!--<vg-play-pause></vg-play-pause>-->
-            <!--<vg-playback-button></vg-playback-button>-->
+        <!--<vg-controls>-->
+        <!--<vg-play-pause></vg-play-pause>-->
+        <!--<vg-playback-button></vg-playback-button>-->
 
-            <!--<vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>-->
+        <!--<vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>-->
 
-            <!--<vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>-->
+        <!--<vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>-->
 
-            <!--<vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>-->
-            <!--<vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>-->
+        <!--<vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>-->
+        <!--<vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>-->
 
-            <!--<vg-track-selector></vg-track-selector>-->
-            <!--<vg-mute></vg-mute>-->
-            <!--<vg-volume></vg-volume>-->
-            <!--<vg-fullscreen></vg-fullscreen>-->
-          <!--</vg-controls>-->
+        <!--<vg-track-selector></vg-track-selector>-->
+        <!--<vg-mute></vg-mute>-->
+        <!--<vg-volume></vg-volume>-->
+        <!--<vg-fullscreen></vg-fullscreen>-->
+        <!--</vg-controls>-->
 
-          <!--<video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>-->
-            <!--<source [src]="transform(course.video)" type="video/mp4">-->
-          <!--</video>-->
+        <!--<video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>-->
+        <!--<source [src]="transform(course.video)" type="video/mp4">-->
+        <!--</video>-->
         <!--</vg-player>-->
         <vg-player style="border-radius: 10px;" *ngIf="course">
           <vg-overlay-play vgFor="singleVideo"></vg-overlay-play>
           <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls class="video-play">
-            <source src="{{ transform(course.video) }}" type="video/mp4">
+            <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
           </video>
         </vg-player>
+      </div>
+    </div>
+
+    <!--问答展开-->
+    <div class="col-4 ques" *ngIf="showQues">
+      <div class="shadow-son"></div>
+      <div class="ques-content">
+        <p class="askQues">提问题</p>
+        <input type="text" placeholder="请一句话说明你的问题">
+        <quill-editor [style]="{height: '180px'}"></quill-editor>
+        <p class="ok">提交</p>
+      </div>
+    </div>
+
+    <!--笔记展开-->
+    <div class="col-4 ques" *ngIf="showNotes">
+      <div class="shadow-son"></div>
+      <div class="ques-content">
+        <p class="askQues">写笔记</p>
+        <quill-editor [style]="{height: '180px'}"></quill-editor>
+        <p class="ok">提交</p>
       </div>
     </div>
 

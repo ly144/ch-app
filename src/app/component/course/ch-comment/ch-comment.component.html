@@ -1,6 +1,6 @@
 <div id="comment-sidebar" class="row">
   <a id="comment-all">全部</a>
-  <a id="comment-issue">我要发布</a>
+  <a id="comment-issue" onclick="document.getElementById('showCommentModal').click()">我要发布</a>
 </div>
 <div id="comment-content" *ngFor="let com of comment">
   <div class="row">
