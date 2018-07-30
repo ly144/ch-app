@@ -47,6 +47,7 @@ import { HomeService} from './service/home.service';
 import { EmitService } from './service/emit.service';
 import { PersonService } from './service/person.service';
 import { CourseService } from './service/course.service';
+import { BackstageService } from './service/backstage.service';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { CourseService } from './service/course.service';
     EmitService,
     PersonService,
     CourseService,
+    BackstageService,
   ]
 })
 export class AppModule { }

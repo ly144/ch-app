@@ -18,12 +18,13 @@ import { ChDetailsComponent } from '../component/course/ch-details/ch-details.co
 import { ChCourseChapterComponent } from '../component/course/ch-course-chapter/ch-course-chapter.component';
 import { ChLogRegisteredComponent } from '../component/person/ch-log-registered/ch-log-registered.component';
 import { ChCommunityComponent } from '../component/community/ch-community/ch-community.component';
+import { ChBackstageHomeComponent } from '../component/backstage/ch-backstage-home/ch-backstage-home.component';
+import { ChBacktageHomeBComponent } from '../component/backstage/ch-backtage-home-b/ch-backtage-home-b.component';
 
 const ROUTES: Routes = [
   { path: '', component: ChHomeComponent },
   { path: 'home', component: ChHomeComponent },
   { path: 'selection', component: ChSelectionComponent },
-  { path: 'ape', component: ChApeComponent },
   { path: 'details/:id', component: ChDetailsComponent, children: [
       { path: '', component: ChCourseChapterComponent },
       { path: 'chapter', component: ChCourseChapterComponent },
@@ -38,6 +39,7 @@ const ROUTES: Routes = [
       { path: 'question', component: ChQuestionComponent }
     ]},
   { path: 'logReg', component: ChLogRegisteredComponent },
+  { path: 'ape', component: ChApeComponent },
   { path: 'community', component: ChCommunityComponent },
   { path: 'notesSon', component: ChNotesSonComponent },
   { path: 'person', component: ChPersonComponent, children: [
@@ -47,6 +49,8 @@ const ROUTES: Routes = [
       { path: 'person-ape', component: ChPersonApeComponent},
       { path: 'person-set', component: ChPersonSetComponent},
     ]},
+  { path: 'backstageA', component: ChBackstageHomeComponent },
+  { path: 'backstageB', component: ChBacktageHomeBComponent },
 ];
 
 @NgModule({
