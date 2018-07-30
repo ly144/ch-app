@@ -1,5 +1,5 @@
-<button nz-button [nzType]="'primary'" (click)="showModal()"><span>Show Modal</span></button>
-<nz-modal [(nzVisible)]="isVisible" nzTitle="添加课程" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+<button nz-button [nzType]="'primary'" (click)="showModal()" style="display: none"><span>Show Modal</span></button>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="添加课程" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" [nzStyle]="{ top: '20px' }">
 
   <div nz-row>
     <div nz-col [nzSpan]="12">
@@ -9,7 +9,7 @@
         [nzDefaultExpandedKeys]="expandKeys"
         [nzNodes]="nodes"
         nzPlaceHolder="Please select"
-        [(ngModel)]="value"
+        [(ngModel)]="type"
         (ngModelChange)="onChange($event)">
       </nz-tree-select>
     </div>
@@ -21,7 +21,7 @@
         [nzDefaultExpandedKeys]="expandKeys"
         [nzNodes]="nodesDiffcult"
         nzPlaceHolder="Please select"
-        [(ngModel)]="value"
+        [(ngModel)]="addCourse.difficulty"
         (ngModelChange)="onChange($event)">
       </nz-tree-select>
     </div>
@@ -32,7 +32,7 @@
       <label class="coursename">课程名字</label>
     </div>
     <div nz-col [nzSpan]="20">
-      <input class="newCourse" nz-input placeholder="请输入新增课程名" [(ngModel)]="value">
+      <input class="newCourse" nz-input placeholder="请输入新增课程名" [(ngModel)]="addCourse.name">
     </div>
   </div>
 
@@ -54,10 +54,28 @@
 
   <div nz-row class="course">
     <div nz-col [nzSpan]="4">
+      <label class="coursename">课程概述</label>
+    </div>
+    <div nz-col [nzSpan]="20">
+      <input class="newCourse" nz-input placeholder="请输入新增课程概述" [(ngModel)]="addCourse.shortIntro">
+    </div>
+  </div>
+
+  <div nz-row class="course">
+    <div nz-col [nzSpan]="4">
+      <label class="coursename">课程时长</label>
+    </div>
+    <div nz-col [nzSpan]="20">
+      <input class="newCourse" nz-input placeholder="请输入新增课程时长,如(1小时1分)" [(ngModel)]="addCourse.time">
+    </div>
+  </div>
+
+  <div nz-row class="course">
+    <div nz-col [nzSpan]="4">
       <label class="coursename">课程简介</label>
     </div>
     <div nz-col [nzSpan]="20">
-      <textarea class="newCourse" nz-input placeholder="请输入课程简介" nzAutosize></textarea>
+      <textarea class="newCourse" nz-input placeholder="请输入课程简介" nzAutosize [(ngModel)]="addCourse.intro"></textarea>
     </div>
   </div>
 
@@ -66,7 +84,7 @@
       <label class="coursename">课程须知</label>
     </div>
     <div nz-col [nzSpan]="20">
-      <textarea class="newCourse" nz-input placeholder="请输入课程须知" nzAutosize></textarea>
+      <textarea class="newCourse" nz-input placeholder="请输入课程须知" nzAutosize [(ngModel)]="addCourse.know"></textarea>
     </div>
   </div>
 
@@ -75,7 +93,7 @@
       <label class="coursename">能学到什么</label>
     </div>
     <div nz-col [nzSpan]="20">
-      <textarea class="newCourse" nz-input placeholder="请输入内容" nzAutosize></textarea>
+      <textarea class="newCourse" nz-input placeholder="请输入内容" nzAutosize [(ngModel)]="addCourse.learnWhat"></textarea>
     </div>
   </div>
 

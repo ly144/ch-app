@@ -47,6 +47,7 @@ import { HomeService} from './service/home.service';
 import { EmitService } from './service/emit.service';
 import { PersonService } from './service/person.service';
 import { CourseService } from './service/course.service';
+import { BackstageService } from './service/backstage.service';
 import { ApeService } from './service/ape.service';
 import { ChApeQuizComponent } from './component/community/ch-ape-quiz/ch-ape-quiz.component';
 import {QuillModule} from 'ngx-quill';
@@ -107,6 +108,7 @@ import {QuillModule} from 'ngx-quill';
     PersonService,
     CourseService,
     ApeService,
+    BackstageService,
   ]
 })
 export class AppModule { }

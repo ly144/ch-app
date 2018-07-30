@@ -7,7 +7,7 @@
         <th nzWidth="30%">课程名</th>
         <th nzWidth="50%">难度</th>
         <th nzWidth="20%">
-          <button nz-button nzShape="circle"><i class="anticon anticon-plus"></i></button>
+          <button nz-button nzShape="circle" (click)="addCourse.showModal()"><i class="anticon anticon-plus"></i></button>
         </th>
       </tr>
       </thead>
@@ -17,9 +17,9 @@
           <td nzShowExpand [(nzExpand)]="cou.expand">{{ cou.name }}</td>
           <td>{{ cou.difficulty }}</td>
           <td>
-            <button nz-button nzShape="circle"><i class="anticon anticon-edit"></i></button>
+            <button nz-button nzShape="circle" (click)="addCourse.changeCourse(cou.id)"><i class="anticon anticon-edit"></i></button>
             <nz-divider nzType="vertical"></nz-divider>
-            <button nz-button nzShape="circle"><i class="anticon anticon-close"></i></button>
+            <button nz-button nzShape="circle" nz-popconfirm nzTitle="确定删除此课程吗？" (nzOnConfirm)="confirmCourse(cou.id)"><i class="anticon anticon-close"></i></button>
           </td>
         </tr>
         <tr [nzExpand]="cou.expand">
@@ -30,19 +30,19 @@
                   <th nzShowExpand nzWidth="30%">章名</th>
                   <th nzWidth="50%">简介</th>
                   <th nzWidth="20%">
-                    <button nz-button nzShape="circle"><i class="anticon anticon-plus"></i></button>
+                    <button nz-button nzShape="circle" (click)="addChapter.showModal(cou.id, judgeBeforeChapter(chapterTable.data))"><i class="anticon anticon-plus"></i></button>
                   </th>
                 </tr>
               </thead>
               <tbody>
               <ng-template ngFor let-cha [ngForOf]="chapterTable.data">
                 <tr>
-                  <td nzShowExpand [(nzExpand)]="cha.expand">{{ cha.name }}</td>
-                  <td>{{ cha.intro }}</td>
+                  <td nzShowExpand [(nzExpand)]="cha.expand">第{{ cha.chapter }}章&nbsp;{{ cha.name }}</td>
+                  <td>{{ cha.summary }}</td>
                   <td>
-                    <button nz-button nzShape="circle"><i class="anticon anticon-edit"></i></button>
+                    <button nz-button nzShape="circle" (click)="addChapter.changeChapter(cha)"><i class="anticon anticon-edit"></i></button>
                     <nz-divider nzType="vertical"></nz-divider>
-                    <button nz-button nzShape="circle"><i class="anticon anticon-close"></i></button>
+                    <button nz-button nzShape="circle" nz-popconfirm nzTitle="确定删除此章吗？" (nzOnConfirm)="confirmChapter(cha.id)"><i class="anticon anticon-close"></i></button>
                   </td>
                 </tr>
                 <tr [nzExpand]="cha.expand">
@@ -52,17 +52,17 @@
                         <tr>
                           <th nzWidth="50%">节名</th>
                           <th nzWidth="50%">
-                            <button nz-button nzShape="circle"><i class="anticon anticon-plus"></i></button>
+                            <button nz-button nzShape="circle" (click)="addSection.showModal(cha.id, judgeBeforeSection(sctionTable.data))"><i class="anticon anticon-plus"></i></button>
                           </th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr *ngFor="let sct of sctionTable.data">
-                          <td>{{ sct.name }}</td>
+                          <td>{{ cha.chapter }}-{{ sct.section }}&nbsp;{{ sct.name }}</td>
                           <td>
-                            <button nz-button nzShape="circle"><i class="anticon anticon-edit"></i></button>
+                            <button nz-button nzShape="circle" (click)="addSection.changeSection(sct)"><i class="anticon anticon-edit"></i></button>
                             <nz-divider nzType="vertical"></nz-divider>
-                            <button nz-button nzShape="circle"><i class="anticon anticon-close"></i></button>
+                            <button nz-button nzShape="circle" nz-popconfirm nzTitle="确定删除此节吗？" (nzOnConfirm)="confirmSection(sct.id)"><i class="anticon anticon-close"></i></button>
                           </td>
                         </tr>
                       </tbody>
@@ -80,3 +80,7 @@
 
   </div>
 </div>
+
+<app-ch-backstage-add-course #addCourse></app-ch-backstage-add-course>
+<app-ch-backstage-add-chapter #addChapter></app-ch-backstage-add-chapter>
+<app-ch-backstage-add-section #addSection></app-ch-backstage-add-section>
