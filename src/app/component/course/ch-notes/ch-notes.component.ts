@@ -1,18 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {CourseService} from '../../../service/course.service';
+import { CourseService } from '../../../service/course.service';
 import { EmitService, Info } from '../../../service/emit.service';
-
-export class Notes {
-  img: string;
-  name: string;
-  chapter: number;
-  section: number;
-  sectionName: string;
-  content: string;
-  agreeNum: number;
-  gatherNum: number;
-  time: string;
-}
+import { Notes } from '../../../models/Notes';
 
 @Component({
   selector: 'app-ch-notes',

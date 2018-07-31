@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { URL } from '../models/uploadUrl';
 import { catchError } from 'rxjs/internal/operators';
+import {Question} from '../models/Question';
+import {Notes} from '../models/Notes';
+import {Comment} from '../models/Comment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -125,6 +128,31 @@ export class CourseService {
         catchError(this.handleError('getSectionNotes'))
       );
   }
+
+  //  插入课程节的问答
+  setSectionQuestion(ques: Question) {
+    return this.http.post(URL + '/course/setSectionQuestion',  JSON.stringify(ques), httpOptions)
+      .pipe(
+        catchError(this.handleError('setSectionQuestion'))
+      );
+  }
+
+  // 插入课程节的笔记
+  setSectionNotes(notes: Notes) {
+    return this.http.post(URL + '/course/setSectionNotes',  JSON.stringify(notes), httpOptions)
+      .pipe(
+        catchError(this.handleError('setSectionNotes'))
+      );
+  }
+
+  // 插入节的评论
+  setSectionComment(com: Comment) {
+    return this.http.post(URL + '/course/setSectionComment',  JSON.stringify(com), httpOptions)
+      .pipe(
+        catchError(this.handleError('setSectionComment'))
+      );
+  }
+
 
   constructor(private http: HttpClient) { }
 }

@@ -48,8 +48,8 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-            <textarea class="form-control area" rows="4" id="comment" placeholder="扯淡、吐槽、表扬、鼓励……想说啥就说啥！"></textarea>
-            <p class="publish">发表评论</p>
+            <textarea class="form-control area" rows="4" id="comment" placeholder="扯淡、吐槽、表扬、鼓励……想说啥就说啥！" [(ngModel)]="com.content"></textarea>
+            <p class="publish" (click)="submitCom()">发表评论</p>
           </div>
         </div>
 
@@ -132,9 +132,9 @@
       <div class="shadow-son"></div>
       <div class="ques-content">
         <p class="askQues">提问题</p>
-        <input type="text" placeholder="请一句话说明你的问题">
-        <quill-editor [style]="{height: '180px'}"></quill-editor>
-        <p class="ok">提交</p>
+        <input type="text" placeholder="请一句话说明你的问题" [(ngModel)]="ques.title">
+        <quill-editor [style]="{height: '220px'}" [(ngModel)]="ques.content" ></quill-editor>
+        <p class="ok" (click)="submitQues()">提交</p>
       </div>
     </div>
 
@@ -143,8 +143,8 @@
       <div class="shadow-son"></div>
       <div class="ques-content">
         <p class="askQues">写笔记</p>
-        <quill-editor [style]="{height: '180px'}"></quill-editor>
-        <p class="ok">提交</p>
+        <quill-editor [style]="{height: '220px'}" [(ngModel)]="notes.content" ></quill-editor>
+        <p class="ok" (click)="submitNotes()">提交</p>
       </div>
     </div>
 

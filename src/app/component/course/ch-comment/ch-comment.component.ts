@@ -1,17 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../../../service/course.service';
 import { EmitService, Info } from '../../../service/emit.service';
-
-export class Comment {
-  img: string;
-  name: string;
-  content: string;
-  chapter: number;
-  section: number;
-  sectionName: string;
-  agreeNum: number;
-  time: string;
-}
+import { Comment } from '../../../models/Comment';
 
 @Component({
   selector: 'app-ch-comment',

@@ -37,8 +37,8 @@ export class ChApeQuizComponent implements OnInit {
       this.message.error('未选择问题分类');
     } else {
       this.quiz.typeId = this.beforeType + 1;
-      this.quiz.content = (this.quiz.content.split('<p>')[1]).split('</p>')[0];
-      console.log(this.quiz.content);
+      // this.quiz.content = (this.quiz.content.split('<p>')[1]).split('</p>')[0];
+      // console.log(this.quiz.content);
       this.apeService.setCommunity(this.quiz)
         .subscribe((values: number) => {
           if (values) {
