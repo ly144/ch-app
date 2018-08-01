@@ -3,11 +3,11 @@
   <!--头部内容-->
   <div class="row notes-son-1">
     <div class="col-1">
-      <img class="img-1" src="{{notesson[0].img}}">
+      <img class="img-1" src="{{ notesson.img }}">
     </div>
     <div class="col-7 notes-son-2">
-      <div class="notes-son-3">{{notesson[0].user}} 的课程笔记</div>
-      <div class="notes-son-4"><a>课程名称：{{notesson[0].course}}</a></div>
+      <div class="notes-son-3">{{ notesson.name }} 的课程笔记</div>
+      <div class="notes-son-4"><a>课程名称：{{ course.name }}</a></div>
     </div>
     <div class="col-4 notes-son-5">
       <div class="notes-son-6"><a>TA的个人中心</a></div>
@@ -25,18 +25,33 @@
       <div class="col-7">
 
         <div class="notes-son-9">
-          <div class="notes-son-10">{{notesson[0].section}}</div>
-          <div class="notes-son-11">
-            笔记内容
-          </div>
+
           <div class="row">
-            <div class="col-2">
-              <div class="notes-son-12">赞&nbsp;{{notesson[0].agreeNum}}</div>
+
+            <div class="col-1">
+              <div class="youtuIcon"><i class="anticon anticon-youtube" id="youtu"></i></div>
             </div>
-            <div class="col-10">
-              <div class="notes-son-12">采集&nbsp;{{notesson[0].adoptNum}}</div>
+
+            <div class="col-11 con">
+              <div class="notes-son-10">
+                {{notesson.chapter}}-{{ notesson.section }}&nbsp;{{ notesson.sectionName }}
+                <span id="time">{{ notesson.time }}</span>
+              </div>
+              <div class="notes-son-11">
+                {{ notesson.content }}
+              </div>
+              <div class="row">
+                <div class="col-2">
+                  <div class="notes-son-12">赞&nbsp;{{ notesson.agreeNum }}</div>
+                </div>
+                <div class="col-10 agree">
+                  <div class="notes-son-12">采集&nbsp;{{ notesson.gatherNum }}</div>
+                </div>
+              </div>
+
             </div>
           </div>
+
         </div>
 
         <div class="row">
@@ -53,30 +68,30 @@
 
         <div class="row">
           <div class="col-12">
-            <img class="img-2" src="{{detailed.img}}">
+            <img class="img-2" src="{{course.img}}">
           </div>
         </div>
 
         <div class="row notes-son-15">
           <div class="col-12">
-            <h2>2小时学会Spring Boot</h2>
+            <h2>{{ course.name }}</h2>
             <ul class="notes-son-16">
-              <li><span>难度</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{detailed.difficulty}}</li>
-              <li><span>时长</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{detailed.length}}</li>
-              <li><span>人数</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{detailed.number}}</li>
+              <li><span>难度</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{course.difficulty}}</li>
+              <li><span>时长</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{course.time}}</li>
+              <li><span>人数</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{course.people}}</li>
               <!--<li><span>评分</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9.6</li>-->
             </ul>
-            <p class="p1">{{courseIntro}}</p>
+            <p class="p1">{{course.intro}}</p>
             <div class="notes-son-17">详细了解此课程</div>
           </div>
         </div>
 
         <div class="row notes-son-18">
           <div class="col-12">
-            <img class="img-3" src="{{detailed.author.img}}">
-            <p class="p2">{{detailed.author.name}}</p>
-            <p class="p3">{{detailed.author.job}}</p>
-            <p class="p4">{{detailed.author.intro}}</p>
+            <img class="img-3" src="{{ course.authorImg }}">
+            <p class="p2">{{course.authorName}}</p>
+            <p class="p3">{{course.authorJob}}</p>
+            <p class="p4">{{course.signature}}</p>
           </div>
         </div>
 

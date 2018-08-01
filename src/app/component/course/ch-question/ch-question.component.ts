@@ -12,6 +12,7 @@ import {DatePipe} from '@angular/common';
 })
 export class ChQuestionComponent implements OnInit {
 
+  isLearn = false;
   // 问答交互
   dateTime: Date = new Date();
   ques: Question = { userId: 1, sectionId: 1, title: '', content: '', time: '' };
@@ -86,9 +87,11 @@ export class ChQuestionComponent implements OnInit {
     const info: Info = this.emitService.info;
     if (info.name === 'details') {
       console.log('问答接收details');
+      this.isLearn = false;
       this.initCourse(info.id);
     } else if (info.name === 'learning') {
       console.log('问答接收learning');
+      this.isLearn = true;
       this.initSection(info.id);
     }
   }

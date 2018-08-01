@@ -66,6 +66,11 @@
   font-size: 14px;
   color: #07111B;
   line-height: 22px;
+  cursor: pointer;
+}
+
+.notes-son-10:hover {
+  color: #F20D0D;
 }
 
 .notes-son-11 {
@@ -233,4 +238,30 @@ span {
 
 li{
   padding-bottom: 10px;
+}
+/*新增样式*/
+#youtu{
+  color: #F20D0D;
+  font-size: 18px;
+  text-align: center;
+  padding: 8px;
+}
+.youtuIcon{
+  width: 36px;
+  height: 36px;
+  background-color: #FCCFCF;
+  border-radius: 50%;
+  margin: 0;
+}
+.con{
+  margin-left: -4px;
+}
+.agree{
+  margin-left: -20px;
+}
+#time{
+  float: right;
+  font-size: 12px;
+  color: #9199A1;
+  line-height: 22px;
 }

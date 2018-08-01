@@ -153,6 +153,21 @@ export class CourseService {
       );
   }
 
+  // 获取ch-notes-son的笔记详细内容,传入笔记id
+  getNotesSon(id: number) {
+    return this.http.post(URL + '/course/getNotesSon', id, httpOptions)
+      .pipe(
+        catchError(this.handleError('getNotesSon'))
+      );
+  }
+
+  // 获取ch-notes-son的课程详细内容,传入课程id
+  getNoteSonCourse(id: number) {
+    return this.http.post(URL + '/course/getNoteSonCourse', id, httpOptions)
+      .pipe(
+        catchError(this.handleError('getNoteSonCourse'))
+      );
+  }
 
   constructor(private http: HttpClient) { }
 }

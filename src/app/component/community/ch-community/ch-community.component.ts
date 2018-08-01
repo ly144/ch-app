@@ -8,6 +8,9 @@ import {ApeService} from '../../../service/ape.service';
   styleUrls: ['./ch-community.component.css']
 })
 export class ChCommunityComponent implements OnInit {
+   // 我要回答
+  showAskBtn = true;
+  showAsk = false;
 
   community: Community;
 
@@ -26,6 +29,12 @@ export class ChCommunityComponent implements OnInit {
       console.log(community);
       this.community = community;
     });
+  }
+
+  // 我要回答框
+  show() {
+    this.showAskBtn = false;
+    this.showAsk = true;
   }
 
   constructor(private apeService: ApeService) {

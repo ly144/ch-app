@@ -3,7 +3,7 @@
      id="{{ btnAll }}">全部</a>
   <a class="question-sel" (mouseenter)="changeCSSIn(2)" (mouseleave)="changeCSSOut(2)" (click)="clickBtn(2)"
      id="{{ btnArgee }}">精华</a>
-  <a id="question-issue" data-toggle="modal" data-target="#WantRelease">我要发布</a>
+  <a id="question-issue" data-toggle="modal" data-target="#WantRelease" *ngIf="isLearn">我要发布</a>
 </div>
 <div id="question-content" *ngFor="let que of question">
   <div class="row">

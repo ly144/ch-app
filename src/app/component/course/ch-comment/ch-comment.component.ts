@@ -11,6 +11,7 @@ import { Comment } from '../../../models/Comment';
 export class ChCommentComponent implements OnInit {
 
   comment: Comment[];
+  isLearn = false;
 
   initCourse(courseId: number) {
     this.courseService.getCourseComment(courseId)
@@ -32,9 +33,11 @@ export class ChCommentComponent implements OnInit {
     const info: Info = this.emitService.info;
     if (info.name === 'details') {
       console.log('评论接收details');
+      this.isLearn = false;
       this.initCourse(info.id);
     } else if (info.name === 'learning') {
       console.log('评论接收learning');
+      this.isLearn = true;
       this.initSection(info.id);
     }
   }

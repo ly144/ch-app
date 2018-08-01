@@ -1,6 +1,7 @@
 export class Detailed {
   direction: string;     // 方向
   classify: string;      // 分类
+  img: string; // 课程图片
   name: string;          // 课程名称
   difficulty: string;    // 课程难度
   time: string;          // 课程时长
@@ -13,4 +14,6 @@ export class Detailed {
   learned: number;       // 学生学习百分比
   learnTime: string;     // 学生学习耗时
   learnProgress: string; // 学生最近学习
+  signature: string; // 签名
+  intro: string; // 课程简介
 }
