@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/internal/operators';
 import {Question} from '../models/Question';
 import {Notes} from '../models/Notes';
 import {Comment} from '../models/Comment';
+import {Answer} from '../models/Answer';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -166,6 +167,30 @@ export class CourseService {
     return this.http.post(URL + '/course/getNoteSonCourse', id, httpOptions)
       .pipe(
         catchError(this.handleError('getNoteSonCourse'))
+      );
+  }
+
+  // 获取ch-question-son 的问题详细内容,传入question.id
+  getQuestionSon(id: number) {
+    return this.http.post(URL + '/course/getQuestionSon', id, httpOptions)
+      .pipe(
+        catchError(this.handleError('getQuestionSon'))
+      );
+  }
+
+  // 获取ch-question-son 的回答详细内容,传入question.id
+  getQuestionSonAnswer(id: number) {
+    return this.http.post(URL + '/course/getQuestionSonAnswer', id, httpOptions)
+      .pipe(
+        catchError(this.handleError('getQuestionSonAnswer'))
+      );
+  }
+
+  // 插入ch-question-son 的回答详细内容
+  setQuestionSonAnswer(myAnswer: Answer) {
+    return this.http.post(URL + '/course/setQuestionSonAnswer', JSON.stringify(myAnswer), httpOptions)
+      .pipe(
+        catchError(this.handleError('setQuestionSonAnswer'))
       );
   }
 

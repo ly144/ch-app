@@ -4,6 +4,7 @@ import {HttpClient, HttpHandler, HttpHeaders} from '@angular/common/http';
 import {URL} from '../models/uploadUrl';
 import {catchError} from 'rxjs/internal/operators';
 import {Community} from '../models/Community';
+import {Answer} from '../models/Answer';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -44,6 +45,14 @@ export class ApeService {
     return this.http.post(URL + '/ape/getApeCommunity', id, httpOptions)
       .pipe(
         catchError(this.handleError('getApeCommunity'))
+      );
+  }
+
+  // 插入猿问问题详细页面回答者内容,ch-community
+  setApeAnswer(answer: Answer) {
+    return this.http.post(URL + '/ape/setApeAnswer', JSON.stringify(answer), httpOptions)
+      .pipe(
+        catchError(this.handleError('setApeAnswer'))
       );
   }
 

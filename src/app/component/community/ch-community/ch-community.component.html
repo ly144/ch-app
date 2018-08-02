@@ -45,11 +45,11 @@
           <button class="qa-answer-btn" (click)="show()" *ngIf="showAskBtn"></button>
           <div class="row" *ngIf="showAsk">
             <div class="col-1" >
-              <img class="loginImg" src="http://img3.mukewang.com/user/5aeb0df10001155a10670800-80-80.jpg">
+              <img class="loginImg" src="{{ person.picture }}">
             </div>
             <div class="col-11">
-              <quill-editor [style]="{height: '100px'}"></quill-editor>
-              <p class="submitAnswer">回答</p>
+              <quill-editor [style]="{height: '100px'}" [(ngModel)]="answer.content"></quill-editor>
+              <p class="submitAnswer" (click)="answerQues()">回答</p>
             </div>
           </div>
         </div>

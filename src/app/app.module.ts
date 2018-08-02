@@ -51,6 +51,7 @@ import { BackstageService } from './service/backstage.service';
 import { ApeService } from './service/ape.service';
 import { ChApeQuizComponent } from './component/community/ch-ape-quiz/ch-ape-quiz.component';
 import {QuillModule} from 'ngx-quill';
+import { ChQuestionSonComponent } from './component/course/ch-question-son/ch-question-son.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import {QuillModule} from 'ngx-quill';
     ChBackstageAddSectionComponent,
     ChFooterComponent,
     ChApeQuizComponent,
+    ChQuestionSonComponent,
   ],
   imports: [
     BrowserModule,
