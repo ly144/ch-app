@@ -21,6 +21,7 @@ import { ChCommunityComponent } from '../component/community/ch-community/ch-com
 import { ChBackstageHomeComponent } from '../component/backstage/ch-backstage-home/ch-backstage-home.component';
 import { ChBacktageHomeBComponent } from '../component/backstage/ch-backtage-home-b/ch-backtage-home-b.component';
 import {ChApeQuizComponent} from '../component/community/ch-ape-quiz/ch-ape-quiz.component';
+import {ChQuestionSonComponent} from '../component/course/ch-question-son/ch-question-son.component';
 
 const ROUTES: Routes = [
   { path: '', component: ChHomeComponent },
@@ -53,6 +54,7 @@ const ROUTES: Routes = [
   { path: 'backstageA', component: ChBackstageHomeComponent },
   { path: 'backstageB', component: ChBacktageHomeBComponent },
   { path: 'quiz', component: ChApeQuizComponent },
+  { path: 'question-son', component: ChQuestionSonComponent },
 ];
 
 @NgModule({

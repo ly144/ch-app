@@ -3,7 +3,7 @@
      id="{{ btnAll }}">全部</a>
   <a class="question-sel" (mouseenter)="changeCSSIn(2)" (mouseleave)="changeCSSOut(2)" (click)="clickBtn(2)"
      id="{{ btnArgee }}">精华</a>
-  <a id="question-issue">我要发布</a>
+  <a id="question-issue" data-toggle="modal" data-target="#WantRelease" *ngIf="isLearn">我要发布</a>
 </div>
 <div id="question-content" *ngFor="let que of question">
   <div class="row">
@@ -12,17 +12,39 @@
     </div>
     <div class="col-11">
       <div id="question-tit"><a>{{ que.title }}</a></div>
-      <div id="question-cnt">
+      <div id="question-cnt" *ngIf="que.answer.length !== 0">
         <span>最新回答 / <a id="nickname">{{ que.answer[0].name }}</a></span>
         <div>{{ que.answer[0].content }}</div>
       </div>
       <div id="question-footer" class="row">
         <div class="col-2"><a>{{ que.answerNum }} 回答</a></div>
         <div class="col-2"><a>{{ que.lookNum }} 浏览</a></div>
-        <div class="col-6" *ngIf="que.sectionName !== null"><a>{{ que.chapter }}-{{ que.section }}&nbsp;{{ que.sectionName }}</a></div>
+        <div class="col-6" *ngIf="que.sectionName !== null"><a>{{ que.chapter }}-{{ que.section }}&nbsp;{{
+          que.sectionName }}</a></div>
         <div class="col-6" *ngIf="que.sectionName === null"></div>
         <div class="col-2"><span>{{ que.time }}</span></div>
       </div>
+    </div>
+  </div>
+</div>
+
+
+<!--问答发布-->
+<div class="modal fade" id="WantRelease">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content content">
+
+      <!-- 模态框主体 -->
+      <div class="modal-body">
+        <label for="askQues" class="askQues">我要提问</label>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+       <p><input type="text" class="form-control" placeholder="请输入问题标题" id="askQues" [(ngModel)]="ques.title"></p>
+        <quill-editor [style]="{height: '300px'}" [(ngModel)]="ques.content"></quill-editor>
+        <p class="publish" (click)="submitQues()">提交</p>
+      </div>
+
     </div>
   </div>
 </div>

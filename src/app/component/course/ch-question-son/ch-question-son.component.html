@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-1"></div>
+
+    <div class="col-7">
+
+      <!--用户提问问题主题-->
+      <div class="row">
+        <div class="col-12 subject" *ngIf="questionson">
+          <div>
+            <ul class="item">
+              <li>
+                课程 &nbsp;\
+              </li>
+              <li>
+                {{ questionson.directions }} &nbsp;\
+              </li>
+              <li>
+                {{ questionson.classify }} &nbsp;\
+              </li>
+              <li>
+                {{ questionson.courseName }}&nbsp;
+              </li>
+            </ul>
+          </div>
+          <div class="questioner">
+            <img class="questioner-img" src="{{ questionson.picture }}">
+            <span class="questioner-name">{{ questionson.name }}</span>
+          </div>
+          <div class="question-title">{{ questionson.title }}</div>
+          <div class="question-content">{{ questionson.content }}</div>
+          <div class="time">{{ questionson.time }}&nbsp;&nbsp;&nbsp;&nbsp;<span class="from">源自：{{ questionson.courseName }} {{ questionson.chapter }}-{{  questionson.section}}</span><span
+            class="answer-Num">{{ questionson.answerNum }}&nbsp;回答 &nbsp;&nbsp;&nbsp;{{ questionson.lookNum }}&nbsp;浏览</span></div>
+        </div>
+      </div>
+
+      <!--回答主体-->
+      <div class="row answer-subject" *ngFor="let ans of answer">
+        <div class="col-2">
+          <img class="respondents-img" src="{{ ans.img }}">
+          <p class="respondents-name">{{ ans.name }}</p>
+        </div>
+        <div class="col-10">
+          <div class="respondents-content">{{ ans.content }}</div>
+          <p class="respondents-time">{{ ans.time }}<span class="praise"><i
+            class="anticon anticon-like-o"></i>&nbsp;{{ ans.agreeNum }}</span></p>
+        </div>
+      </div>
+
+      <div class="row login">
+        <div class="col-2">
+          <img class="login-img" src="{{ person.picture }}">
+        </div>
+        <div class="col-10">
+          <quill-editor [style]="{height: '100px'}" [(ngModel)]="myAnswer.content" ></quill-editor>
+          <p class="answer" (click)="answerQues()">回答</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-4">
+      <div class="newProblems">发新问题</div>
+      <div>
+        <img class="new-img" src="{{ person.picture }}">
+        <span class="new-name">{{ person.name }}</span>
+      </div>
+    </div>
+
+  </div>
+</div>

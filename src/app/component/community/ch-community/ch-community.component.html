@@ -20,7 +20,7 @@
           <span>回答&nbsp;{{ community.answerNum }}</span>
         </div>
         <div class="col-12" id="qa-content-answer">
-         {{ community.content }}
+          {{ community.content }}
         </div>
       </div>
 
@@ -42,7 +42,16 @@
           <h3 class="qa-answer-add-tip">添加回答</h3>
         </div>
         <div class="col-12">
-          <button class="qa-answer-btn"></button>
+          <button class="qa-answer-btn" (click)="show()" *ngIf="showAskBtn"></button>
+          <div class="row" *ngIf="showAsk">
+            <div class="col-1" >
+              <img class="loginImg" src="{{ person.picture }}">
+            </div>
+            <div class="col-11">
+              <quill-editor [style]="{height: '100px'}" [(ngModel)]="answer.content"></quill-editor>
+              <p class="submitAnswer" (click)="answerQues()">回答</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -50,7 +59,7 @@
       <div class="row">
         <div class="col-12 qa-answer-num">{{ community.answerNum }}回答</div>
         <!-- 回答内容 -->
-        <div class="col-12"  id="ques-answer">
+        <div class="col-12" id="ques-answer">
           <div class="row" id="ques-answer-con" *ngFor="let ans of community.answer">
             <div class="col-1">
               <a><img src="{{ ans.img }}" class="user-img"></a>
@@ -76,7 +85,8 @@
       </div>
       <div class="ques-class-title"><h3>相关分类</h3></div>
       <div class="row" id="ques-class-list">
-        <div class="col-2" id="ques-class-icon"><a><img src="http://static.runoob.com/images/mix/img_avatar.png" class="class-icon"></a></div>
+        <div class="col-2" id="ques-class-icon"><a><img src="http://static.runoob.com/images/mix/img_avatar.png"
+                                                        class="class-icon"></a></div>
         <div class="col-6" id="ques-class-info">
           <a>JAVA</a>
           <p>78570人关注</p>

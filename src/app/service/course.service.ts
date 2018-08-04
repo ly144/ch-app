@@ -3,6 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { URL } from '../models/uploadUrl';
 import { catchError } from 'rxjs/internal/operators';
+import {Question} from '../models/Question';
+import {Notes} from '../models/Notes';
+import {Comment} from '../models/Comment';
+import {Answer} from '../models/Answer';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -123,6 +127,70 @@ export class CourseService {
     return this.http.post(URL + '/course/getSectionNotes', id, httpOptions)
       .pipe(
         catchError(this.handleError('getSectionNotes'))
+      );
+  }
+
+  //  插入课程节的问答
+  setSectionQuestion(ques: Question) {
+    return this.http.post(URL + '/course/setSectionQuestion',  JSON.stringify(ques), httpOptions)
+      .pipe(
+        catchError(this.handleError('setSectionQuestion'))
+      );
+  }
+
+  // 插入课程节的笔记
+  setSectionNotes(notes: Notes) {
+    return this.http.post(URL + '/course/setSectionNotes',  JSON.stringify(notes), httpOptions)
+      .pipe(
+        catchError(this.handleError('setSectionNotes'))
+      );
+  }
+
+  // 插入节的评论
+  setSectionComment(com: Comment) {
+    return this.http.post(URL + '/course/setSectionComment',  JSON.stringify(com), httpOptions)
+      .pipe(
+        catchError(this.handleError('setSectionComment'))
+      );
+  }
+
+  // 获取ch-notes-son的笔记详细内容,传入笔记id
+  getNotesSon(id: number) {
+    return this.http.post(URL + '/course/getNotesSon', id, httpOptions)
+      .pipe(
+        catchError(this.handleError('getNotesSon'))
+      );
+  }
+
+  // 获取ch-notes-son的课程详细内容,传入课程id
+  getNoteSonCourse(id: number) {
+    return this.http.post(URL + '/course/getNoteSonCourse', id, httpOptions)
+      .pipe(
+        catchError(this.handleError('getNoteSonCourse'))
+      );
+  }
+
+  // 获取ch-question-son 的问题详细内容,传入question.id
+  getQuestionSon(id: number) {
+    return this.http.post(URL + '/course/getQuestionSon', id, httpOptions)
+      .pipe(
+        catchError(this.handleError('getQuestionSon'))
+      );
+  }
+
+  // 获取ch-question-son 的回答详细内容,传入question.id
+  getQuestionSonAnswer(id: number) {
+    return this.http.post(URL + '/course/getQuestionSonAnswer', id, httpOptions)
+      .pipe(
+        catchError(this.handleError('getQuestionSonAnswer'))
+      );
+  }
+
+  // 插入ch-question-son 的回答详细内容
+  setQuestionSonAnswer(myAnswer: Answer) {
+    return this.http.post(URL + '/course/setQuestionSonAnswer', JSON.stringify(myAnswer), httpOptions)
+      .pipe(
+        catchError(this.handleError('setQuestionSonAnswer'))
       );
   }
 

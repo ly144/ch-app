@@ -2,20 +2,37 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+
 #learn-header {
   font-family: "PingFang SC", Helvetica, "Helvetica Neue", 微软雅黑, Tahoma, Arial, sans-serif;
 }
+
 #learning-header {
   height: 60px;
   font-family: "PingFang SC", Helvetica, "Helvetica Neue", 微软雅黑, Tahoma, Arial, sans-serif;
 }
 
+.section {
+  font-size: 16px;
+  color: #1C1F21;
+  font-weight: 700;
+  padding-left: 10px;
+  line-height: 60px;
+}
+
+.return {
+  font-size: 30px;
+  line-height: 60px;
+  padding-left: 20px;
+}
 
 /*播放框*/
 #learning-play {
   height: 510px;
   background: #1C1F21;
+  z-index: -1;
 }
+
 /*工具栏*/
 #course-sidebar {
   background: #1C1F21;
@@ -24,28 +41,230 @@ a {
   z-index: 10000;
   padding-top: 105px;
 }
+
 #course-sidebar dl {
   flex: 1;
   width: 100%;
   margin: 0;
   padding: 0;
 }
+
 #course-sidebar dd {
   height: 72px;
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  /*cursor: pointer;*/
 }
+
 #course-sidebar i {
   font-size: 24px;
-  color: rgba(255,255,255,.6);
+  color: rgba(255, 255, 255, .6);
   line-height: 24px;
 }
+
 #course-sidebar span {
   font-size: 12px;
-  color: rgba(255,255,255,.4);
+  color: rgba(255, 255, 255, .4);
   line-height: 18px;
+}
+
+/*点击四个选项后span变颜色*/
+.clickOn {
+  color: #fff;
+}
+
+/*章节展开*/
+.section-list {
+  position: absolute;
+  height: 510px;
+  width: 400px;
+  background: #26292C;
+  z-index: 201;
+  overflow-x: hidden;
+  margin-left: 97px;
+  margin-bottom: -80px;
+  padding-bottom: 25px;
+  padding-top: 5px;
+}
+
+.section-list-son {
+  padding: 0 24px;
+}
+
+.which-chapter {
+  padding-top: 20px;
+  font-size: 14px;
+  color: #FFF;
+  line-height: 22px;
+  margin-bottom: 8px;
+}
+
+.tool-section {
+  padding: 6px 0 6px 18px;
+  width: 100%;
+  height: 30px;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  font-size: 12px;
+  color: rgba(255, 255, 255, .6);
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.tool-section:hover {
+  color: rgba(242, 13, 13, .6);
+}
+
+.recentLearn {
+  float: right;
+  color: #93999f;
+  font-size: 12px;
+  margin-right: 15px;
+}
+
+.recentLearn:hover {
+  color: rgba(242, 13, 13, .6);
+}
+
+/*没学*/
+#notLearn {
+  float: right;
+  padding-top: 5px;
+}
+
+/*学一半*/
+#LearnHalf {
+  float: right;
+  padding-top: 5px;
+}
+
+/*已学完*/
+#haveLearned {
+  float: right;
+  padding-top: 5px;
+}
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  height: 130px;
+  border-radius: 10px;
+  background: #bbb;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #4e5a5e;
+}
+
+/*问答,笔记展开*/
+.ques {
+  background: #FFF;
+  margin-top: 0;
+  padding: 0;
+}
+
+.shadow-son {
+  height: 2px;
+  margin-bottom: 10px;
+  border-top: 1px solid #93999f;
+}
+
+.ques-content {
+  padding: 16px 24px 24px;
+}
+
+.askQues {
+  font-size: 16px;
+  color: #07111B;
+  line-height: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+input {
+  display: block;
+  height: 36px;
+  background: #FFF;
+  border: 1px solid #9199A1;
+  border-radius: 6px;
+  margin-top: 16px;
+  width: 100%;
+  padding: 0 12px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.ok {
+  color: #fff;
+  border-color: #f20d0d;
+  background: #f20d0d;
+  cursor: pointer;
+  padding: 7px 16px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 18px;
+  width: 62px;
+  height: 36px;
+  float: right;
+  margin-top: 24px;
+}
+
+.ok:hover {
+  background-color: #c20a0a;
+}
+/*评论*/
+.modal-dialog{
+  width: 560px;
+  height: 260px;
+}
+.content{
+  border-radius: 18px;
+}
+.comment {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1c1f21;
+  padding: 10px 20px 0;
+}
+.area{
+  margin-top: 15px;
+  padding: 10px;
+  color: #555;
+  font-size: 14px;
+  line-height: 18px;
+  height: 90px;
+}
+.publish{
+  padding: 11px 32px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 24px;
+  border: 1px solid #f20d0d;
+  cursor: pointer;
+  color: #fff;
+  background-color: #f20d0d;
+  text-align: center;
+  height: 48px;
+  width: 130px;
+  float: right;
+  margin-top: 27px;
+  margin-bottom: 10px;
+}
+.publish:hover{
+  background-color: #c20a0a;
 }
 
 /*视频播放框*/
@@ -55,11 +274,13 @@ a {
   margin: 0;
   padding: 0;
 }
+
 #course-video {
   height: 94%;
   width: 100%;
   margin: 16px 0;
 }
+
 .video-play {
   height: 100%;
   width: 100%;
@@ -67,16 +288,18 @@ a {
 }
 
 /*评论问答笔记按钮*/
-.learn{
-  box-shadow: 0 3px 3px 0 rgba(0,0,0,.2);
+.learn {
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .2);
   height: 70px;
 }
-.learn-item{
+
+.learn-item {
   float: left;
-  margin: auto  0 auto 20px;
+  margin: auto 0 auto 20px;
   height: 70px;
 }
-.learn-item li{
+
+.learn-item li {
   display: inline-block;
   padding: 25px 80px 35px 50px;
   height: 36px;
@@ -84,13 +307,16 @@ a {
   font-size: 16px;
   font-weight: bold;
 }
+
 .learn-item-a {
   color: #5e5e5e;
 }
-.learn-item li a:hover{
+
+.learn-item li a:hover {
   color: red;
 }
-#on{
+
+#on {
   color: red;
 }
 
@@ -99,6 +325,7 @@ a {
   margin-top: 2px;
   background: #f3f5f7;
 }
+
 #cqn {
   padding: 0;
 }

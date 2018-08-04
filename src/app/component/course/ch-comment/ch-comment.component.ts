@@ -1,17 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../../../service/course.service';
 import { EmitService, Info } from '../../../service/emit.service';
-
-export class Comment {
-  img: string;
-  name: string;
-  content: string;
-  chapter: number;
-  section: number;
-  sectionName: string;
-  agreeNum: number;
-  time: string;
-}
+import { Comment } from '../../../models/Comment';
 
 @Component({
   selector: 'app-ch-comment',
@@ -21,6 +11,7 @@ export class Comment {
 export class ChCommentComponent implements OnInit {
 
   comment: Comment[];
+  isLearn = false;
 
   initCourse(courseId: number) {
     this.courseService.getCourseComment(courseId)
@@ -42,9 +33,11 @@ export class ChCommentComponent implements OnInit {
     const info: Info = this.emitService.info;
     if (info.name === 'details') {
       console.log('评论接收details');
+      this.isLearn = false;
       this.initCourse(info.id);
     } else if (info.name === 'learning') {
       console.log('评论接收learning');
+      this.isLearn = true;
       this.initSection(info.id);
     }
   }

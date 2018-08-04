@@ -21,6 +21,7 @@
       </div>
 
       <!-- 问答列表 -->
+
       <div id="ape-list" class="col-12" *ngFor="let ape of apes">
 
         <div class="row">
@@ -33,7 +34,7 @@
           </div>
         </div>
 
-        <!-- 回答内容 -->
+        <!-- 回答内容 --><div *ngIf="ape.answer.length !== 0">
         <div id="answer-con" class="row">
           <div class="offset-1 col-11">
             <div id="user"><a>{{ ape.answer[0].name }}</a><span>&nbsp;&nbsp;回答：</span></div>
@@ -49,7 +50,7 @@
           <div id="agree-with" class="offset-1 col-2"><span>已帮助用户&nbsp;{{ ape.answer[0].agreeNum }}</span></div>
           <div class="col-2"><span>{{ ape.answer[0].opposeNum }}&nbsp;人反对</span></div>
           <div class="col-1"><span>分享</span></div>
-        </div>
+        </div></div>
 
       </div>
 
@@ -58,7 +59,7 @@
     <!-- 个人信息栏 -->
     <div class="col-3">
       <!-- 用户栏 -->
-      <div class="row">
+      <div class="row" *ngIf="person">
         <div id="user-about" class="col-12">
           <!-- 用户简介 -->
           <div id="user-info" class="row">
