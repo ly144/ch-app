@@ -13,7 +13,7 @@
           <div class="col-3 myModal-header-btn" (click)="onBtn(0)" id="{{ btn[0] }}"><span>登录</span></div>
           <div class="col-3 myModal-header-btn" (click)="onBtn(1)" id="{{ btn[1] }}"><span>注册</span></div>
           <div class="col-6">
-            <button type="button" class="myModal-close" data-dismiss="modal">X</button>
+            <button type="button" class="myModal-close" data-dismiss="modal" id="myModalClose">X</button>
           </div>
         </div>
       </div>
@@ -27,13 +27,15 @@
               <form (ngSubmit)="onSubmitLogin()" #chLogin="ngForm">
                 <div>
                   <input type="text" class="myModal-body-input" maxlength="37" name="email" placeholder="请输入登录邮箱/手机号" [(ngModel)]="user.username" required>
-                  <p class="errorHint" data-error-hint="请输入正确的邮箱或手机号">请输入正确的邮箱或手机号</p>
+                  <p class="errorHint" data-error-hint="请输入正确的邮箱或手机号" *ngIf="userInput[0]">请输入正确的邮箱或手机号</p>
+                  <p style="margin-bottom: 20px"></p>
                 </div>
 
                 <div>
                   <input type="password" class="myModal-body-input" maxlength="16" name="password"
                          placeholder="6-16位密码，区分大小写，不能用空格" [(ngModel)]="user.password" required>
-                  <p class="errorHint" data-error-hint="请输入6-16位密码，区分大小写，不能使用空格！">请输入6-16位密码，区分大小写，不能使用空格！</p>
+                  <p class="errorHint" data-error-hint="请输入6-16位密码，区分大小写，不能使用空格！" *ngIf="userInput[1]">请输入6-16位密码，区分大小写，不能使用空格！</p>
+                  <p style="margin-bottom: 20px"></p>
                 </div>
 
                 <div class="form-check myModal-body-check">
@@ -53,16 +55,36 @@
 
             <div *ngIf="!isLogin">
               <form (ngSubmit)="onSubmitRegister()" #chRegister="ngForm">
+
                 <div>
-                  <input type="text" class="myModal-body-input" maxlength="37" name="email" placeholder="请输入注册邮箱/手机号" [(ngModel)]="regUser.phone" required>
-                  <p class="errorHint" data-error-hint="请输入正确的邮箱或手机号">请输入正确的邮箱或手机号</p>
+                  <input type="text" class="myModal-body-input" maxlength="37" name="email" placeholder="请输入用户名" [(ngModel)]="regUser.username" required>
+                  <p class="errorHint" data-error-hint="请输入用户名" *ngIf="regInput[0]">请输入用户名</p>
+                  <p style="margin-bottom: 20px"></p>
                 </div>
 
                 <div>
-                  <input type="password" class="myModal-body-input" maxlength="16" name="password"
-                         placeholder="请输入验证码" [(ngModel)]="regUser.code" required>
-                  <p class="errorHint" data-error-hint="验证码错误">验证码错误</p>
+                  <input type="password" class="myModal-body-input" maxlength="37" name="email" placeholder="6-16位密码，区分大小写，不能用空格" [(ngModel)]="regUser.password" required>
+                  <p class="errorHint" data-error-hint="6-16位密码，区分大小写，不能用空格" *ngIf="regInput[1]">请输入密码</p>
+                  <p style="margin-bottom: 20px"></p>
                 </div>
+
+                <div>
+                  <input type="text" class="myModal-body-input" maxlength="37" name="email" placeholder="请输入注册邮箱/手机号" [(ngModel)]="regUser.phone" required>
+                  <p class="errorHint" data-error-hint="请输入正确的邮箱或手机号"  *ngIf="regInput[2]">请输入正确的邮箱或手机号</p>
+                  <p style="margin-bottom: 20px"></p>
+                </div>
+
+                <div>
+                  <input type="password" class="myModal-body-input-code" maxlength="16" name="password"
+                         placeholder="请输入验证码" [(ngModel)]="regUser.code" required>
+                  <button class="btn btn-outline-secondary" type="button" id="getCodeBut" (click)="onSubmitCode()">获取验证码</button>
+                  <p class="errorHint" data-error-hint="验证码错误"  *ngIf="regInput[3]">验证码错误</p>
+                  <p style="margin-bottom: 20px"></p>
+                </div>
+                <!--<div class="input-group mb-3">-->
+                  <!--<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">-->
+                  <!---->
+                <!--</div>-->
 
                 <div class="form-check myModal-body-check">
                   <label class="form-check-label">
@@ -84,11 +106,11 @@
 
       <!-- 模态框底部 -->
       <div class="modal-footer" id="myModal-footer">
-        <div class="pop-login">
-          <span>其他方式登录</span>
-          <a>QQ</a>
-          <a>weiChat</a>
-          <a>xinLang</a>
+        <div class="pop-login row">
+          <div class="col-5"><span>其他方式登录</span></div>
+          <div class="col-2"><a>QQ</a></div>
+          <div class="col-2"><a>weiChat</a></div>
+          <div class="col-2"><a>xinLang</a></div>
         </div>
       </div>
 

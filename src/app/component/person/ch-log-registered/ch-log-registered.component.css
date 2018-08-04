@@ -4,7 +4,7 @@
 }
 #myModal-dialog {
   width: 360px;
-  height: 370px;
+  /*height: 370px;*/
   /*background: #FFFFFF;*/
   /*border: 1px solid #000000;*/
 }
@@ -81,6 +81,21 @@
   cursor: text;
   outline: none;
 }
+.myModal-body-input-code {
+  width: 64%;
+  line-height: 20px;
+  padding: 12px 14px;
+  background-color: #fff;
+  box-shadow: 2px 0 5px 0 #fff;
+  border: 1px solid rgba(84,92,99,.6);
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: text;
+  outline: none;
+}
+#getCodeBut {
+  height: 100%;
+}
 .errorHint {
   margin: 0;
   font-size: 12px;
@@ -123,7 +138,7 @@
   padding: 0 30px;
 }
 .pop-login {
-  text-align: center;
+  /*text-align: center;*/
   font-size: 14px;
 }
 .pop-login span {

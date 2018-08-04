@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginRegisteredService} from '../../../service/login-registered.service';
 import {EmitService} from '../../../service/emit.service';
+import {NzMessageService} from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-ch-log-registered',
@@ -10,7 +11,9 @@ import {EmitService} from '../../../service/emit.service';
 export class ChLogRegisteredComponent implements OnInit {
 
   user = {'username': '', 'password': ''};
-  regUser = { 'phone': '', 'code': '' };
+  userInput = [false, false];
+  regUser = {'username':  '', 'password': '', 'phone': '', 'code': '' };
+  regInput = [false, false, false, false];
 
   isLogin = true; // 登录页面（ture）或注册页面（false）
   btn = ['btnAn', '']; // 当前按钮是登录按钮或注册按钮
@@ -33,17 +36,43 @@ export class ChLogRegisteredComponent implements OnInit {
   onSubmitLogin() {
     console.log(this.user);
     this.loginRegisteredService.loginVerify(this.user)
-      .subscribe( (data) => {
-        console.log(data);
+      .subscribe( (data: {'id': 0, 'token': ''}) => {
+        if (data !== null) {
+          this.message.success('登录成功');
+          document.getElementById('myModalClose').click();
+        } else {
+          this.message.success('登录失败');
+        }
       });
   }
   // 注册
   onSubmitRegister() {
     console.log(this.regUser);
+    this.loginRegisteredService.register(this.regUser)
+      .subscribe((value: string) => {
+        console.log(value);
+        if (value.toString() === 'true') {
+          this.message.success('注册成功');
+          document.getElementById('myModalClose').click();
+        } else {
+          this.message.error('注册失败');
+        }
+      });
+  }
+  onSubmitCode() {
+    if (this.regUser.phone !== '') {
+      this.loginRegisteredService.getCode(this.regUser.phone)
+        .subscribe((value: string) => {
+          console.log(value);
+        });
+    } else {
+      this.regInput[2] = true;
+    }
   }
 
   constructor(private loginRegisteredService: LoginRegisteredService,
-              private emitService: EmitService) { }
+              private emitService: EmitService,
+              private message: NzMessageService) { }
 
   ngOnInit() {
     // 接收发射过来的数据

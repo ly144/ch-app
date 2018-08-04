@@ -24,9 +24,23 @@ export class LoginRegisteredService {
 
 
   loginVerify(user) {
-    return this.http.post(URL + '/user/login', JSON.stringify(user), httpOptions)
+    return this.http.post(URL + '/userjwt/login', JSON.stringify(user), httpOptions)
       .pipe(
         catchError(this.handleError('loginVerify'))
+      );
+  }
+
+  getCode(phone: string) {
+    return this.http.post(URL + '/userjwt/sendCode', phone, httpOptions)
+      .pipe(
+        catchError(this.handleError('getCode'))
+      );
+  }
+
+  register(reg) {
+    return this.http.post(URL + '/userjwt/register', JSON.stringify(reg), httpOptions)
+      .pipe(
+        catchError(this.handleError('register'))
       );
   }
 
