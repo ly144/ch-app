@@ -89,41 +89,49 @@
     <div class="col-{{ showColNum }}" id="course-center">
       <div id="course-video">
         <!--<vg-player>-->
-        <!--<vg-overlay-play></vg-overlay-play>-->
-        <!--<vg-buffering></vg-buffering>-->
+          <!--<vg-overlay-play></vg-overlay-play>-->
+          <!--<vg-buffering></vg-buffering>-->
 
-        <!--<vg-scrub-bar>-->
-        <!--<vg-scrub-bar-current-time></vg-scrub-bar-current-time>-->
-        <!--<vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>-->
-        <!--</vg-scrub-bar>-->
+          <!--<vg-scrub-bar>-->
+            <!--<vg-scrub-bar-current-time></vg-scrub-bar-current-time>-->
+            <!--<vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>-->
+          <!--</vg-scrub-bar>-->
 
-        <!--<vg-controls>-->
-        <!--<vg-play-pause></vg-play-pause>-->
-        <!--<vg-playback-button></vg-playback-button>-->
+          <!--<vg-controls>-->
+            <!--<vg-play-pause></vg-play-pause>-->
+            <!--<vg-playback-button></vg-playback-button>-->
 
-        <!--<vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>-->
+            <!--<vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>-->
 
-        <!--<vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>-->
+            <!--<vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>-->
 
-        <!--<vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>-->
-        <!--<vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>-->
+            <!--<vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>-->
+            <!--<vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>-->
 
-        <!--<vg-track-selector></vg-track-selector>-->
-        <!--<vg-mute></vg-mute>-->
-        <!--<vg-volume></vg-volume>-->
-        <!--<vg-fullscreen></vg-fullscreen>-->
-        <!--</vg-controls>-->
+            <!--<vg-track-selector></vg-track-selector>-->
+            <!--<vg-mute></vg-mute>-->
+            <!--<vg-volume></vg-volume>-->
+            <!--<vg-fullscreen></vg-fullscreen>-->
+          <!--</vg-controls>-->
 
-        <!--<video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>-->
-        <!--<source [src]="transform(course.video)" type="video/mp4">-->
-        <!--</video>-->
+          <!--<video [vgMedia]="media" #media id="singleVideo" preload="auto" type="video/*">-->
+            <!--<source [src]=url type="video/mp4">-->
+          <!--</video>-->
         <!--</vg-player>-->
-        <vg-player style="border-radius: 10px;" *ngIf="course">
-          <vg-overlay-play vgFor="singleVideo"></vg-overlay-play>
-          <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls class="video-play">
-            <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
+        <vg-player style="border-radius: 10px;"><!-- *ngIf="course" -->
+          <!--<vg-overlay-play vgFor="singleVideo"></vg-overlay-play>-->
+          <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls class="video-play" type="video/*">
+            <source [src]=url type="video/mp4">
           </video>
         </vg-player>
+        <!--<video width="320" height="240" controls>-->
+          <!--<source src="http://10.0.0.34:1234/group1/M00/00/00/wKgZhVtlVNSAb_fnADJWtlJZhdg121.mp4" type="video/mp4">-->
+          <!--<source src="movie.ogg" type="video/ogg">-->
+          <!--<source src="movie.webm" type="video/webm">-->
+          <!--<object data="movie.mp4" width="320" height="240">-->
+            <!--<embed src="movie.swf" width="320" height="240">-->
+          <!--</object>-->
+        <!--</video>-->
       </div>
     </div>
 

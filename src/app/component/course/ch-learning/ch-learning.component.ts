@@ -39,7 +39,7 @@ export class ChLearningComponent implements OnInit {
   com: Comment = { userId: 1, sectionId: 1, content: '', time: '' };
 
   course: CourseLearn;
-  url = 'http://static.videogular.com/assets/videos/videogular.mp4';
+  url = 'http://10.0.0.34:1234/group1/M00/00/00/wKgZhVtlZvKAZ5hVADJWtlJZhdg350.mp4';
 
   // 选择按钮
   learn: string[][] = [
