@@ -79,14 +79,15 @@ export class ChSelectionsonComponent implements OnInit {
   ngOnInit() {
     // 接收发射过来的数据
     this.emitService.eventEmit.subscribe((value: string[]) => {
-      // 这里就可以调取接口，刷新userList列表数据
       console.log('selectionson');
-      this.homeService.getSelectionSon(value)
-        .subscribe((cou: Course[]) => {
-          console.log(cou);
-          this.course = cou;
-          this.sort(this.selection);
-        });
+      if (value[2] !== null) {
+        this.homeService.getSelectionSon(value)
+          .subscribe((cou: Course[]) => {
+            console.log(cou);
+            this.course = cou;
+            this.sort(this.selection);
+          });
+      }
     });
   }
 

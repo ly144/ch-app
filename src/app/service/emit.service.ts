@@ -12,9 +12,11 @@ export class Info {
 export class EmitService {
   info: Info;
   public eventEmit: any;
+  public eventEmitFind: any;
 
   constructor() {
     // 定义发射事件
     this.eventEmit = new EventEmitter();
+    this.eventEmitFind = new EventEmitter();
   }
 }
