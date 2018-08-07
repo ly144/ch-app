@@ -16,7 +16,7 @@
       <div id="notes-footer" class="row">
         <div class="col-2"><a><i class="anticon anticon-like-o"></i>&nbsp;{{ note.agreeNum }}</a></div>
         <div class="col-2"><a>采集 {{ note.gatherNum }}</a></div>
-        <div class="col-2"><a>查看全文</a></div>
+        <div class="col-2"><a routerLink="notesSon/{{ note.id }}" routerLinkActive="active">查看全文</a></div>
         <div class="offset-4 col-2"><span>{{ note.time }}</span></div>
       </div>
     </div>

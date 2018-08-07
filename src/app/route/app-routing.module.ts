@@ -20,8 +20,9 @@ import { ChLogRegisteredComponent } from '../component/person/ch-log-registered/
 import { ChCommunityComponent } from '../component/community/ch-community/ch-community.component';
 import { ChBackstageHomeComponent } from '../component/backstage/ch-backstage-home/ch-backstage-home.component';
 import { ChBacktageHomeBComponent } from '../component/backstage/ch-backtage-home-b/ch-backtage-home-b.component';
-import {ChApeQuizComponent} from '../component/community/ch-ape-quiz/ch-ape-quiz.component';
-import {ChQuestionSonComponent} from '../component/course/ch-question-son/ch-question-son.component';
+import { ChApeQuizComponent } from '../component/community/ch-ape-quiz/ch-ape-quiz.component';
+import { ChQuestionSonComponent } from '../component/course/ch-question-son/ch-question-son.component';
+import { AuthGuardService } from './auth-guard.service';
 
 const ROUTES: Routes = [
   { path: '', component: ChHomeComponent },
@@ -34,7 +35,7 @@ const ROUTES: Routes = [
       { path: 'notes', component: ChNotesComponent },
       { path: 'question', component: ChQuestionComponent }
     ]},
-  { path: 'learning/:id', component: ChLearningComponent, children: [
+  { path: 'learning/:id', component: ChLearningComponent, canActivate: [AuthGuardService], children: [
       { path: '', component: ChQuestionComponent },
       { path: 'comment', component: ChCommentComponent },
       { path: 'notes', component: ChNotesComponent },
@@ -42,23 +43,24 @@ const ROUTES: Routes = [
     ]},
   { path: 'logReg', component: ChLogRegisteredComponent },
   { path: 'ape', component: ChApeComponent },
-  { path: 'community', component: ChCommunityComponent },
-  { path: 'notesSon', component: ChNotesSonComponent },
-  { path: 'person', component: ChPersonComponent, children: [
+  { path: 'community/:id', component: ChCommunityComponent },
+  { path: 'notesSon/:id', component: ChNotesSonComponent },
+  { path: 'person', component: ChPersonComponent, canActivate: [AuthGuardService], children: [
       { path: '', component: ChPersonCourseComponent },
       { path: 'person-course', component: ChPersonCourseComponent },
       { path: 'person-notes', component: ChPersonNotesComponent },
       { path: 'person-ape', component: ChPersonApeComponent},
       { path: 'person-set', component: ChPersonSetComponent},
     ]},
-  { path: 'backstageA', component: ChBackstageHomeComponent },
-  { path: 'backstageB', component: ChBacktageHomeBComponent },
-  { path: 'quiz', component: ChApeQuizComponent },
-  { path: 'question-son', component: ChQuestionSonComponent },
+  { path: 'backstageA', component: ChBackstageHomeComponent, canActivate: [AuthGuardService] },
+  { path: 'backstageB', component: ChBacktageHomeBComponent, canActivate: [AuthGuardService] },
+  { path: 'quiz', component: ChApeQuizComponent, canActivate: [AuthGuardService] },
+  { path: 'question-son/:id', component: ChQuestionSonComponent },
 ];
 
 @NgModule({
   imports: [ RouterModule.forRoot(ROUTES) ],
-  exports: [ RouterModule ]
+  exports: [ RouterModule ],
+  providers: [ AuthGuardService ]
 })
 export class AppRoutingModule {}

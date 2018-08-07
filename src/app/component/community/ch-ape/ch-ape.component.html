@@ -9,7 +9,7 @@
           <span>实验室自己的问答社区</span>
         </div>
         <div class="offset-4 col-3">
-          <a>我要提问</a>
+          <a routerLink="/quiz" routerLinkActive="active">我要提问</a>
         </div>
       </div>
       <!-- 分类按钮 -->
@@ -30,7 +30,7 @@
           </div>
           <div class="col-11">
             <div id="from-tag" >来自&nbsp;&nbsp;&nbsp;<a>{{ ape.classify }}</a></div>
-            <div id="ape-tit"><a>{{ ape.title }}</a></div>
+            <div id="ape-tit"><a routerLink="/community/{{ ape.id }}" routerLinkActive="active">{{ ape.title }}</a></div>
           </div>
         </div>
 
@@ -40,7 +40,6 @@
             <div id="user"><a>{{ ape.answer[0].name }}</a><span>&nbsp;&nbsp;回答：</span></div>
             <div id="answer-content">
               {{ ape.answer[0].content }}
-              <span>[查看全部]</span>
             </div>
           </div>
         </div>

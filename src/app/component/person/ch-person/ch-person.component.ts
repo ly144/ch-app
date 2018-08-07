@@ -43,7 +43,7 @@ export class ChPersonComponent implements OnInit {
 
   // 个人中心页面初始化
   init() {
-    this.personService.personInit('ch')
+    this.personService.personInit(+localStorage.getItem('userId'))
       .subscribe( (per: Person) => {
         console.log(per);
         this.person = per;

@@ -37,7 +37,7 @@ export class ChPersonCourseComponent implements OnInit {
   }
 
   init() {
-    this.personService.getPersonCourse(3)
+    this.personService.getPersonCourse(+localStorage.getItem('userId'))
       .subscribe((personCourse: PersonCourse[]) => {
         console.log(personCourse);
         this.personCourse = personCourse;

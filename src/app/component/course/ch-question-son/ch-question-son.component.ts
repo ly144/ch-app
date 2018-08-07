@@ -6,6 +6,7 @@ import {Person} from '../../../models/Person';
 import {ApeService} from '../../../service/ape.service';
 import {DatePipe} from '@angular/common';
 import {NzMessageService} from 'ng-zorro-antd';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-ch-question-son',
@@ -26,17 +27,19 @@ export class ChQuestionSonComponent implements OnInit {
 
   // 传入question.id,传入question.id,传入当前登录者id
   init() {
-    this.courseService.getQuestionSon(1)
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.courseService.getQuestionSon(id)
       .subscribe((questionson: QuestionSon) => {
         this.questionson = questionson;
         console.log(this.questionson);
       });
-    this.courseService.getQuestionSonAnswer(1)
+    this.courseService.getQuestionSonAnswer(id)
       .subscribe((answer: Answer[]) => {
         this.answer = answer;
         console.log(this.answer);
       });
-    this.apeService.getApeLogin(1).subscribe((person: Person) => {
+    this.apeService.getApeLogin(+localStorage.getItem('userId'))
+      .subscribe((person: Person) => {
       console.log(person);
       this.person = person;
     });
@@ -59,6 +62,7 @@ export class ChQuestionSonComponent implements OnInit {
   }
 
   constructor(private courseService: CourseService,
+              private route: ActivatedRoute,
               private apeService: ApeService,
               private datePipe: DatePipe,
               private message: NzMessageService) {

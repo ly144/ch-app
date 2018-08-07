@@ -16,6 +16,8 @@ export class Ape {
 })
 export class ChPersonApeComponent implements OnInit {
 
+  userId = +localStorage.getItem('userId');
+
   apes: Ape[]; // 提问或回答或关注内容
 
   selectBtn = ['on', '', '']; // 当前选择的按钮
@@ -44,19 +46,19 @@ export class ChPersonApeComponent implements OnInit {
 
   getApe(selection: number) {
     if (selection === 0) {
-      this.personService.getPersonApeQuiz(3)
+      this.personService.getPersonApeQuiz(this.userId)
         .subscribe((apes: Ape[]) => {
           console.log(apes);
           this.apes = apes;
         });
     } else if (selection === 1) {
-      this.personService.getPersonApeAnswer(3)
+      this.personService.getPersonApeAnswer(this.userId)
         .subscribe((apes: Ape[]) => {
           console.log(apes);
           this.apes = apes;
         });
     } else if (selection === 2) {
-      this.personService.getPersonApeAttention(3)
+      this.personService.getPersonApeAttention(this.userId)
         .subscribe((apes: Ape[]) => {
           console.log(apes);
           this.apes = apes;
@@ -68,7 +70,7 @@ export class ChPersonApeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.personService.getPersonApeQuiz(3)
+    this.personService.getPersonApeQuiz(this.userId)
       .subscribe((apes: Ape[]) => {
         console.log(apes);
         this.apes = apes;

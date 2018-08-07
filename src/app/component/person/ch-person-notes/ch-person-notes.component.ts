@@ -34,7 +34,7 @@ export class ChPersonNotesComponent implements OnInit {
   }
 
   init() {
-    this.personSerice.getPersonNotes(3)
+    this.personSerice.getPersonNotes(+localStorage.getItem('userId'))
       .subscribe((notes: Notes[]) => {
         console.log(notes);
         this.notes = notes;

@@ -11,6 +11,7 @@ import { EmitService } from '../../../service/emit.service';
 })
 export class ChDetailsComponent implements OnInit {
 
+  isLogin = false;
   isLearn = false;
 
   detailed: Detailed;
@@ -36,26 +37,32 @@ export class ChDetailsComponent implements OnInit {
               private emitService: EmitService) {
   }
 
-  // 修改消息
-  emitFun(id: number) {
-    this.emitService.info = {name: 'details', id: id};
-  }
-
   init() {
     const id = +this.route.snapshot.paramMap.get('id');
     console.log('route:' + id);
-    this.emitFun(1);
+    this.emitService.courseId = id;
+    this.emitService.info = {name: 'details', id: id};
     // 请求后台数据
-    this.courseService.getCourseDetail([1, 3])
-      .subscribe((detailed: Detailed) => {
-        this.detailed = detailed;
-        console.log(this.detailed);
-        if (this.detailed.learned === 0) {
-          this.isLearn = false;
-        } else {
-          this.isLearn = true;
-        }
-      });
+    const userId = +localStorage.getItem('userId');
+    if (userId === 0) {
+      this.courseService.getDetailNoLogin(id)
+        .subscribe((detailed: Detailed) => {
+          this.detailed = detailed;
+          console.log(this.detailed);
+        });
+    } else {
+      this.courseService.getCourseDetail([id, userId])
+        .subscribe((detailed: Detailed) => {
+          this.detailed = detailed;
+          console.log(this.detailed);
+          this.isLogin = true;
+          if (this.detailed.learned === 0) {
+            this.isLearn = false;
+          } else {
+            this.isLearn = true;
+          }
+        });
+    }
   }
 
   ngOnInit() {

@@ -4,6 +4,7 @@ import { CourseService } from '../../../service/course.service';
 import { EmitService, Info } from '../../../service/emit.service';
 import {NzMessageService} from 'ng-zorro-antd';
 import {DatePipe} from '@angular/common';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-ch-question',
@@ -56,6 +57,7 @@ export class ChQuestionComponent implements OnInit {
     } else if ( this.ques.content.length < 5 ) {
       this.message.error('题目内容应不少于五个字！');
     } else {
+      this.ques.sectionId = +this.route.snapshot.paramMap.get('id');
       this.courseService.setSectionQuestion(this.ques)
         .subscribe((values: number) => {
           if (values) {
@@ -99,6 +101,7 @@ export class ChQuestionComponent implements OnInit {
   constructor(private courseService: CourseService,
               private emitService: EmitService,
               private datePipe: DatePipe,
+              private route: ActivatedRoute,
               private message: NzMessageService) { }
 
   ngOnInit() {

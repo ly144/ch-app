@@ -39,7 +39,9 @@ export class ChLogRegisteredComponent implements OnInit {
       .subscribe( (data: {'id': 0, 'token': ''}) => {
         if (data !== null) {
           this.message.success('登录成功');
-          document.getElementById('myModalClose').click();
+          localStorage.setItem('userId', data.id + '');
+          localStorage.setItem('token', data.token);
+          document.getElementById('myModalClose').click(); // 关闭登录窗口
         } else {
           this.message.success('登录失败');
         }
@@ -53,7 +55,7 @@ export class ChLogRegisteredComponent implements OnInit {
         console.log(value);
         if (value.toString() === 'true') {
           this.message.success('注册成功');
-          document.getElementById('myModalClose').click();
+          document.getElementById('myModalClose').click(); // 关闭登录窗口
         } else {
           this.message.error('注册失败');
         }
@@ -77,7 +79,6 @@ export class ChLogRegisteredComponent implements OnInit {
   ngOnInit() {
     // 接收发射过来的数据
     this.emitService.eventEmit.subscribe((value: string) => {
-      console.log(value);
       if (value === 'login') {
         // 这里就可以调取接口，刷新userList列表数据
         this.btn[1] = '';

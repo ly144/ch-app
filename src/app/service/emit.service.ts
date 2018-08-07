@@ -10,6 +10,7 @@ export class Info {
   providedIn: 'root'
 })
 export class EmitService {
+  courseId: number;
   info: Info;
   public eventEmit: any;
 

@@ -76,18 +76,17 @@
 
       <div class="col-4" id="learn">
         <div class="learn-1">
-          <p class="havelearn">已学{{detailed.learned}}%<span class="timelen">学习耗时{{detailed.learnTime}}</span></p>
-          <div class="progress" style="border-radius:10px;">
+          <p class="havelearn" *ngIf="isLogin">已学{{detailed.learned}}%<span class="timelen">学习耗时{{detailed.learnTime}}</span></p>
+          <div class="progress" style="border-radius:10px;" *ngIf="isLogin">
             <div class="progress-bar" [ngStyle]="{'width.%': detailed.learned}" id="progressColor"></div>
           </div>
-          <p class="learnto">上次学至 {{detailed.learnProgress}}</p>
+          <p class="learnto" *ngIf="isLogin">上次学至 {{detailed.learnProgress}}</p>
           <p class="continuelearn" *ngIf="isLearn">继续学习</p>
           <p class="continuelearn" *ngIf="!isLearn">开始学习</p>
           <p class="information">课程须知</p>
           <p class="infoContent">{{detailed.know}}</p>
           <p class="information">老师告诉你能学到什么？</p>
           <p class="infoContent">{{detailed.learnWhat}}</p>
-
         </div>
       </div>
     </div>

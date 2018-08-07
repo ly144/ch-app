@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Notes} from '../../../models/Notes';
 import {CourseService} from '../../../service/course.service';
 import {Detailed} from '../../../models/Detailed';
+import {EmitService} from '../../../service/emit.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-ch-notes-son',
@@ -14,19 +16,22 @@ export class ChNotesSonComponent implements OnInit {
   course: Detailed;
 
   init() {
-    this.courseService.getNotesSon(1)
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.courseService.getNotesSon(id)
       .subscribe((notesson: Notes) => {
         this.notesson = notesson;
         console.log(this.notesson);
       });
-    this.courseService.getNoteSonCourse(1)
+    this.courseService.getNoteSonCourse(this.emitService.courseId)
       .subscribe((course: Detailed) => {
         this.course = course;
         console.log(this.course);
       });
   }
 
-  constructor(private courseService: CourseService) {
+  constructor(private courseService: CourseService,
+              private emitService: EmitService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {

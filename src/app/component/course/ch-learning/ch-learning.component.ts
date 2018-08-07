@@ -34,9 +34,9 @@ export class ChLearningComponent implements OnInit {
   showNotes = false;
   // 问答,笔记交互
   dateTime: Date = new Date();
-  ques: Question = { userId: 1, sectionId: 1, title: '', content: '', time: '' };
-  notes: Notes = { userId: 1, sectionId: 1, content: '', time: '' };
-  com: Comment = { userId: 1, sectionId: 1, content: '', time: '' };
+  ques: Question = { userId: +localStorage.getItem('userId'), sectionId: 0, title: '', content: '', time: '' };
+  notes: Notes = { userId: +localStorage.getItem('userId'), sectionId: 0, content: '', time: '' };
+  com: Comment = { userId: +localStorage.getItem('userId'), sectionId: 0, content: '', time: '' };
 
   course: CourseLearn;
   url = 'http://10.0.0.34:1234/group1/M00/00/00/wKgZhVtlZvKAZ5hVADJWtlJZhdg350.mp4';
@@ -108,6 +108,7 @@ export class ChLearningComponent implements OnInit {
     } else if ( this.ques.content.length < 5 ) {
       this.message.error('题目内容应不少于五个字！');
     } else {
+      this.ques.sectionId = this.emitService.info.id;
       this.courseService.setSectionQuestion(this.ques)
         .subscribe((values: number) => {
           if (values) {
@@ -124,6 +125,7 @@ export class ChLearningComponent implements OnInit {
     if ( this.notes.content.length < 5 ) {
       this.message.error('题目内容应不少于五个字！');
     } else {
+      this.notes.sectionId = this.emitService.info.id;
       this.courseService.setSectionNotes(this.notes)
         .subscribe((values: number) => {
           if (values) {
@@ -140,6 +142,7 @@ export class ChLearningComponent implements OnInit {
     if ( this.com.content.length < 5 ) {
       this.message.error('评论内容应不少于五个字！');
     } else {
+      this.com.sectionId = this.emitService.info.id;
       this.courseService.setSectionComment(this.com)
         .subscribe((values: number) => {
           if (values) {
@@ -154,23 +157,18 @@ export class ChLearningComponent implements OnInit {
   init() {
     const id = +this.route.snapshot.paramMap.get('id');
     console.log('route:' + id);
-    this.emitFun(1);
-    this.courseService.getCourseLearn(1)
+    this.emitService.info = {name: 'learning', id: id};
+    this.courseService.getCourseLearn(id)
       .subscribe((cl: CourseLearn) => {
         this.course = cl;
         console.log(this.course);
       });
     // 获取章节展开的章节信息
-    this.courseService.getChapterSection(1)
+    this.courseService.getChapterSection(this.emitService.courseId)
       .subscribe((courseChapters: CourseChapter) => {
         this.courseChapters = courseChapters;
         console.log(this.courseChapters);
       });
-  }
-
-  // 修改消息
-  emitFun(id: number) {
-    this.emitService.info = {name: 'learning', id: id};
   }
 
   constructor(private courseService: CourseService,

@@ -5,6 +5,7 @@ import {Answer} from '../../../models/Answer';
 import {NzMessageService} from 'ng-zorro-antd';
 import {DatePipe} from '@angular/common';
 import {Person} from '../../../models/Person';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-ch-community',
@@ -18,7 +19,7 @@ export class ChCommunityComponent implements OnInit {
 
   dateTime: Date = new Date();
   community: Community;
-  answer: Answer = {userId: 1, communityId: 1, content: '', time: ''};
+  answer: Answer = {userId: +localStorage.getItem('userId'), communityId: 1, content: '', time: ''};
   person: Person;
 
   isONFocusClass = false;
@@ -36,7 +37,9 @@ export class ChCommunityComponent implements OnInit {
     if ( this.answer.content.length < 12 ) {
       this.message.error('回答内容应不少于五个字！');
     } else {
-      this.apeService.setApeAnswer(this.answer).subscribe((values: number) => {
+      this.answer.communityId = +this.route.snapshot.paramMap.get('id');
+      this.apeService.setApeAnswer(this.answer)
+        .subscribe((values: number) => {
         if (values) {
           this.message.success('回答成功！');
         } else  {
@@ -47,11 +50,14 @@ export class ChCommunityComponent implements OnInit {
   }
 
   init() {
-    this.apeService.getApeCommunity(1).subscribe((community: Community) => {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.apeService.getApeCommunity(id)
+      .subscribe((community: Community) => {
       console.log(community);
       this.community = community;
     });
-    this.apeService.getApeLogin(3).subscribe((person: Person) => {
+    this.apeService.getApeLogin(+localStorage.getItem('userId'))
+      .subscribe((person: Person) => {
       console.log(person);
       this.person = person;
     });
@@ -65,7 +71,8 @@ export class ChCommunityComponent implements OnInit {
 
   constructor(private apeService: ApeService,
               private datePipe: DatePipe,
-              private message: NzMessageService) {
+              private message: NzMessageService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {

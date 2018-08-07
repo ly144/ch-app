@@ -29,11 +29,13 @@ export class ChApeComponent implements OnInit {
   }
 
   init() {
-    this.apeService.getApe().subscribe((ape: Community) => {
+    this.apeService.getApe()
+      .subscribe((ape: Community) => {
       console.log(ape);
       this.apes = ape;
     });
-    this.apeService.getApeLogin(3).subscribe((person: Person) => {
+    this.apeService.getApeLogin(+localStorage.getItem('userId'))
+      .subscribe((person: Person) => {
       console.log(person);
       this.person = person;
     });

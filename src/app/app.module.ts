@@ -52,6 +52,7 @@ import { ApeService } from './service/ape.service';
 import { ChApeQuizComponent } from './component/community/ch-ape-quiz/ch-ape-quiz.component';
 import { ChQuestionSonComponent } from './component/course/ch-question-son/ch-question-son.component';
 import { QuillModule } from 'ngx-quill';
+import {AuthGuardService} from './route/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -111,6 +112,7 @@ import { QuillModule } from 'ngx-quill';
     CourseService,
     ApeService,
     BackstageService,
+    AuthGuardService,
   ]
 })
 export class AppModule { }

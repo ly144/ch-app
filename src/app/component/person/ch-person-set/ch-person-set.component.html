@@ -8,34 +8,210 @@
 </div>
 
 
-<div class="row info-wapper">
-  <div class="col-12 info-box">
-    <label class="pull-left info-box-label">昵称</label>
-    <div class="pull-left"><input type="text" placeholder="leeych"></div>
-  </div>
-  <div class="col-12 info-box">
-    <label class="pull-left info-box-label">职位</label>
-    <div class="pull-left"><input type="text" placeholder="请设置您的职位"></div>
-  </div>
-  <div class="col-12 info-box">
-    <label class="pull-left info-box-label">城市</label>
-    <div class="pull-left"><input type="text" placeholder="请设置您所在的城市"></div>
-  </div>
-  <div class="col-12 info-box" id="sex-1">
-    <label class="pull-left info-box-label">性别</label>
-    <div class="pull-left">
-      <label class="radio-inline sex"><input type="radio" name="optradio">保密</label>
-      <label class="radio-inline sex"><input type="radio" name="optradio">男</label>
-      <label class="radio-inline sex"><input type="radio" name="optradio">女</label>
+<form (ngSubmit)="submitForm()">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-9">
+
+      <div class="row">
+        <div class="col-2">
+          <label>昵称</label>
+        </div>
+        <div class="col-10">
+          <input type="text" class="form-control" placeholder="{{ person.name }}" [(ngModel)]="person.name">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <label>职位</label>
+        </div>
+        <div class="col-10">
+          <input type="text" class="form-control" placeholder="{{ person.job }}" [(ngModel)]="person.job">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <label>城市</label>
+        </div>
+        <div class="col-10">
+          <input type="text" class="form-control" placeholder="{{ person.address }}" [(ngModel)]="person.address">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <label>性别</label>
+        </div>
+        <div class="col-10">
+          <label class="radio-inline"><input type="radio" name="sex" value="保密" [(ngModel)]="person.sex">保密</label>
+          <label class="radio-inline"><input type="radio" name="sex" value="男" [(ngModel)]="person.sex">男</label>
+          <label class="radio-inline"><input type="radio" name="sex" value="女" [(ngModel)]="person.sex">女</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <label>个性签名</label>
+        </div>
+        <div class="col-10">
+          <input type="text"  class="form-control" placeholder="{{ person.signature }}" [(ngModel)]="person.signature">
+        </div>
+      </div>
+
+      <!--<div class="row">-->
+        <!--<div class="col-2">-->
+          <!--<label>邮箱绑定</label>-->
+        <!--</div>-->
+        <!--<div class="col-10">-->
+          <!--<input class="form-control" type="text" placeholder="{{ person.name }}" [(ngModel)]="person.name">-->
+          <!--<button nz-button nzType="default">发送邮箱</button>-->
+          <!--<input type="text">-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <div class="row">
+        <div class="col-4 offset-8">
+          <button type="submit" class="btn btn-primary">确定</button>
+        </div>
+      </div>
+
     </div>
   </div>
-  <div class="col-12 info-box">
-    <label class="pull-left info-box-label">个性签名</label>
-    <div class="pull-left"><input type="text" placeholder="请设置您的个性签名"></div>
-  </div>
-  <div class="offset-9 col-3">
-    <button type="button" class="btn">取消</button>
-    <button type="button" class="btn btn-danger">保存</button>
-  </div>
-</div>
+</form>
 
+<!--<form nz-form (ngSubmit)="submitForm()">-->
+
+  <!--<nz-form-item>-->
+    <!--<nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name">昵称</nz-form-label>-->
+    <!--<nz-form-control [nzSm]="14" [nzXs]="24">-->
+      <!--<input nz-input id="name" [(ngModel)]="person.name">-->
+    <!--</nz-form-control>-->
+  <!--</nz-form-item>-->
+
+  <!--<nz-form-item>-->
+    <!--<nz-form-label [nzSm]="6" [nzXs]="24" nzFor="job">职位</nz-form-label>-->
+    <!--<nz-form-control [nzSm]="14" [nzXs]="24">-->
+      <!--<input nz-input id="job" [(ngModel)]="person.job">-->
+    <!--</nz-form-control>-->
+  <!--</nz-form-item>-->
+
+  <!--<nz-form-item>-->
+    <!--<nz-form-label [nzSm]="6" [nzXs]="24" nzFor="address">城市</nz-form-label>-->
+    <!--<nz-form-control [nzSm]="14" [nzXs]="24">-->
+      <!--<input nz-input formControlName="address" id="address" [(ngModel)]="person.address">-->
+    <!--</nz-form-control>-->
+  <!--</nz-form-item>-->
+
+  <!--<nz-form-item>-->
+    <!--<nz-form-label [nzSm]="6" [nzXs]="24" nzFor="nickname">性别</nz-form-label>-->
+    <!--<nz-form-control [nzSm]="14" [nzXs]="24">-->
+      <!--<nz-radio-group [(ngModel)]="person.sex">-->
+        <!--<label nz-radio nzValue="保密">保密</label>-->
+        <!--<label nz-radio nzValue="B">B</label>-->
+        <!--<label nz-radio nzValue="C">C</label>-->
+        <!--<label nz-radio nzValue="D">D</label>-->
+      <!--</nz-radio-group>-->
+    <!--</nz-form-control>-->
+  <!--</nz-form-item>-->
+
+  <!--<nz-form-item>-->
+    <!--<nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber">个性签名</nz-form-label>-->
+    <!--<nz-form-control [nzSm]="14" [nzXs]="24">-->
+        <!--<input formControlName="phoneNumber" id="'phoneNumber'" nz-input>-->
+    <!--</nz-form-control>-->
+  <!--</nz-form-item>-->
+
+  <!--<nz-form-item>-->
+    <!--<nz-form-label [nzSm]="6" [nzXs]="24" nzFor="website">Website</nz-form-label>-->
+    <!--<nz-form-control [nzSm]="14" [nzXs]="24">-->
+      <!--<input nz-input id="website" formControlName="website" placeholder="website">-->
+    <!--</nz-form-control>-->
+  <!--</nz-form-item>-->
+
+
+  <!--<nz-form-item>-->
+    <!--<nz-form-label [nzSm]="6" [nzXs]="24" nzFor="captcha">Captcha</nz-form-label>-->
+    <!--<nz-form-control [nzSm]="14" [nzXs]="24">-->
+      <!--<div nz-row [nzGutter]="8">-->
+        <!--<div nz-col [nzSpan]="12">-->
+          <!--<input nz-input formControlName="captcha" id="captcha">-->
+        <!--</div>-->
+        <!--<div nz-col [nzSpan]="12">-->
+          <!--<button nz-button (click)="getCaptcha($event)">Get captcha</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</nz-form-control>-->
+  <!--</nz-form-item>-->
+
+
+  <!--<nz-form-item nz-row style="margin-bottom:8px;">-->
+    <!--<nz-form-control [nzSpan]="14" [nzOffset]="6">-->
+      <!--<button nz-button nzType="primary">Register</button>-->
+    <!--</nz-form-control>-->
+  <!--</nz-form-item>-->
+<!--</form>-->
+
+
+
+
+
+<!--<form (ngSubmit)="submitForm()">-->
+<!--<div class="row info-wapper">-->
+  <!--<div class="col-12 info-box">-->
+    <!--<div class="row">-->
+      <!--<div class="col-4">-->
+        <!--&lt;!&ndash;<label class="pull-left info-box-label">昵称</label>&ndash;&gt;-->
+        <!--<label>昵称</label>-->
+      <!--</div>-->
+      <!--<div class="col-8">-->
+        <!--&lt;!&ndash;<div class="pull-left"><input type="text" placeholder="{{ person.name }}"></div>&ndash;&gt;-->
+        <!--<input type="text" placeholder="{{ person.name }}">-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-12 info-box">-->
+    <!--<div class="row">-->
+      <!--<div class="col-4"><label class="pull-left info-box-label">职位</label></div>-->
+      <!--<div class="col-8">-->
+        <!--<div class="pull-left"><input type="text" placeholder="{{ person.job }}"></div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-12 info-box">-->
+    <!--<div class="row">-->
+      <!--<div class="col-4"><label class="pull-left info-box-label">城市</label></div>-->
+      <!--<div class="col-8">-->
+        <!--<div class="pull-left"><input type="text" placeholder="{{ person.address }}"></div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-12 info-box" id="sex-1">-->
+    <!--<div class="row">-->
+      <!--<div class="col-4"><label class="pull-left info-box-label">性别</label></div>-->
+      <!--<div class="col-8">-->
+        <!--<div class="pull-left">-->
+          <!--<nz-radio-group [(ngModel)]="person.sex">-->
+            <!--<label nz-radio nzValue="保密">保密</label>-->
+            <!--<label nz-radio nzValue="男">男</label>-->
+            <!--<label nz-radio nzValue="女">女</label>-->
+          <!--</nz-radio-group>-->
+        <!--</div>-->
+      <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-12 info-box">-->
+    <!--<div class="row">-->
+      <!--<div class="col-4"><label class="pull-left info-box-label">个性签名</label></div>-->
+      <!--<div class="col-8">-->
+        <!--<div class="pull-left"><input type="text" placeholder="{{ person.signature }}"></div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="offset-9 col-3">-->
+    <!--<button type="button" class="btn">取消</button>-->
+    <!--<button type="button" class="btn btn-danger">保存</button>-->
+  <!--</div>-->
+<!--</div>-->
+<!--</form>-->

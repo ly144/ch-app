@@ -15,7 +15,7 @@ export class ChApeQuizComponent implements OnInit {
   // 获取题目，以及题目具体内容
   dateTime: Date = new Date();
 
-  quiz: Community = {userId: -1, typeId: -1, title: '', content: '', time: ''};
+  quiz: Community = {userId: +localStorage.getItem('userId'), typeId: -1, title: '', content: '', time: ''};
 
   beforeType = -1;
   // 获取类型

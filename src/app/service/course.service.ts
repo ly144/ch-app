@@ -26,6 +26,13 @@ export class CourseService {
     };
   }
 
+  getDetailNoLogin(courseId: number) {
+    return this.http.post(URL + '/detail/getDetailNoLogin', courseId, httpOptions)
+      .pipe(
+        catchError(this.handleError('getDetailNoLogin'))
+      );
+  }
+
   // 获取课程详细页面的课程信息，教师信息，学生信息
   getCourseDetail(passId: number[]) {
     console.log(passId);
@@ -35,7 +42,7 @@ export class CourseService {
       );
   }
 
-  // 获得课程详细页面子页面的课程章节页面的章信息和节信息
+  // 获得课程详细页面子页面-课程章节页面的章信息和节信息
   getChapterSection(courseId: number) {
     console.log(courseId);
     return this.http.post(URL + '/detail/getChapterSection', courseId, httpOptions)
@@ -79,6 +86,9 @@ export class CourseService {
         catchError(this.handleError('getCourseNotes'))
       );
   }
+
+
+
 
 
 

@@ -22,6 +22,7 @@ export class ChHeaderComponent implements OnInit {
   constructor(private emitService: EmitService) { }
 
   ngOnInit() {
+    localStorage.setItem('userId', '0');
   }
 
 }

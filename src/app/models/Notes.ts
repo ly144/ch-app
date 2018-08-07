@@ -1,4 +1,5 @@
 export class Notes {
+  id?: number;
   userId: number; // 用户id
   sectionId: number; // 节id
   img?: string;

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { URL } from '../models/uploadUrl';
 import { catchError } from 'rxjs/internal/operators';
+import {Person} from '../models/Person';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -23,9 +24,9 @@ export class PersonService {
   }
 
   // 个人信息
-  personInit(name: string) {
-    console.log(name);
-    return this.http.post(URL + '/user/getPerson', name, httpOptions)
+  personInit(id: number) {
+    console.log(id);
+    return this.http.post(URL + '/user/getPerson', id, httpOptions)
       .pipe(
         catchError(this.handleError('personInit'))
       );
@@ -68,6 +69,18 @@ export class PersonService {
     return this.http.post(URL + '/user/getNotes', id, httpOptions)
       .pipe(
         catchError(this.handleError('getPersonNotes'))
+      );
+  }
+
+  /**
+   * 修改个人信息
+   * @param {Person} person
+   * @returns {Observable<any>}
+   */
+  setPerson(person: Person) {
+    return this.http.post(URL + '/user/setPerson', JSON.stringify(person), httpOptions)
+      .pipe(
+        catchError(this.handleError('setPerson'))
       );
   }
 
