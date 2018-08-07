@@ -50,8 +50,8 @@ import { CourseService } from './service/course.service';
 import { BackstageService } from './service/backstage.service';
 import { ApeService } from './service/ape.service';
 import { ChApeQuizComponent } from './component/community/ch-ape-quiz/ch-ape-quiz.component';
-import {QuillModule} from 'ngx-quill';
 import { ChQuestionSonComponent } from './component/course/ch-question-son/ch-question-son.component';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [

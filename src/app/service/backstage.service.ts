@@ -157,5 +157,12 @@ export class BackstageService {
       );
   }
 
+  uploadImg(formData: FormData) {
+    return this.http.post(URL + '/uploadfile/upload', formData, httpOptions)
+      .pipe(
+        catchError(this.handleError('uploadImg'))
+      );
+  }
+
   constructor(private http: HttpClient) { }
 }

@@ -22,6 +22,7 @@ export class ChHeaderComponent implements OnInit {
   onRegister() {
     this.emitFun('register');
   }
+  // 发送
   emitFun(value: string) {
     this.emitService.eventEmit.emit(value);
   }
