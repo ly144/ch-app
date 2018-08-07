@@ -47,7 +47,7 @@
         </div>
       </div>
 
-      <div class="row login">
+      <div class="row login" *ngIf="person">
         <div class="col-2">
           <img class="login-img" src="{{ person.picture }}">
         </div>
@@ -61,7 +61,7 @@
 
     <div class="col-4">
       <div class="newProblems">发新问题</div>
-      <div>
+      <div *ngIf="person">
         <img class="new-img" src="{{ person.picture }}">
         <span class="new-name">{{ person.name }}</span>
       </div>

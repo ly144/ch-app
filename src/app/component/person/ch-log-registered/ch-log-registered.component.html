@@ -13,7 +13,7 @@
           <div class="col-3 myModal-header-btn" (click)="onBtn(0)" id="{{ btn[0] }}"><span>登录</span></div>
           <div class="col-3 myModal-header-btn" (click)="onBtn(1)" id="{{ btn[1] }}"><span>注册</span></div>
           <div class="col-6">
-            <button type="button" class="myModal-close" data-dismiss="modal" id="myModalClose">X</button>
+          <button type="button" class="close myClose" data-dismiss="modal">&times;</button>
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@
                   <input type="password" class="myModal-body-input" maxlength="16" name="password"
                          placeholder="6-16位密码，区分大小写，不能用空格" [(ngModel)]="user.password" required>
                   <p class="errorHint" data-error-hint="请输入6-16位密码，区分大小写，不能使用空格！" *ngIf="userInput[1]">请输入6-16位密码，区分大小写，不能使用空格！</p>
-                  <p style="margin-bottom: 20px"></p>
+                  <p style="margin-bottom: 20px" *ngIf="!userInput[1]"></p>
                 </div>
 
                 <div class="form-check myModal-body-check">
@@ -64,8 +64,8 @@
 
                 <div>
                   <input type="password" class="myModal-body-input" maxlength="37" name="email" placeholder="6-16位密码，区分大小写，不能用空格" [(ngModel)]="regUser.password" required>
-                  <p class="errorHint" data-error-hint="6-16位密码，区分大小写，不能用空格" *ngIf="regInput[1]">请输入密码</p>
-                  <p style="margin-bottom: 20px"></p>
+                  <p class="errorHint" data-error-hint="6-16位密码，区分大小写，不能用空格" *ngIf="regInput[1]">请输入6-16位密码</p>
+                  <p style="margin-bottom: 20px" *ngIf="!regInput[1]"></p>
                 </div>
 
                 <div>

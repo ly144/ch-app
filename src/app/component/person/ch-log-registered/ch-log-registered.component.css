@@ -1,5 +1,5 @@
 #myModal {
-  top: 80px;
+  top: 50px;
   font-family: "PingFang SC", Helvetica, "Helvetica Neue", 微软雅黑, Tahoma, Arial, sans-serif;
 }
 #myModal-dialog {
@@ -46,7 +46,7 @@
   color: #F20D0D;
   border-bottom: 1px solid #F20D0D;
 }
-.myModal-close {
+.myClose {
   width: 17px;
   height: 17px;
   cursor: pointer;
@@ -129,6 +129,10 @@
   background-color: #f20d0d;
   border-color: #f20d0d;
   outline: none;
+}
+.myModal-body-button-input:hover{
+  background-color: #c20a0a;
+  border: 1px solid #c20a0a;
 }
 
 /*模态框底部*/

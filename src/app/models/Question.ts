@@ -1,6 +1,7 @@
 import {Answer} from './Answer';
 
 export class Question {
+  id?: number;
   userId: number; // 用户ID
   sectionId: number; // 节ID
   img?: string;   // 用户头像

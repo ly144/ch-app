@@ -51,7 +51,8 @@ export class ChQuestionSonComponent implements OnInit {
     if (this.myAnswer.content.length < 12) {
       this.message.error('回答内容应不少于五个字！');
     } else {
-      this.courseService.setQuestionSonAnswer(this.myAnswer).subscribe((values: number) => {
+      this.courseService.setQuestionSonAnswer(this.myAnswer)
+        .subscribe((values: number) => {
         if (values) {
           this.message.success('回答成功！');
         } else {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoginRegisteredService} from '../../../service/login-registered.service';
 import {EmitService} from '../../../service/emit.service';
 import {NzMessageService} from 'ng-zorro-antd';
@@ -12,7 +12,7 @@ export class ChLogRegisteredComponent implements OnInit {
 
   user = {'username': '', 'password': ''};
   userInput = [false, false];
-  regUser = {'username':  '', 'password': '', 'phone': '', 'code': '' };
+  regUser = {'username': '', 'password': '', 'phone': '', 'code': ''};
   regInput = [false, false, false, false];
 
   isLogin = true; // 登录页面（ture）或注册页面（false）
@@ -32,35 +32,60 @@ export class ChLogRegisteredComponent implements OnInit {
     }
   }
 
+  onLoginJudge() {
+    if (this.user.username.length === 0) {
+      this.userInput[0] = true;
+      return false;
+    } else if (this.user.password.length < 6) {
+      this.userInput[1] = true;
+      return false;
+    }
+    return true;
+  }
+
   // 登录
   onSubmitLogin() {
     console.log(this.user);
-    this.loginRegisteredService.loginVerify(this.user)
-      .subscribe( (data: {'id': 0, 'token': ''}) => {
-        if (data !== null) {
-          this.message.success('登录成功');
-          localStorage.setItem('userId', data.id + '');
-          localStorage.setItem('token', data.token);
-          document.getElementById('myModalClose').click(); // 关闭登录窗口
-        } else {
-          this.message.success('登录失败');
-        }
-      });
+    if (this.onLoginJudge()) {
+      this.loginRegisteredService.loginVerify(this.user)
+        .subscribe((data: { 'id': 0, 'token': '' }) => {
+          if (data !== null) {
+            this.message.success('登录成功');
+            localStorage.setItem('userId', data.id + '');
+            localStorage.setItem('token', data.token);
+            document.getElementById('myModalClose').click(); // 关闭登录窗口
+          } else {
+            this.message.success('登录失败');
+          }
+        });
+    }
   }
+
+  onRegisterJudge() {
+    if (this.regUser.password.length < 6) {
+      this.regInput[1] = true;
+      return false;
+    }
+    return true;
+  }
+
   // 注册
   onSubmitRegister() {
     console.log(this.regUser);
-    this.loginRegisteredService.register(this.regUser)
-      .subscribe((value: string) => {
-        console.log(value);
-        if (value.toString() === 'true') {
-          this.message.success('注册成功');
-          document.getElementById('myModalClose').click(); // 关闭登录窗口
-        } else {
-          this.message.error('注册失败');
-        }
-      });
+    if (this.onRegisterJudge()) {
+      this.loginRegisteredService.register(this.regUser)
+        .subscribe((value: string) => {
+          console.log(value);
+          if (value.toString() === 'true') {
+            this.message.success('注册成功');
+            document.getElementById('myModalClose').click(); // 关闭登录窗口
+          } else {
+            this.message.error('注册失败');
+          }
+        });
+    }
   }
+
   onSubmitCode() {
     if (this.regUser.phone !== '') {
       this.loginRegisteredService.getCode(this.regUser.phone)
@@ -74,7 +99,8 @@ export class ChLogRegisteredComponent implements OnInit {
 
   constructor(private loginRegisteredService: LoginRegisteredService,
               private emitService: EmitService,
-              private message: NzMessageService) { }
+              private message: NzMessageService) {
+  }
 
   ngOnInit() {
     // 接收发射过来的数据
