@@ -56,5 +56,13 @@ export class HomeService {
       );
   }
 
+  // 根据名字搜索
+  getFindByName(name: string) {
+    return this.http.post(URL + '/es/findCourse', name, httpOptions)
+      .pipe(
+        catchError(this.handleError('getSelectionSon'))
+      );
+  }
+
   constructor(private http: HttpClient) { }
 }

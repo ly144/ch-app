@@ -8,6 +8,14 @@ import {EmitService} from '../../../service/emit.service';
 })
 export class ChHeaderComponent implements OnInit {
 
+  findByName: string;
+
+  onFindByName() {
+    if (this.findByName !== null) {
+      this.emitService.eventEmitFind.emit(this.findByName);
+    }
+  }
+
   onLogin() {
     this.emitFun('login');
   }
