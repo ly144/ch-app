@@ -1,4 +1,5 @@
 export class Person { // 用户信息类
+  id: number; // 用户id
   name: string; // 用户昵称
   picture: string; // 用户头像
   sex: string; // 用户性别

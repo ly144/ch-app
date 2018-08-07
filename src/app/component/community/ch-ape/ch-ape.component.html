@@ -30,7 +30,7 @@
           </div>
           <div class="col-11">
             <div id="from-tag" >来自&nbsp;&nbsp;&nbsp;<a>{{ ape.classify }}</a></div>
-            <div id="ape-tit"><a routerLink="/community/{{ ape.id }}" routerLinkActive="active">{{ ape.title }}</a></div>
+            <div><a id="ape-tit" routerLink="/community/{{ ape.id }}" routerLinkActive="active">{{ ape.title }}</a></div>
           </div>
         </div>
 
@@ -56,9 +56,9 @@
     </div>
 
     <!-- 个人信息栏 -->
-    <div class="col-3">
+    <div class="col-3" *ngIf="person">
       <!-- 用户栏 -->
-      <div class="row" *ngIf="person">
+      <div class="row">
         <div id="user-about" class="col-12">
           <!-- 用户简介 -->
           <div id="user-info" class="row">

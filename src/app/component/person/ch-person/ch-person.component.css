@@ -58,6 +58,13 @@ a {
   margin-left: -55px;
 }
 
+.person-setbtn {
+  margin-top: 45px;
+}
+.person-setbtn button {
+  margin-right: 10px;
+}
+
 .person-9{
   margin-left: -23px;
   margin-top: 45px;

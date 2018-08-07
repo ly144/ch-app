@@ -77,10 +77,56 @@ export class PersonService {
    * @param {Person} person
    * @returns {Observable<any>}
    */
-  setPerson(person: Person) {
-    return this.http.post(URL + '/user/setPerson', JSON.stringify(person), httpOptions)
+  changePerson(person: Person) {
+    return this.http.post(URL + '/user/changePerson', JSON.stringify(person), httpOptions)
       .pipe(
-        catchError(this.handleError('setPerson'))
+        catchError(this.handleError('changePerson'))
+      );
+  }
+
+  /**
+   * 发送邮件
+   * @param {string} email
+   */
+  sendEmail(email: string) {
+    return this.http.post(URL + '/userjwt/sendEmail', email, httpOptions)
+      .pipe(
+        catchError(this.handleError('sendEmail'))
+      );
+  }
+
+  /**
+   * 发送短信
+   * @param {string} phone
+   * @returns {Observable<any>}
+   */
+  sendCode(phone: string) {
+    return this.http.post(URL + '/userjwt/sendCode', phone, httpOptions)
+      .pipe(
+        catchError(this.handleError('sendCode'))
+      );
+  }
+
+  /**
+   * 判断验证码
+   * @returns {Observable<any>}
+   */
+  judgeCode(key: string, code: string, id: number) {
+    return this.http.post(URL + '/userjwt/judgeCode', {'key': key, 'code': code, 'id': id}, httpOptions)
+      .pipe(
+        catchError(this.handleError('judgeCode'))
+      );
+  }
+
+  /**
+   * 修改密码
+   * @param {string[]} pass
+   * @returns {Observable<any>}
+   */
+  changePass(pass: string[]) {
+    return this.http.post(URL + '/userjwt/changePass', pass, httpOptions)
+      .pipe(
+        catchError(this.handleError('changePass'))
       );
   }
 

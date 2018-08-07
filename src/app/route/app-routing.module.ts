@@ -8,7 +8,6 @@ import { ChPersonComponent} from '../component/person/ch-person/ch-person.compon
 import { ChPersonCourseComponent } from '../component/person/ch-person-course/ch-person-course.component';
 import { ChPersonNotesComponent } from '../component/person/ch-person-notes/ch-person-notes.component';
 import { ChPersonApeComponent} from '../component/person/ch-person-ape/ch-person-ape.component';
-import { ChPersonSetComponent} from '../component/person/ch-person-set/ch-person-set.component';
 import { ChCommentComponent } from '../component/course/ch-comment/ch-comment.component';
 import { ChNotesComponent } from '../component/course/ch-notes/ch-notes.component';
 import { ChQuestionComponent } from '../component/course/ch-question/ch-question.component';
@@ -50,7 +49,6 @@ const ROUTES: Routes = [
       { path: 'person-course', component: ChPersonCourseComponent },
       { path: 'person-notes', component: ChPersonNotesComponent },
       { path: 'person-ape', component: ChPersonApeComponent},
-      { path: 'person-set', component: ChPersonSetComponent},
     ]},
   { path: 'backstageA', component: ChBackstageHomeComponent, canActivate: [AuthGuardService] },
   { path: 'backstageB', component: ChBacktageHomeBComponent, canActivate: [AuthGuardService] },

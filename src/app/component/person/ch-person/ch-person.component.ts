@@ -17,7 +17,6 @@ export class ChPersonComponent implements OnInit {
     {'name': '课程', 'isOn': 'on', 'isHover': '', 'route': './person-course'},
     {'name': '笔记', 'isOn': '', 'isHover': '', 'route': './person-notes'},
     {'name': '猿问', 'isOn': '', 'isHover': '', 'route': './person-ape'},
-    {'name': '个人设置', 'isOn': '', 'isHover': '', 'route': './person-set'}
   ];
   // 当前选择按钮标记
   selection = 0;
@@ -43,7 +42,7 @@ export class ChPersonComponent implements OnInit {
 
   // 个人中心页面初始化
   init() {
-    this.personService.personInit(+localStorage.getItem('userId'))
+    this.personService.personInit(3)
       .subscribe( (per: Person) => {
         console.log(per);
         this.person = per;
