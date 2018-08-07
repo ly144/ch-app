@@ -25,7 +25,7 @@ export class ChHeaderComponent implements OnInit {
   // 发送
   emitFun(value: string) {
     this.emitService.eventEmit.emit(value);
-  }
+}
 
   constructor(private emitService: EmitService) { }
 

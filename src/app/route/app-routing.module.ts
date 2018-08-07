@@ -53,7 +53,7 @@ const ROUTES: Routes = [
   { path: 'backstageA', component: ChBackstageHomeComponent, canActivate: [AuthGuardService] },
   { path: 'backstageB', component: ChBacktageHomeBComponent, canActivate: [AuthGuardService] },
   { path: 'quiz', component: ChApeQuizComponent, canActivate: [AuthGuardService] },
-  { path: 'question-son/:id', component: ChQuestionSonComponent },
+  { path: 'questionSon/:id', component: ChQuestionSonComponent },
 ];
 
 @NgModule({

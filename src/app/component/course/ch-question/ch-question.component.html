@@ -11,7 +11,7 @@
       <a><img src="{{ que.img }}" id="user-img"></a>
     </div>
     <div class="col-11">
-      <div id="question-tit"><a>{{ que.title }}</a></div>
+      <div><a id="question-tit" routerLink="/questionSon/{{ que.id }}" routerLinkActive="active">{{ que.title }}</a></div>
       <div id="question-cnt" *ngIf="que.answer.length !== 0">
         <span>最新回答 / <a id="nickname">{{ que.answer[0].name }}</a></span>
         <div>{{ que.answer[0].content }}</div>

@@ -5,19 +5,13 @@
     <div class="row">
       <div class="col-8">
         <ul class="item">
-          <li>
-            课程 &nbsp;\
-          </li>
-          <li>
-            {{detailed.direction}} &nbsp;\
-          </li>
-          <li>
-            {{detailed.classify}} &nbsp;\
-          </li>
-          <li>
-            {{detailed.name}} &nbsp;
-          </li>
-
+          <li>课程</li>
+          <li>\</li>
+          <li>{{detailed.direction}}</li>
+          <li>\</li>
+          <li>{{detailed.classify}}</li>
+          <li>\</li>
+          <li>{{detailed.name}}</li>
         </ul>
       </div>
     </div>
@@ -76,7 +70,8 @@
 
       <div class="col-4" id="learn">
         <div class="learn-1">
-          <p class="havelearn" *ngIf="isLogin">已学{{detailed.learned}}%<span class="timelen">学习耗时{{detailed.learnTime}}</span></p>
+          <p class="havelearn" *ngIf="isLogin">已学{{detailed.learned}}%<span
+            class="timelen">学习耗时{{detailed.learnTime}}</span></p>
           <div class="progress" style="border-radius:10px;" *ngIf="isLogin">
             <div class="progress-bar" [ngStyle]="{'width.%': detailed.learned}" id="progressColor"></div>
           </div>
