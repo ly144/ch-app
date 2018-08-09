@@ -94,7 +94,7 @@ export class ChSelectionComponent implements OnInit {
 
   // 发射消息
   emitFun() {
-    this.emitService.eventEmit.emit(this.nowSelect);
+    this.emitService.eventEmitSelection.emit(this.nowSelect);
   }
 
   constructor(private homeService: HomeService,

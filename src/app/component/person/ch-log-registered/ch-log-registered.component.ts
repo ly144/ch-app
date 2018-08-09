@@ -46,19 +46,20 @@ export class ChLogRegisteredComponent implements OnInit {
   // 登录
   onSubmitLogin() {
     console.log(this.user);
-    if (this.onLoginJudge()) {
+    // if (this.onLoginJudge()) {
       this.loginRegisteredService.loginVerify(this.user)
         .subscribe((data: { 'id': 0, 'token': '' }) => {
           if (data !== null) {
             this.message.success('登录成功');
             localStorage.setItem('userId', data.id + '');
             localStorage.setItem('token', data.token);
+            this.emitService.eventEmit.emit('loginSuccess');
             document.getElementById('myModalClose').click(); // 关闭登录窗口
           } else {
             this.message.success('登录失败');
           }
         });
-    }
+    // }
   }
 
   onRegisterJudge() {

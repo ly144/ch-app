@@ -20,17 +20,15 @@
       <div class="row chapterLearn">
         <div class="col-12">
           <div id="chapter-5" *ngFor="let sec of cha.sections" routerLink="/learning/{{ sec.id }}"
-               routerLinkActive="active">
-            <!--<a class="chapter-5-a">-->
+               routerLinkActive="active" (click)="setHistorical(sec.id, sec.name, cha.chapter, sec.section)">
             <i class="anticon anticon-play-circle-o" style="font-size: 18px;"></i>
             &nbsp;&nbsp;{{cha.chapter}}-{{sec.section}} &nbsp;&nbsp;{{sec.name}}
             <!-- 没学，学一半，学完 -->
             <i class="anticon anticon-close-circle-o" id="notLearn"
-               *ngIf="!isLogin || (sec.learnedSections !== 1 && sec.learningHalfs !== 1)"></i>
-            <i class="anticon anticon-clock-circle-o" id="LearnHalf" *ngIf="isLogin && sec.learningHalfs === 1"></i>
-            <i class="anticon anticon-check-circle-o" id="haveLearned" *ngIf="isLogin && sec.learnedSections === 1"></i>
-            <span class="recentLearn" *ngIf="isLogin && sec.newLearn === sec.id">最近学习</span>
-            <!--</a>-->
+               *ngIf="(sec.learnedSections !== 1 && sec.learningHalfs !== 1)"></i>
+            <i class="anticon anticon-clock-circle-o" id="LearnHalf" *ngIf="sec.learningHalfs === 1"></i>
+            <i class="anticon anticon-check-circle-o" id="haveLearned" *ngIf="sec.learnedSections === 1"></i>
+            <span class="recentLearn" *ngIf="sec.newLearn === sec.id">最近学习</span>
           </div>
         </div>
       </div>

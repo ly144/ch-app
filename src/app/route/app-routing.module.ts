@@ -22,6 +22,7 @@ import { ChBacktageHomeBComponent } from '../component/backstage/ch-backtage-hom
 import { ChApeQuizComponent } from '../component/community/ch-ape-quiz/ch-ape-quiz.component';
 import { ChQuestionSonComponent } from '../component/course/ch-question-son/ch-question-son.component';
 import { AuthGuardService } from './auth-guard.service';
+import { CanDeactivateGuardService } from './can-deactivate-guard.service';
 
 const ROUTES: Routes = [
   { path: '', component: ChHomeComponent },
@@ -34,21 +35,22 @@ const ROUTES: Routes = [
       { path: 'notes', component: ChNotesComponent },
       { path: 'question', component: ChQuestionComponent }
     ]},
-  { path: 'learning/:id', component: ChLearningComponent, canActivate: [AuthGuardService], children: [
-      { path: '', component: ChQuestionComponent },
-      { path: 'comment', component: ChCommentComponent },
-      { path: 'notes', component: ChNotesComponent },
-      { path: 'question', component: ChQuestionComponent }
+  { path: 'learning/:id', component: ChLearningComponent, canActivate: [AuthGuardService],
+    canDeactivate: [CanDeactivateGuardService], children: [
+      { path: '', component: ChQuestionComponent, canActivateChild: [AuthGuardService] },
+      { path: 'comment', component: ChCommentComponent, canActivateChild: [AuthGuardService] },
+      { path: 'notes', component: ChNotesComponent, canActivateChild: [AuthGuardService] },
+      { path: 'question', component: ChQuestionComponent, canActivateChild: [AuthGuardService] }
     ]},
   { path: 'logReg', component: ChLogRegisteredComponent },
   { path: 'ape', component: ChApeComponent },
   { path: 'community/:id', component: ChCommunityComponent },
   { path: 'notesSon/:id', component: ChNotesSonComponent },
   { path: 'person', component: ChPersonComponent, canActivate: [AuthGuardService], children: [
-      { path: '', component: ChPersonCourseComponent },
-      { path: 'person-course', component: ChPersonCourseComponent },
-      { path: 'person-notes', component: ChPersonNotesComponent },
-      { path: 'person-ape', component: ChPersonApeComponent},
+      { path: '', component: ChPersonCourseComponent, canActivateChild: [AuthGuardService] },
+      { path: 'person-course', component: ChPersonCourseComponent, canActivateChild: [AuthGuardService] },
+      { path: 'person-notes', component: ChPersonNotesComponent, canActivateChild: [AuthGuardService] },
+      { path: 'person-ape', component: ChPersonApeComponent, canActivateChild: [AuthGuardService] },
     ]},
   { path: 'backstageA', component: ChBackstageHomeComponent, canActivate: [AuthGuardService] },
   { path: 'backstageB', component: ChBacktageHomeBComponent, canActivate: [AuthGuardService] },
@@ -59,6 +61,9 @@ const ROUTES: Routes = [
 @NgModule({
   imports: [ RouterModule.forRoot(ROUTES) ],
   exports: [ RouterModule ],
-  providers: [ AuthGuardService ]
+  providers: [
+    AuthGuardService,
+    CanDeactivateGuardService,
+  ]
 })
 export class AppRoutingModule {}

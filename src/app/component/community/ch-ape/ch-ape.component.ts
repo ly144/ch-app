@@ -11,40 +11,91 @@ import {Person} from '../../../models/Person';
 export class ChApeComponent implements OnInit {
 
   /*问答数组*/
-  apes: Community;
+  apes: Community[];
   person: Person;
 
-  /*是否选择分类*/
-  isTag = true;
-  tag: string[] = ['数据结构', 'Photoshop', 'Linux', '机器学习', '深度学习', '云计算', '大数据', 'SQL Server', 'MySQL', 'C++'];
+  // 分类
+  tag: string[];
+  beforeType = -1;
 
-  /*推荐、最新、等待回答、话题按钮*/
-  beforeSelection = ['an', '', '', ''];
-  /*点击四个按钮之一*/
+  /*最新、最热*/
+  beforeSelection = ['an', ''];
+  /*点击两个按钮之一*/
   anBtn(i: number) {
     if (this.beforeSelection[i] !== 'an') {
       this.beforeSelection = [];
       this.beforeSelection[i] = 'an';
+      this.sort(i);
     }
+  }
+
+  // 点击分类
+  selectType(i: number) {
+    if (this.beforeType === i) {
+      this.beforeType = -1;
+    } else {
+      this.beforeType = i;
+    }
+    this.apeService.findCommunity((this.beforeType + 1))
+      .subscribe((value: Community[]) => {
+        this.apes = value;
+        if (this.beforeSelection[0] === 'an') {
+          this.sort(0);
+        } else {
+          this.sort(1);
+        }
+      });
   }
 
   init() {
     this.apeService.getApe()
-      .subscribe((ape: Community) => {
-      console.log(ape);
-      this.apes = ape;
-    });
+      .subscribe((ape: Community[]) => {
+        console.log(ape);
+        this.apes = ape;
+        this.sort(0);
+        this.beforeSelection = ['an', ''];
+      });
     this.apeService.getApeLogin(+localStorage.getItem('userId'))
       .subscribe((person: Person) => {
-      console.log(person);
-      this.person = person;
-    });
+        console.log(person);
+        this.person = person;
+      });
+    this.apeService.getClassify()
+      .subscribe((tag: string[]) => {
+        console.log(tag);
+        this.tag = tag;
+      });
   }
 
   constructor(private apeService:  ApeService) { }
 
   ngOnInit() {
     this.init();
+  }
+
+  // 冒泡排序
+  sort(top: number) {
+    if (top === 1) {
+      for (let i = 0; i < this.apes.length - 1; i++) {
+        for (let j = i + 1; j < this.apes.length; j++) {
+          if (this.apes[i].lookNum < this.apes[j].lookNum) {
+            const temp = this.apes[i];
+            this.apes[i] = this.apes[j];
+            this.apes[j] = temp;
+          }
+        }
+      }
+    } else if (top === 0) {
+      for (let i = 0; i < this.apes.length - 1; i++) {
+        for (let j = i + 1; j < this.apes.length; j++) {
+          if (this.apes[i].time < this.apes[j].time) {
+            const temp = this.apes[i];
+            this.apes[i] = this.apes[j];
+            this.apes[j] = temp;
+          }
+        }
+      }
+    }
   }
 
 }

@@ -16,9 +16,13 @@
     </div>
     <div nz-col [nzSpan]="20">
       <nz-upload
-        nzAction="https://jsonplaceholder.typicode.com/posts/">
+        [nzAction]="nzAction"
+        [(nzFileList)]="fileList"
+        [nzLimit]="1"
+        (nzChange)="handleChange($event)"
+        nzListType="picture">
         <button nz-button class="section-newName">
-          <i class="anticon anticon-upload"></i><span>Click to Upload</span>
+          <i class="anticon anticon-upload"></i><span>上传视频</span>
         </button>
       </nz-upload>
     </div>

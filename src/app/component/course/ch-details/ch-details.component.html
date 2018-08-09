@@ -5,11 +5,11 @@
     <div class="row">
       <div class="col-8">
         <ul class="item">
-          <li>课程</li>
+          <li routerLink="/selection" routerLinkActive="active">课程</li>
           <li>\</li>
-          <li>{{detailed.direction}}</li>
+          <li routerLink="/selection" routerLinkActive="active" (click)="selectDirection()">{{detailed.direction}}</li>
           <li>\</li>
-          <li>{{detailed.classify}}</li>
+          <li routerLink="/selection" routerLinkActive="active" (click)="selectClassify()">{{detailed.classify}}</li>
           <li>\</li>
           <li>{{detailed.name}}</li>
         </ul>
@@ -50,9 +50,8 @@
     <div class="row">
       <div class="col-12">
         <ul class="item2">
-          <li *ngFor="let dir of detailed2 let i=index">
-            <a (click)="select(dir[0], i)" class="item2-a" id="{{ dir[1] }}" routerLink="{{ dir[2] }}"
-               routerLinkActive="active">{{dir[0]}}</a>
+          <li *ngFor="let btn of detailBtn let i=index">
+            <a (click)="select(btn[0], i)" class="item2-a" id="{{ btn[1] }}" routerLink="{{ btn[2] }}" routerLinkActive="active">{{ btn[0] }}</a>
           </li>
         </ul>
       </div>
@@ -70,14 +69,14 @@
 
       <div class="col-4" id="learn">
         <div class="learn-1">
-          <p class="havelearn" *ngIf="isLogin">已学{{detailed.learned}}%<span
+          <p class="havelearn" *ngIf="isLearn">已学{{detailed.learned}}%<span
             class="timelen">学习耗时{{detailed.learnTime}}</span></p>
-          <div class="progress" style="border-radius:10px;" *ngIf="isLogin">
+          <div class="progress" style="border-radius:10px;" *ngIf="isLearn">
             <div class="progress-bar" [ngStyle]="{'width.%': detailed.learned}" id="progressColor"></div>
           </div>
-          <p class="learnto" *ngIf="isLogin">上次学至 {{detailed.learnProgress}}</p>
-          <p class="continuelearn" *ngIf="isLearn">继续学习</p>
-          <p class="continuelearn" *ngIf="!isLearn">开始学习</p>
+          <p class="learnto" *ngIf="isLearn">上次学至 {{ detailed.learnProgress }}</p>
+          <p class="continuelearn" *ngIf="isLearn" routerLink="/learning/{{ detailed.sectionId }}" routerLinkActive="active">继续学习</p>
+          <p class="continuelearn" *ngIf="!isLearn" routerLink="/learning/{{ detailed.sectionId }}" routerLinkActive="active">开始学习</p>
           <p class="information">课程须知</p>
           <p class="infoContent">{{detailed.know}}</p>
           <p class="information">老师告诉你能学到什么？</p>

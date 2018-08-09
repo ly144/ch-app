@@ -1,5 +1,5 @@
 #myModal {
-  top: 50px;
+  top: 30px;
   font-family: "PingFang SC", Helvetica, "Helvetica Neue", 微软雅黑, Tahoma, Arial, sans-serif;
 }
 #myModal-dialog {
@@ -142,8 +142,8 @@
   padding: 0 30px;
 }
 .pop-login {
-  /*text-align: center;*/
   font-size: 14px;
+  width: 100%;
 }
 .pop-login span {
   color: #666;

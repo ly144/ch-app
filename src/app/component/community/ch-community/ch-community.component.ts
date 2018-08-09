@@ -6,6 +6,7 @@ import {NzMessageService} from 'ng-zorro-antd';
 import {DatePipe} from '@angular/common';
 import {Person} from '../../../models/Person';
 import {ActivatedRoute} from '@angular/router';
+import {EmitService} from '../../../service/emit.service';
 
 @Component({
   selector: 'app-ch-community',
@@ -14,7 +15,6 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ChCommunityComponent implements OnInit {
    // 我要回答
-  showAskBtn = true;
   showAsk = false;
 
   dateTime: Date = new Date();
@@ -65,14 +65,18 @@ export class ChCommunityComponent implements OnInit {
 
   // 我要回答框
   show() {
-    this.showAskBtn = false;
-    this.showAsk = true;
+    if (localStorage.getItem('userId') === null || +localStorage.getItem('userId') === 0) {
+      this.emitService.eventEmit.emit('login');
+    } else {
+      this.showAsk = true;
+    }
   }
 
   constructor(private apeService: ApeService,
               private datePipe: DatePipe,
               private message: NzMessageService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private emitService: EmitService) {
   }
 
   ngOnInit() {

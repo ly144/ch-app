@@ -78,9 +78,9 @@ export class ChSelectionsonComponent implements OnInit {
 
   ngOnInit() {
     // 接收发射过来的数据
-    this.emitService.eventEmit.subscribe((value: string[]) => {
-      console.log('selectionson');
-      if (value[2] !== null) {
+    this.emitService.eventEmitSelection.subscribe((value: string[]) => {
+      console.log('selectionSon:' + value);
+      if (value[0].length > 0 && value[1].length > 0 && value[2].length > 0) {
         this.homeService.getSelectionSon(value)
           .subscribe((cou: Course[]) => {
             console.log(cou);

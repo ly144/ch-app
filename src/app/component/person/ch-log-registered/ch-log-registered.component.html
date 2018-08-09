@@ -13,7 +13,7 @@
           <div class="col-3 myModal-header-btn" (click)="onBtn(0)" id="{{ btn[0] }}"><span>登录</span></div>
           <div class="col-3 myModal-header-btn" (click)="onBtn(1)" id="{{ btn[1] }}"><span>注册</span></div>
           <div class="col-6">
-          <button type="button" class="close myClose" data-dismiss="modal">&times;</button>
+          <button type="button" class="close myClose" id="myModalClose" data-dismiss="modal">&times;</button>
           </div>
         </div>
       </div>
@@ -23,12 +23,13 @@
         <div class="row" id="myModal-body-content">
           <div style="width: 100%;">
 
+            <!-- 登录 -->
             <div *ngIf="isLogin">
               <form (ngSubmit)="onSubmitLogin()" #chLogin="ngForm">
                 <div>
                   <input type="text" class="myModal-body-input" maxlength="37" name="email" placeholder="请输入登录邮箱/手机号" [(ngModel)]="user.username" required>
                   <p class="errorHint" data-error-hint="请输入正确的邮箱或手机号" *ngIf="userInput[0]">请输入正确的邮箱或手机号</p>
-                  <p style="margin-bottom: 20px"></p>
+                  <p style="margin-bottom: 20px" *ngIf="!userInput[0]"></p>
                 </div>
 
                 <div>
@@ -40,7 +41,7 @@
 
                 <div class="form-check myModal-body-check">
                   <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox">7天内自动登录
+                    <input class="form-check-input" type="checkbox" checked>7天内自动登录
                   </label>
                   <a>忘记密码</a>
                 </div>
@@ -53,13 +54,14 @@
               </form>
             </div>
 
+            <!-- 注册 -->
             <div *ngIf="!isLogin">
               <form (ngSubmit)="onSubmitRegister()" #chRegister="ngForm">
 
                 <div>
                   <input type="text" class="myModal-body-input" maxlength="37" name="email" placeholder="请输入用户名" [(ngModel)]="regUser.username" required>
                   <p class="errorHint" data-error-hint="请输入用户名" *ngIf="regInput[0]">请输入用户名</p>
-                  <p style="margin-bottom: 20px"></p>
+                  <p style="margin-bottom: 20px" *ngIf="!regInput[0]"></p>
                 </div>
 
                 <div>
@@ -70,25 +72,21 @@
 
                 <div>
                   <input type="text" class="myModal-body-input" maxlength="37" name="email" placeholder="请输入注册邮箱/手机号" [(ngModel)]="regUser.phone" required>
-                  <p class="errorHint" data-error-hint="请输入正确的邮箱或手机号"  *ngIf="regInput[2]">请输入正确的邮箱或手机号</p>
-                  <p style="margin-bottom: 20px"></p>
+                  <p class="errorHint" data-error-hint="请输入正确的邮箱或手机号" *ngIf="regInput[2]">请输入正确的邮箱或手机号</p>
+                  <p style="margin-bottom: 20px" *ngIf="!regInput[2]"></p>
                 </div>
 
                 <div>
                   <input type="password" class="myModal-body-input-code" maxlength="16" name="password"
                          placeholder="请输入验证码" [(ngModel)]="regUser.code" required>
-                  <button class="btn btn-outline-secondary" type="button" id="getCodeBut" (click)="onSubmitCode()">获取验证码</button>
-                  <p class="errorHint" data-error-hint="验证码错误"  *ngIf="regInput[3]">验证码错误</p>
-                  <p style="margin-bottom: 20px"></p>
+                  <button class="btn btn-outline-secondary" type="button" id="getCodeBut" style="height: 44px" (click)="onSubmitCode()">获取验证码</button>
+                  <p class="errorHint" data-error-hint="验证码错误" *ngIf="regInput[3]">验证码错误</p>
+                  <p style="margin-bottom: 20px" *ngIf="!regInput[3]"></p>
                 </div>
-                <!--<div class="input-group mb-3">-->
-                  <!--<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">-->
-                  <!---->
-                <!--</div>-->
 
                 <div class="form-check myModal-body-check">
                   <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox">同意协议
+                    <input class="form-check-input" type="checkbox" checked>同意协议
                   </label>
                 </div>
                 <div style="clear:both;"></div>
@@ -108,9 +106,9 @@
       <div class="modal-footer" id="myModal-footer">
         <div class="pop-login row">
           <div class="col-5"><span>其他方式登录</span></div>
-          <div class="col-2"><a>QQ</a></div>
-          <div class="col-2"><a>weiChat</a></div>
-          <div class="col-2"><a>xinLang</a></div>
+          <div class="col-2"><a><i class="anticon anticon-github"></i></a></div>
+          <div class="col-2"><a><i class="anticon anticon-qq"></i></a></div>
+          <div class="col-2"><a><i class="anticon anticon-wechat"></i></a></div>
         </div>
       </div>
 

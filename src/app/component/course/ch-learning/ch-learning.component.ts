@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../../../service/course.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import { EmitService } from '../../../service/emit.service';
 import {CourseChapter} from '../../../models/CourseChapter';
 import {Question} from '../../../models/Question';
@@ -9,8 +9,10 @@ import {NzMessageService} from 'ng-zorro-antd';
 import {DatePipe} from '@angular/common';
 import {Notes} from '../../../models/Notes';
 import {Comment} from '../../../models/Comment';
+import {LoginRegisteredService} from '../../../service/login-registered.service';
 
 export class CourseLearn {
+  courseId: number;
   chapter: number;
   section: number;
   name: string;
@@ -24,6 +26,9 @@ export class CourseLearn {
 })
 export class ChLearningComponent implements OnInit {
 
+  id = 0;
+  userId = +localStorage.getItem('userId');
+  imgSrc = '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png';
   // 获取章节展开的章节信息
   courseChapters: CourseChapter;
   showChapter = false;
@@ -34,9 +39,9 @@ export class ChLearningComponent implements OnInit {
   showNotes = false;
   // 问答,笔记交互
   dateTime: Date = new Date();
-  ques: Question = { userId: +localStorage.getItem('userId'), sectionId: 0, title: '', content: '', time: '' };
-  notes: Notes = { userId: +localStorage.getItem('userId'), sectionId: 0, content: '', time: '' };
-  com: Comment = { userId: +localStorage.getItem('userId'), sectionId: 0, content: '', time: '' };
+  ques: Question = { userId: this.userId, sectionId: 0, title: '', content: '', time: '' };
+  notes: Notes = { userId: this.userId, sectionId: 0, content: '', time: '' };
+  com: Comment = { userId: this.userId, sectionId: 0, content: '', time: '' };
 
   course: CourseLearn;
   url = 'http://10.0.0.34:1234/group1/M00/00/00/wKgZhVtlZvKAZ5hVADJWtlJZhdg350.mp4';
@@ -154,21 +159,35 @@ export class ChLearningComponent implements OnInit {
     }
   }
 
-  init() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    console.log('route:' + id);
-    this.emitService.info = {name: 'learning', id: id};
-    this.courseService.getCourseLearn(id)
-      .subscribe((cl: CourseLearn) => {
-        this.course = cl;
-        console.log(this.course);
-      });
+
+  CSInit() {
     // 获取章节展开的章节信息
-    this.courseService.getChapterSection(this.emitService.courseId)
+    this.courseService.getChapterSection([this.course.courseId, this.userId])
       .subscribe((courseChapters: CourseChapter) => {
         this.courseChapters = courseChapters;
         console.log(this.courseChapters);
       });
+  }
+
+  init() {
+    console.log('route:' + this.id);
+    this.emitService.info = {name: 'learning', id: this.id};
+    this.courseService.getCourseLearn(this.id)
+      .subscribe((cl: CourseLearn) => {
+        this.course = cl;
+        console.log(this.course);
+        this.CSInit();
+      });
+    this.login.getPicture(this.userId)
+      .subscribe((img: { success: boolean, message: string }) => {
+        this.imgSrc = img.message;
+      });
+  }
+
+  loginOut() {
+    localStorage.removeItem('userId');
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/home');
   }
 
   constructor(private courseService: CourseService,
@@ -176,11 +195,18 @@ export class ChLearningComponent implements OnInit {
               private route: ActivatedRoute,
               private emitService: EmitService,
               private datePipe: DatePipe,
-              private message: NzMessageService) {
+              private message: NzMessageService,
+              private login: LoginRegisteredService,
+              private router: Router) {
   }
 
   ngOnInit() {
-    this.init();
+    this.route.params
+      .subscribe((params: Params) => {
+        this.id = +params['id'];
+        this.emitService.eventEmit.emit('learning');
+        this.init();
+      });
   }
 
 }

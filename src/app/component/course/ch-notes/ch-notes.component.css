@@ -73,7 +73,7 @@
   max-height: 156px;
   line-height: 28px;
 }
-#notes-footer {
+.notes-footer {
   margin-top: 12px;
   color: #93999f;
   font-size: 12px!important;

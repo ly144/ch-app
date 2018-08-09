@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="!isLearning">
 
   <div id="header" class="row">
 
@@ -26,10 +26,20 @@
 
     <div class="col-1"></div>
 
-    <div id="login" class="col-2">
+    <div id="login" class="col-2" *ngIf="!isLogin">
       <a (click)="onLogin()">登录</a>
       &nbsp;/&nbsp;
       <a (click)="onRegister()">注册</a>
+    </div>
+    <div class="col-2" *ngIf="isLogin" style="margin-top: 8px">
+      <ng-template #contentTemplate>
+        <div>
+          <p routerLink="/person" routerLinkActive="active" class="personBtn">个人中心</p>
+          <p routerLink="/backstageA" routerLinkActive="active" class="personBtn" *ngIf="isRoot">课程管理</p>
+          <p (click)="loginOut()" class="personBtn">退出登录</p>
+        </div>
+      </ng-template>
+      <a nz-popover [nzContent]="contentTemplate" nzTrigger="hover"><nz-avatar nzSize="large" nzIcon="anticon anticon-user" [nzSrc]="imgSrc"></nz-avatar></a>
     </div>
 
   </div>

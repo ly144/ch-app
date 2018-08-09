@@ -14,6 +14,8 @@ import { URL } from '../../../models/uploadUrl';
 })
 export class ChBackstageAddCourseComponent implements OnInit {
 
+  nzAction = URL + '/uploadfile/uploadimg';
+  fileList = [];
   addCourse: Course = {typeId: 0, difficulty: '', name: '',
     img: 'http://static.runoob.com/images/mix/img_avatar.png', shortIntro: '', intro: '', know: '', learnWhat: '',
     userId: 1, time: '', uploadTime: ''};
@@ -124,6 +126,15 @@ export class ChBackstageAddCourseComponent implements OnInit {
         // console.log(this.classifys);
         this.setSelectSection();
       });
+  }
+
+  // 上传文件的回调，开始、上传进度、完成、失败都会调用这个函数。
+  handleChange(info: any): void {
+    if (info.file.response) {
+      info.file.url = info.file.response.picture;
+      console.log(info.file.response.picture);
+      this.addCourse.img = info.file.response.picture;
+    }
   }
 
   // 初始化设置分类下拉框

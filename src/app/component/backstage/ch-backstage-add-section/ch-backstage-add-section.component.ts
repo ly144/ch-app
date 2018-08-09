@@ -3,6 +3,7 @@ import { Sections} from '../../../models/Sections';
 import { NzMessageService } from 'ng-zorro-antd';
 import { BackstageService } from '../../../service/backstage.service';
 import { EmitService } from '../../../service/emit.service';
+import {URL} from '../../../models/uploadUrl';
 
 @Component({
   selector: 'app-ch-backstage-add-section',
@@ -11,6 +12,8 @@ import { EmitService } from '../../../service/emit.service';
 })
 export class ChBackstageAddSectionComponent implements OnInit {
 
+  nzAction = URL + '/uploadfile/upload';
+  fileList = [];
   section: Sections = {chapterId: 0, section: 0, name: ''};
   isAddOrChange = 'add'; // 记录当前模态框是提交还是修改
 
@@ -60,6 +63,15 @@ export class ChBackstageAddSectionComponent implements OnInit {
               private emitService: EmitService) { }
 
   ngOnInit() {
+  }
+
+  // 上传文件的回调，开始、上传进度、完成、失败都会调用这个函数。
+  handleChange(info: any): void {
+    if (info.file.response) {
+      info.file.url = info.file.response.picture;
+      console.log(info.file.response.picture);
+      this.section.video = info.file.response.picture;
+    }
   }
 
   judgeAddSection() {

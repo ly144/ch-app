@@ -49,3 +49,9 @@ a {
   margin-left: 107px;
   margin-top: 10px;
 }
+
+
+.personBtn {
+  outline: none;
+  cursor: pointer;
+}

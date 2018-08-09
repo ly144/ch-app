@@ -44,5 +44,12 @@ export class LoginRegisteredService {
       );
   }
 
+  getPicture(id: number) {
+    return this.http.post(URL + '/user/getPicture', id, httpOptions)
+      .pipe(
+        catchError(this.handleError('getPicture'))
+      );
+  }
+
   constructor(private http: HttpClient) { }
 }

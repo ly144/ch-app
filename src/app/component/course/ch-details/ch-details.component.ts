@@ -11,12 +11,11 @@ import { EmitService } from '../../../service/emit.service';
 })
 export class ChDetailsComponent implements OnInit {
 
-  isLogin = false;
   isLearn = false;
 
   detailed: Detailed;
 
-  detailed2: string[][] = [
+  detailBtn: string[][] = [
     ['课程章节', 'on', './chapter'],
     ['评论', '', './comment'],
     ['同学笔记', '', './notes'],
@@ -25,10 +24,18 @@ export class ChDetailsComponent implements OnInit {
   selection = 0;
   nowSelect = '课程章节';
 
+  selectDirection() {
+    this.emitService.eventEmit.emit([this.detailed.direction, '全部', '全部']);
+  }
+
+  selectClassify() {
+    this.emitService.eventEmit.emit([this.detailed.direction, this.detailed.classify, '全部']);
+  }
+
   select(s: string, c: number) {
-    this.detailed2[this.selection][1] = '';
+    this.detailBtn[this.selection][1] = '';
     this.nowSelect = s;
-    this.detailed2[c][1] = 'on';
+    this.detailBtn[c][1] = 'on';
     this.selection = c;
   }
 
@@ -44,25 +51,16 @@ export class ChDetailsComponent implements OnInit {
     this.emitService.info = {name: 'details', id: id};
     // 请求后台数据
     const userId = +localStorage.getItem('userId');
-    if (userId === 0) {
-      this.courseService.getDetailNoLogin(id)
-        .subscribe((detailed: Detailed) => {
-          this.detailed = detailed;
-          console.log(this.detailed);
-        });
-    } else {
-      this.courseService.getCourseDetail([id, userId])
-        .subscribe((detailed: Detailed) => {
-          this.detailed = detailed;
-          console.log(this.detailed);
-          this.isLogin = true;
-          if (this.detailed.learned === 0) {
-            this.isLearn = false;
-          } else {
-            this.isLearn = true;
-          }
-        });
-    }
+    this.courseService.getCourseDetail([id, userId])
+      .subscribe((detailed: Detailed) => {
+        this.detailed = detailed;
+        console.log(this.detailed);
+        if (this.detailed.learned === 0) {
+          this.isLearn = false;
+        } else {
+          this.isLearn = true;
+        }
+      });
   }
 
   ngOnInit() {

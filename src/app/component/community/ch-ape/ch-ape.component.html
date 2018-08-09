@@ -14,10 +14,8 @@
       </div>
       <!-- 分类按钮 -->
       <div id="ape-nav" class="col-12">
-        <a class="ape-nav-btn" (click)="anBtn(0)" id="{{ beforeSelection[0] }}">推荐</a>
-        <a class="ape-nav-btn" (click)="anBtn(1)" id="{{ beforeSelection[1] }}">最新</a>
-        <a class="ape-nav-btn" (click)="anBtn(2)" id="{{ beforeSelection[2] }}">等待回答</a>
-        <a class="ape-nav-btn" (click)="anBtn(3)" id="{{ beforeSelection[3] }}">话题</a>
+        <a class="ape-nav-btn" (click)="anBtn(0)" id="{{ beforeSelection[0] }}">最新</a>
+        <a class="ape-nav-btn" (click)="anBtn(1)" id="{{ beforeSelection[1] }}">最热</a>
       </div>
 
       <!-- 问答列表 -->
@@ -71,33 +69,26 @@
           </div>
           <!-- 相关按钮 -->
           <div id="user-action" class="row">
-            <div class="col"><span><a>提问</a></span></div>
+            <div class="col"><span><a id="user-action-a" routerLink="/person/person-ape" routerLinkActive="active">提问</a></span></div>
             <div class="col"><span><a>回答</a></span></div>
             <div class="col"><span><a>关注</a></span></div>
           </div>
         </div>
       </div>
 
-      <!-- 关注的分类 -->
+      <!-- 分类 -->
       <div class="row">
         <div id="my-follow-class" class="col-12">
           <div id="follow-class" class="row">
             <div id="follow-class-info" class="col-10">
-              <h3>我关注的分类</h3>
-            </div>
-            <div id="class-add" class="col-2">
-              <span>+</span>
+              <h3>分类</h3>
             </div>
           </div>
-          <!-- 无分类 -->
-          <div *ngIf="!isTag" id="no-tag">
-            <h4>您还没有关注任何分类</h4>
-            <div id="follow-immediately">马上关注</div>
+       <!--分类-->
+          <div id="tag-box">
+            <a class="tag-box-a" *ngFor="let t of tag let i = index" (click)="selectType(i)" id="{{ i === beforeType ? 'onType' : '' }}">{{ t }}</a>
           </div>
-          <!-- 有分类 -->
-          <div *ngIf="isTag" id="tag-box">
-            <a *ngFor="let t of tag">{{ t }}</a>
-          </div>
+
         </div>
       </div>
     </div>

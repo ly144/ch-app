@@ -12,7 +12,7 @@ import { VgCoreModule } from 'videogular2/core';
 import { VgControlsModule } from 'videogular2/controls';
 import { VgOverlayPlayModule } from 'videogular2/overlay-play';
 import { VgBufferingModule } from 'videogular2/buffering';
-
+/** 组件 **/
 import { AppComponent } from './app.component';
 import { ChHomeComponent } from './component/course/ch-home/ch-home.component';
 import { ChHomeRecommendComponent } from './component/course/ch-home-recommend/ch-home-recommend.component';
@@ -41,7 +41,7 @@ import { ChBackstageAddCourseComponent } from './component/backstage/ch-backstag
 import { ChBackstageAddChapterComponent } from './component/backstage/ch-backstage-add-chapter/ch-backstage-add-chapter.component';
 import { ChBackstageAddSectionComponent } from './component/backstage/ch-backstage-add-section/ch-backstage-add-section.component';
 import { ChFooterComponent } from './component/header&footer/ch-footer/ch-footer.component';
-
+/** 服务组件 **/
 import { LoginRegisteredService } from './service/login-registered.service';
 import { HomeService} from './service/home.service';
 import { EmitService } from './service/emit.service';
@@ -52,7 +52,8 @@ import { ApeService } from './service/ape.service';
 import { ChApeQuizComponent } from './component/community/ch-ape-quiz/ch-ape-quiz.component';
 import { ChQuestionSonComponent } from './component/course/ch-question-son/ch-question-son.component';
 import { QuillModule } from 'ngx-quill';
-import {AuthGuardService} from './route/auth-guard.service';
+import { AuthGuardService } from './route/auth-guard.service';
+import { CanDeactivateGuardService } from './route/can-deactivate-guard.service';
 
 @NgModule({
   declarations: [
@@ -113,6 +114,7 @@ import {AuthGuardService} from './route/auth-guard.service';
     ApeService,
     BackstageService,
     AuthGuardService,
+    CanDeactivateGuardService,
   ]
 })
 export class AppModule { }

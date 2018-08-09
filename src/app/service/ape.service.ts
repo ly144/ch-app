@@ -40,6 +40,14 @@ export class ApeService {
       );
   }
 
+  // 根据typeId查询猿问
+  findCommunity(typeId: number) {
+    return this.http.post(URL + '/es/findCommunity', typeId, httpOptions)
+      .pipe(
+        catchError(this.handleError('findCommunity'))
+      );
+  }
+
   // 获取猿问问题详细页面提问者信息，以及回答内容,传过去问题id,ch-community
   getApeCommunity(id: number) {
     return this.http.post(URL + '/ape/getApeCommunity', id, httpOptions)

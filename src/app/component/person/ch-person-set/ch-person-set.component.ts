@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Person } from '../../../models/Person';
 import { PersonService } from '../../../service/person.service';
 import { NzMessageService } from 'ng-zorro-antd';
+import {URL} from '../../../models/uploadUrl';
 
 @Component({
   selector: 'app-ch-person-set',
@@ -10,8 +11,8 @@ import { NzMessageService } from 'ng-zorro-antd';
 })
 export class ChPersonSetComponent implements OnInit {
 
-  // userId = +localStorage.getItem('userId');
-  userId = 3;
+  userId = +localStorage.getItem('userId');
+  // userId = 3;
   // 用户信息
   person: Person;
   // 邮箱
@@ -23,11 +24,14 @@ export class ChPersonSetComponent implements OnInit {
   // 短信验证码
   phoneCode = '';
   // 修改密码
-  pass = ['', '', '', ''];
+  pass = ['', '', '', '', ''];
   // 密码验证
   userLogin = {'username': '', 'password': '', 'code': ''};
   // 是否身份验证
   isjudge = true;
+  // 上传图片
+  nzAction = URL + '/uploadfile/uploadimg';
+  fileList = [];
 
   isEmailVisible = false;
   isPhoneVisible = false;
@@ -107,6 +111,7 @@ export class ChPersonSetComponent implements OnInit {
   }
   passOk(): void {
     this.pass[3] = this.person.name;
+    this.pass[4] = this.userId + '';
     if (this.pass[1] === this.pass[2]) {
       this.personService.changePass(this.pass)
         .subscribe((value: number) => {
@@ -177,6 +182,7 @@ export class ChPersonSetComponent implements OnInit {
       .subscribe((value: Person) => {
         this.person = value;
         console.log(this.person);
+        this.fileList = [{url: this.person.picture}];
       });
   }
 
@@ -185,6 +191,15 @@ export class ChPersonSetComponent implements OnInit {
 
   ngOnInit() {
     this.init();
+  }
+
+  // 上传文件的回调，开始、上传进度、完成、失败都会调用这个函数。
+  handleChange(info: any): void {
+    if (info.file.response) {
+      info.file.url = info.file.response.picture;
+      console.log(info.file.response.picture);
+      this.person.picture = info.file.response.picture;
+    }
   }
 
 }

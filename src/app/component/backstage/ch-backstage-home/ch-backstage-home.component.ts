@@ -93,7 +93,7 @@ export class ChBackstageHomeComponent implements OnInit {
   }
 
   init() {
-    this.backstageService.getCourses(1)
+    this.backstageService.getCourses(+localStorage.getItem('userId'))
       .subscribe((values: CourseChapter[]) => {
         console.log(values);
         if (this.isExpands === 1) {

@@ -3,10 +3,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { URL } from '../models/uploadUrl';
 import { catchError } from 'rxjs/internal/operators';
-import {Question} from '../models/Question';
-import {Notes} from '../models/Notes';
-import {Comment} from '../models/Comment';
-import {Answer} from '../models/Answer';
+import { Question } from '../models/Question';
+import { Notes } from '../models/Notes';
+import { Comment } from '../models/Comment';
+import { Answer } from '../models/Answer';
+import { Historical } from '../models/Historical';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -26,16 +27,8 @@ export class CourseService {
     };
   }
 
-  getDetailNoLogin(courseId: number) {
-    return this.http.post(URL + '/detail/getDetailNoLogin', courseId, httpOptions)
-      .pipe(
-        catchError(this.handleError('getDetailNoLogin'))
-      );
-  }
-
   // 获取课程详细页面的课程信息，教师信息，学生信息
   getCourseDetail(passId: number[]) {
-    console.log(passId);
     return this.http.post(URL + '/detail/getCourse', passId, httpOptions)
       .pipe(
         catchError(this.handleError('getCourseDetail'))
@@ -43,9 +36,8 @@ export class CourseService {
   }
 
   // 获得课程详细页面子页面-课程章节页面的章信息和节信息
-  getChapterSection(courseId: number) {
-    console.log(courseId);
-    return this.http.post(URL + '/detail/getChapterSection', courseId, httpOptions)
+  getChapterSection(id: number[]) {
+    return this.http.post(URL + '/detail/getChapterSection', id, httpOptions)
       .pipe(
         catchError(this.handleError('getChapterSection'))
       );
@@ -87,7 +79,17 @@ export class CourseService {
       );
   }
 
-
+  /**
+   * 插入课程历史记录
+   * @param {Historical} historical
+   * @returns {Observable<any>}
+   */
+  setHistorical(historical: Historical) {
+    return this.http.post(URL + '/course/setHistorical', JSON.stringify(historical), httpOptions)
+      .pipe(
+        catchError(this.handleError('setHistorical'))
+      );
+  }
 
 
 
@@ -97,7 +99,6 @@ export class CourseService {
 
   // 获得课程学习视频
   getCourseLearn(id: number) {
-    console.log(id);
     return this.http.post(URL + '/course/getCourseLearn', id, httpOptions)
       .pipe(
         catchError(this.handleError('getCourseLearn'))
@@ -140,7 +141,11 @@ export class CourseService {
       );
   }
 
-  //  插入课程节的问答
+  /**
+   * 插入课程节的问答
+   * @param {Question} ques
+   * @returns {Observable<any>}
+   */
   setSectionQuestion(ques: Question) {
     return this.http.post(URL + '/course/setSectionQuestion',  JSON.stringify(ques), httpOptions)
       .pipe(

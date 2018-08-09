@@ -3,6 +3,24 @@
 
   <div nz-row>
     <div nz-col [nzSpan]="5">
+      <label class="settingLabel">头&nbsp;&nbsp;&nbsp;&nbsp;像：</label>
+    </div>
+    <div nz-col [nzSpan]="19">
+      <nz-upload class="upload-list-inline"
+                 [nzAction]="nzAction"
+                 [(nzFileList)]="fileList"
+                 [nzLimit]="1"
+                 (nzChange)="handleChange($event)"
+                 nzListType="picture">
+        <button nz-button>
+          <span><i class="anticon anticon-upload"></i>上传头像</span>
+        </button>
+      </nz-upload>
+    </div>
+  </div>
+
+  <div nz-row class="settingInput">
+    <div nz-col [nzSpan]="5">
       <label for="name" class="settingLabel">昵&nbsp;&nbsp;&nbsp;&nbsp;称：</label>
     </div>
     <div nz-col [nzSpan]="19">

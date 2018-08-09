@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PersonService} from '../../../service/person.service';
 import {Person} from '../../../models/Person';
+import {NzMessageService} from 'ng-zorro-antd';
+import {URL} from '../../../models/uploadUrl';
 
 @Component({
   selector: 'app-ch-person',
@@ -42,14 +44,15 @@ export class ChPersonComponent implements OnInit {
 
   // 个人中心页面初始化
   init() {
-    this.personService.personInit(3)
+    this.personService.personInit(+localStorage.getItem('userId'))
       .subscribe( (per: Person) => {
         console.log(per);
         this.person = per;
       });
   }
 
-  constructor(private personService: PersonService) { }
+  constructor(private personService: PersonService,
+              private msg: NzMessageService) { }
 
   ngOnInit() {
     this.init();

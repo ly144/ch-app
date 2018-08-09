@@ -13,7 +13,8 @@ export class Detailed {
   authorJob: string;     // 老师职业
   learned: number;       // 学生学习百分比
   learnTime: string;     // 学生学习耗时
-  learnProgress: string; // 学生最近学习
+  learnProgress: string; // 学生学习进度
+  sectionId: number; // 开始学习的节
   signature: string; // 签名
   intro: string; // 课程简介
 }
