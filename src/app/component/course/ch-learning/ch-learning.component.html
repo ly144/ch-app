@@ -14,8 +14,9 @@
         <div class="col section">
           <ng-template #contentTemplate>
             <div>
-              <p routerLink="/person" routerLinkActive="active" style="outline: none;cursor: pointer;">个人中心</p>
-              <p (click)="loginOut()" style="cursor: pointer;">退出登录</p>
+              <p routerLink="/person" routerLinkActive="active" class="personBtn">个人中心</p>
+              <p routerLink="/backstageA" routerLinkActive="active" class="personBtn" *ngIf="isRoot">课程管理</p>
+              <p (click)="loginOut()" class="personBtn">退出登录</p>
             </div>
           </ng-template>
           <a nz-popover [nzContent]="contentTemplate" nzTrigger="hover"><nz-avatar nzSize="large" nzIcon="anticon anticon-user" [nzSrc]="imgSrc"></nz-avatar></a>
@@ -125,10 +126,10 @@
             <!--<source [src]=url type="video/mp4">-->
           <!--</video>-->
         <!--</vg-player>-->
-        <vg-player style="border-radius: 10px;"><!-- *ngIf="course" -->
+        <vg-player style="border-radius: 10px;" *ngIf="course">
           <!--<vg-overlay-play vgFor="singleVideo"></vg-overlay-play>-->
           <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls class="video-play" type="video/*">
-            <source [src]=url type="video/mp4">
+            <source [src]="course.video" type="video/mp4">
           </video>
         </vg-player>
         <!--<video width="320" height="240" controls>-->

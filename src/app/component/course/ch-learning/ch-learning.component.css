@@ -26,6 +26,12 @@ a {
   padding-left: 20px;
 }
 
+.personBtn {
+  outline: none;
+  cursor: pointer;
+}
+
+
 /*播放框*/
 #learning-play {
   height: 510px;

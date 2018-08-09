@@ -1,21 +1,26 @@
 <!-- 编辑个人信息 -->
-<nz-modal [(nzVisible)]="isSetVisible" nzTitle="编辑个人信息" (nzOnCancel)="setCancel()" (nzOnOk)="setOk()" nzWidth="400" *ngIf="person">
+<nz-modal [(nzVisible)]="isSetVisible" nzTitle="编辑个人信息" (nzOnCancel)="setCancel()" (nzOnOk)="setOk()" [nzStyle]="{ top: '40px' }" nzWidth="400" *ngIf="person">
 
   <div nz-row>
     <div nz-col [nzSpan]="5">
       <label class="settingLabel">头&nbsp;&nbsp;&nbsp;&nbsp;像：</label>
     </div>
     <div nz-col [nzSpan]="19">
-      <nz-upload class="upload-list-inline"
-                 [nzAction]="nzAction"
-                 [(nzFileList)]="fileList"
-                 [nzLimit]="1"
-                 (nzChange)="handleChange($event)"
-                 nzListType="picture">
-        <button nz-button>
-          <span><i class="anticon anticon-upload"></i>上传头像</span>
-        </button>
+      <nz-upload
+        [nzAction]="nzAction"
+        nzListType="picture-card"
+        [(nzFileList)]="fileList"
+        [nzShowButton]="fileList.length < 1"
+        (nzChange)="handleChange($event)"
+        [nzPreview]="handlePreview">
+        <i class="anticon anticon-plus"></i>
+        <div class="ant-upload-text">上传头像</div>
       </nz-upload>
+      <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="previewVisible=false">
+        <ng-template #modalContent>
+          <img [src]="previewImage" [ngStyle]="{ 'width': '100%' }" />
+        </ng-template>
+      </nz-modal>
     </div>
   </div>
 

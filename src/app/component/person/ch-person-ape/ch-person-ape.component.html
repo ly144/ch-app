@@ -12,11 +12,11 @@
 
 <div class="row ape-content" *ngFor="let ape of apes">
   <div class="col-1">
-    <img class="img-1" src="https://img3.mukewang.com/59e96f340001faac02400240.jpg">
+    <img class="img-1" [src]="ape.img">
   </div>
   <div class="col-11 ape-content-1">
     <p class="from">来自<a class="classification">{{ ape.type }}</a></p>
-    <p class="question">问题：{{ ape.title }}</p>
+    <p class="question" routerLink="/community/{{ ape.id }}" routerLinkActive="active">问题：{{ ape.title }}</p>
 
     <div class="answer" *ngIf="isAnswer">
       <p class="answer-my">我的回答</p>

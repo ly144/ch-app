@@ -7,5 +7,5 @@ export class Sections {
   learnedSections?: number; // 是否学习
   learningHalfs?: number;  // 学至一半
   newLearn?: number;      // 最近学习
-  video?: string;
+  video?: string; // 课程视频
 }

@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {PersonService} from '../../../service/person.service';
 
 export class Ape {
+  id: number;
   type: string;
+  img: string;
   title: string;
   myAnswer: string;
   time: string;

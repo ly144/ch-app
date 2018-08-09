@@ -3,7 +3,7 @@
   <div class="col-10">
     <ul class="notes-select">
       <li  class="total" id="{{ selectBtn[0] }}" (click)="select(0)"><a>全部</a></li>
-      <li  class="course"id="{{ selectBtn[1] }}" (click)="select(1)"><a>课程</a></li>
+      <!--<li  class="course"id="{{ selectBtn[1] }}" (click)="select(1)"><a>课程</a></li>-->
     </ul>
   </div>
   <div class="col-2" *ngIf="notes">
@@ -17,8 +17,8 @@
 <!--笔记内容页-->
 <div class="row" *ngFor="let note of notes">
   <div class="col-12 mainbody">
-    <p class="notes-chapter">{{ note.courseName }}</p>
-    <p class="notes-section">{{ note.chapter }}-{{ note.section }}&nbsp;{{ note.sectionName }}</p>
+    <p class="notes-chapter" routerLink="/details/{{ note.courseId }}" routerLinkActive="active">{{ note.courseName }}</p>
+    <p class="notes-section" routerLink="/learning/{{ note.sectionId }}" routerLinkActive="active">{{ note.chapter }}-{{ note.section }}&nbsp;{{ note.sectionName }}</p>
     <p class="notes-content">{{ note.content }}</p>
     <div class="row">
       <div class="col-2 notes-praisecollect-1">

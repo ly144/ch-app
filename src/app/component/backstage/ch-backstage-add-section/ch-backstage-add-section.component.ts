@@ -45,6 +45,7 @@ export class ChBackstageAddSectionComponent implements OnInit {
   changeSection(section: Sections) {
     this.isAddOrChange = 'change';
     this.section = section;
+    this.fileList = [{url: this.section.video}];
     this.isVisible = true;
   }
 

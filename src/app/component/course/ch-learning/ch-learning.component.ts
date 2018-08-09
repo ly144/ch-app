@@ -29,6 +29,7 @@ export class ChLearningComponent implements OnInit {
   id = 0;
   userId = +localStorage.getItem('userId');
   imgSrc = '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png';
+  isRoot = 0;
   // 获取章节展开的章节信息
   courseChapters: CourseChapter;
   showChapter = false;
@@ -179,8 +180,9 @@ export class ChLearningComponent implements OnInit {
         this.CSInit();
       });
     this.login.getPicture(this.userId)
-      .subscribe((img: { success: boolean, message: string }) => {
-        this.imgSrc = img.message;
+      .subscribe((img: { success: boolean, root: number, picture: string }) => {
+        this.imgSrc = img.picture;
+        this.isRoot = img.root;
       });
   }
 

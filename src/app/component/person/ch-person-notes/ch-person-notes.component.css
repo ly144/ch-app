@@ -72,6 +72,8 @@
   color: #07111B;
   line-height: 24px;
   min-height: 24px;
+  cursor: pointer;
+  outline: none;
 }
 
 .notes-chapter:hover{
@@ -83,6 +85,8 @@
   font-size: 12px;
   color: #93999F;
   line-height: 24px;
+  cursor: pointer;
+  outline: none;
 }
 
 .notes-section:hover{

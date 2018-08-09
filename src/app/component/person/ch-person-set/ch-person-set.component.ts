@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../../../models/Person';
 import { PersonService } from '../../../service/person.service';
-import { NzMessageService } from 'ng-zorro-antd';
+import {NzMessageService, UploadFile} from 'ng-zorro-antd';
 import {URL} from '../../../models/uploadUrl';
 
 @Component({
@@ -32,6 +32,8 @@ export class ChPersonSetComponent implements OnInit {
   // 上传图片
   nzAction = URL + '/uploadfile/uploadimg';
   fileList = [];
+  previewVisible = false;
+  previewImage = '';
 
   isEmailVisible = false;
   isPhoneVisible = false;
@@ -191,6 +193,11 @@ export class ChPersonSetComponent implements OnInit {
 
   ngOnInit() {
     this.init();
+  }
+
+  handlePreview = (file: UploadFile) => {
+    this.previewImage = file.url || file.thumbUrl;
+    this.previewVisible = true;
   }
 
   // 上传文件的回调，开始、上传进度、完成、失败都会调用这个函数。

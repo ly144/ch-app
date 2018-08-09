@@ -58,6 +58,7 @@
   height: 29px;
   line-height: 29px;
   font-weight: 700;
+  outline: none;
 }
 
 .chapter:hover{
@@ -117,6 +118,7 @@
   line-height: 38px;
   background-color: #fff;
   padding: 0;
+  outline: none;
 }
 
 #continuelearn:hover{

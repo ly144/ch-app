@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {PersonService} from '../../../service/person.service';
+import { Component, OnInit } from '@angular/core';
+import { PersonService } from '../../../service/person.service';
 
 export class PersonCourse {
+  id: number;
   time: string;
   year: string;
   month: string;
@@ -11,6 +12,7 @@ export class PersonCourse {
   learned: number;
   learnProgress: string;
   learnTime: string;
+  section: number;
   notesNum: number;
   questionNum: number;
 }
@@ -25,14 +27,17 @@ export class ChPersonCourseComponent implements OnInit {
   personCourse: PersonCourse[];
 
   selectBtn = ['on', ''];
+  selection = 0;
 
   select(i: number) {
     if (i === 0 && this.selectBtn[i] === '') {
       this.selectBtn[0] = 'on';
       this.selectBtn[1] = '';
+      this.selection = 0;
     } else if (i === 1 && this.selectBtn[i] === '') {
       this.selectBtn[1] = 'on';
       this.selectBtn[0] = '';
+      this.selection = 1;
     }
   }
 

@@ -20,7 +20,7 @@
         <img class="img-1" src="{{ pc.img }}">
       </div>
       <div class="col-7">
-        <p><span class="chapter">{{ pc.name }}</span><span class="span1">更新完毕</span></p>
+        <p><span class="chapter" routerLink="/details/{{ pc.id }}">{{ pc.name }}</span><span class="span1">更新完毕</span></p>
         <ul class="state">
           <li id="havelearn">已学{{ pc.learned }}%</li>
           <li>用时&nbsp;{{ pc.learnTime }}</li>
@@ -32,7 +32,7 @@
         </ul>
       </div>
       <div class="col-2">
-        <a id="continuelearn">继续学习</a>
+        <a id="continuelearn" routerLink="/learning/{{ pc.section }}" routerLinkActive="active">继续学习</a>
       </div>
     </div>
     <hr>

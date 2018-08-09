@@ -55,7 +55,7 @@ export class ChDetailsComponent implements OnInit {
       .subscribe((detailed: Detailed) => {
         this.detailed = detailed;
         console.log(this.detailed);
-        if (this.detailed.learned === 0) {
+        if (this.detailed.learnProgress === null) {
           this.isLearn = false;
         } else {
           this.isLearn = true;

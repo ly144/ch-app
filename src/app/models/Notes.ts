@@ -2,6 +2,8 @@ export class Notes {
   id?: number;
   userId: number; // 用户id
   sectionId: number; // 节id
+  courseName?: string;
+  courseId?: number;
   img?: string;
   name?: string;
   chapter?: number;

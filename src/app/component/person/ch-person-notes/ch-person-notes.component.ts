@@ -3,6 +3,8 @@ import {PersonService} from '../../../service/person.service';
 
 export class Notes {
   courseName: string;
+  courseId: number;
+  sectionId: number;
   chapter: number;
   section: number;
   sectionName: string;

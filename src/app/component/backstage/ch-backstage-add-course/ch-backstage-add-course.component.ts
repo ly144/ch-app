@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NzMessageService, NzTreeNode } from 'ng-zorro-antd';
+import {NzMessageService, NzTreeNode, UploadFile} from 'ng-zorro-antd';
 import { Course } from '../../../models/Course';
 import { BackstageService } from '../../../service/backstage.service';
 import { HomeService } from '../../../service/home.service';
@@ -16,6 +16,8 @@ export class ChBackstageAddCourseComponent implements OnInit {
 
   nzAction = URL + '/uploadfile/uploadimg';
   fileList = [];
+  previewVisible = false;
+  previewImage = '';
   addCourse: Course = {typeId: 0, difficulty: '', name: '',
     img: 'http://static.runoob.com/images/mix/img_avatar.png', shortIntro: '', intro: '', know: '', learnWhat: '',
     userId: 1, time: '', uploadTime: ''};
@@ -83,12 +85,13 @@ export class ChBackstageAddCourseComponent implements OnInit {
     }
   }
 
-  // 修改课程
+  // 修改课程(获取课程信息)
   changeCourse(courseId: number) {
     this.isAddOrChange = 'change';
     this.backstageService.getCourse(courseId)
       .subscribe((value: Course) => {
         this.addCourse = value;
+        this.fileList = [{url: this.addCourse.img}];
         this.juedeType();
         this.type = '' + this.addCourse.typeId;
         this.isVisible = true;
@@ -136,6 +139,10 @@ export class ChBackstageAddCourseComponent implements OnInit {
       this.addCourse.img = info.file.response.picture;
     }
   }
+  handlePreview = (file: UploadFile) => {
+    this.previewImage = file.url || file.thumbUrl;
+    this.previewVisible = true;
+  }
 
   // 初始化设置分类下拉框
   setSelectSection() {
@@ -154,7 +161,7 @@ export class ChBackstageAddCourseComponent implements OnInit {
     }
   }
 
-  // 判断是否填写正确
+  // 判断是否填写正确,并提交
   judgeAddCourse() {
     if (this.type === '') {
       this.message.error(`未选择分类`);
@@ -205,6 +212,7 @@ export class ChBackstageAddCourseComponent implements OnInit {
     }
   }
 
+  // 判断课程的方向
   juedeType() {
     if (1 <= this.addCourse.typeId && this.addCourse.typeId <= 8) {
       this.expandKeys = ['1001'];

@@ -69,8 +69,7 @@
 
       <div class="col-4" id="learn">
         <div class="learn-1">
-          <p class="havelearn" *ngIf="isLearn">已学{{detailed.learned}}%<span
-            class="timelen">学习耗时{{detailed.learnTime}}</span></p>
+          <p class="havelearn" *ngIf="isLearn">已学{{detailed.learned}}%<span class="timelen">学习耗时{{detailed.learnTime}}</span></p>
           <div class="progress" style="border-radius:10px;" *ngIf="isLearn">
             <div class="progress-bar" [ngStyle]="{'width.%': detailed.learned}" id="progressColor"></div>
           </div>
