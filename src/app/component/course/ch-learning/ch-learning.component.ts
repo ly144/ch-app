@@ -152,8 +152,10 @@ export class ChLearningComponent implements OnInit {
       this.courseService.setSectionComment(this.com)
         .subscribe((values: number) => {
           if (values) {
+            document.getElementById('commentModalClose').click();
             this.message.success('评论成功！');
           } else  {
+            document.getElementById('commentModalClose').click();
             this.message.error('评论失败！');
           }
         });

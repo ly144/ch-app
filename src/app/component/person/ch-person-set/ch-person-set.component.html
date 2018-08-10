@@ -97,10 +97,10 @@
       <label for="emailCode" class="settingLabel">验证码：</label>
     </div>
     <div nz-col [nzSpan]="20">
-      <nz-input-group nzSearch [nzSuffix]="suffixButton">
+      <nz-input-group nzSearch [nzSuffix]="emailButton">
         <input type="text" id="emailCode" nz-input placeholder="" [(ngModel)]="emailCode">
       </nz-input-group>
-      <ng-template #suffixButton>
+      <ng-template #emailButton>
         <button nz-button nzType="primary" nzSearch (click)="sendEmail()">发送邮箱</button>
       </ng-template>
     </div>
@@ -129,10 +129,10 @@
       <label for="phoneCode" class="settingLabel">验证码：</label>
     </div>
     <div nz-col [nzSpan]="20">
-      <nz-input-group nzSearch [nzSuffix]="suffixButton">
+      <nz-input-group nzSearch [nzSuffix]="phoneButton">
         <input type="text" id="phoneCode" nz-input placeholder="" [(ngModel)]="phoneCode">
       </nz-input-group>
-      <ng-template #suffixButton>
+      <ng-template #phoneButton>
         <button nz-button nzType="primary" nzSearch (click)="sendCode()">获取验证码</button>
       </ng-template>
     </div>

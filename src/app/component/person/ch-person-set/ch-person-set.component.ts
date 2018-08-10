@@ -157,7 +157,7 @@ export class ChPersonSetComponent implements OnInit {
 
   // 发送邮件
   sendEmail() {
-    this.personService.sendEmail(this.email + '@qq.com')
+    this.personService.sendEmail((this.email + '@qq.com'))
       .subscribe((value: number) => {
         if (value > 0) {
           this.message.success('发送成功');

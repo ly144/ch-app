@@ -21,8 +21,9 @@ export class ChHeaderComponent implements OnInit {
 
   onFindByName() {
     if (this.findByName !== null) {
-      this.emitService.eventEmitFind.emit(this.findByName);
       this.router.navigateByUrl('/home');
+      this.emitService.eventEmitFind.emit(this.findByName);
+      this.findByName = '';
     }
   }
 

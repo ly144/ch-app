@@ -15,6 +15,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ChQuestionSonComponent implements OnInit {
 
+  userId = +localStorage.getItem('userId');
+  id = +this.route.snapshot.paramMap.get('id');
   // 提问信息
   questionson: QuestionSon;
   // 回答信息
@@ -23,22 +25,21 @@ export class ChQuestionSonComponent implements OnInit {
   person: Person;
   // 回答交互
   dateTime: Date = new Date();
-  myAnswer: Answer = {userId: 1, questionId: 1, content: '', time: ''};
+  myAnswer: Answer = {userId: this.userId, questionId: this.id, content: '', time: ''};
 
   // 传入question.id,传入question.id,传入当前登录者id
   init() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.courseService.getQuestionSon(id)
+    this.courseService.getQuestionSon(this.id)
       .subscribe((questionson: QuestionSon) => {
         this.questionson = questionson;
         console.log(this.questionson);
       });
-    this.courseService.getQuestionSonAnswer(id)
+    this.courseService.getQuestionSonAnswer(this.id)
       .subscribe((answer: Answer[]) => {
         this.answer = answer;
         console.log(this.answer);
       });
-    this.apeService.getApeLogin(+localStorage.getItem('userId'))
+    this.apeService.getApeLogin(this.userId)
       .subscribe((person: Person) => {
       console.log(person);
       this.person = person;

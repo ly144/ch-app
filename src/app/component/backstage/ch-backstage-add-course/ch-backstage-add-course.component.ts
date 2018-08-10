@@ -18,9 +18,10 @@ export class ChBackstageAddCourseComponent implements OnInit {
   fileList = [];
   previewVisible = false;
   previewImage = '';
+  userId = +localStorage.getItem('userId');
   addCourse: Course = {typeId: 0, difficulty: '', name: '',
     img: 'http://static.runoob.com/images/mix/img_avatar.png', shortIntro: '', intro: '', know: '', learnWhat: '',
-    userId: 1, time: '', uploadTime: ''};
+    userId: this.userId, time: '', uploadTime: ''};
   type = '';
 
   dateTime: Date = new Date();
@@ -101,7 +102,7 @@ export class ChBackstageAddCourseComponent implements OnInit {
   init() {
     this.addCourse = {typeId: 0, difficulty: '', name: '',
       img: 'http://static.runoob.com/images/mix/img_avatar.png', shortIntro: '', intro: '', know: '', learnWhat: '',
-      userId: 1, time: '', uploadTime: ''};
+      userId: this.userId, time: '', uploadTime: ''};
     this.expandKeys = [];
     this.type = '';
   }

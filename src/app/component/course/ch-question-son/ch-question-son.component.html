@@ -9,18 +9,13 @@
         <div class="col-12 subject" *ngIf="questionson">
           <div>
             <ul class="item">
-              <li>
-                课程 &nbsp;\
-              </li>
-              <li>
-                {{ questionson.directions }} &nbsp;\
-              </li>
-              <li>
-                {{ questionson.classify }} &nbsp;\
-              </li>
-              <li>
-                {{ questionson.courseName }}&nbsp;
-              </li>
+              <li>课程</li>
+              <li>\</li>
+              <li>{{ questionson.directions }}</li>
+              <li>\</li>
+              <li>{{ questionson.classify }}</li>
+              <li>\</li>
+              <li>{{ questionson.courseName }}</li>
             </ul>
           </div>
           <div class="questioner">
@@ -60,7 +55,7 @@
     </div>
 
     <div class="col-4">
-      <div class="newProblems">发新问题</div>
+      <div class="newProblems" routerLink="/quiz" routerLinkActive="active">发新问题</div>
       <div *ngIf="person">
         <img class="new-img" src="{{ person.picture }}">
         <span class="new-name">{{ person.name }}</span>
